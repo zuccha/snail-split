@@ -1,18 +1,18 @@
 import React from 'react'
 import chalk from 'chalk'
-import { Box } from 'ink'
+import { Box, Text } from 'ink'
 import zip from '../../utils/zip'
 import font, { height, separator } from './font'
 
 
-interface TextDisplayProps {
+interface ITextDisplayProps {
   text: string
   colorBg?: string
   colorFg?: string
 }
 
 
-const TextDisplay: React.FC<TextDisplayProps> = ({
+const TextDisplay: React.FC<ITextDisplayProps> = ({
   text,
   colorBg = undefined,
   colorFg = undefined,
@@ -36,21 +36,23 @@ const TextDisplay: React.FC<TextDisplayProps> = ({
     // Color each pixel of the right color, depending whether it is a background
     // pixel (0) or a foreground pixel (1). Use `chalk` directly for performance
     // reasons.
-    .map(line =>
+    .map(line => (
       line
         .map(pixel => {
-          const color = pixel === 1 ? colorFg : colorBg
+          const color = pixel === 1 ? colorFg : undefined
           return color !== undefined
-            ? chalk.bgHex(color)('\u200b')
-            : '\u200b'
+            ? chalk.bgHex(color)('  ')
+            : '  '
         })
         .join('')
-    )
+    ))
     .join('\n')
 
   return (
     <Box height={height}>
-      {formattedText}
+      <Text>
+        {formattedText}
+      </Text>
     </Box>
   )
 }
