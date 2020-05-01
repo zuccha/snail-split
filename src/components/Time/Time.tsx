@@ -10,6 +10,11 @@ interface ITimeProps {
   colorBg?: string
   colorFg?: string
   bold?: boolean
+  formatZero?: string
+  formatBelowSecond?: string
+  formatBelowMinute?: string
+  formatBelowHour?: string
+  formatDefault?: string
 }
 
 
@@ -19,9 +24,20 @@ const Time: React.FC<ITimeProps> = ({
   colorBg = undefined,
   colorFg = undefined,
   bold = false,
+  formatZero = '0.000',
+  formatBelowSecond = '0.mmm',
+  formatBelowMinute = 'S.mmm',
+  formatBelowHour = 'M:SS.mmm',
+  formatDefault = 'H:MM:SS.mmm',
 }) => {
   const formattedTime = useMemo(() => {
-    return formatTime(time)
+    return formatTime(time, {
+      formatZero,
+      formatBelowSecond,
+      formatBelowMinute,
+      formatBelowHour,
+      formatDefault,
+    })
   }, [time])
 
   switch (size) {
