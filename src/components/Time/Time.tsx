@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react'
-import { Color, Text } from 'ink'
+import { Box, Color, Text, BoxProps } from 'ink'
 import formatTime from '../../utils/formatTime'
+import when from '../../utils/when'
 import TextDisplay, { fontBig, fontSmall } from '../TextDisplay'
 
 
@@ -15,6 +16,7 @@ interface ITimeProps {
   formatBelowMinute?: string
   formatBelowHour?: string
   formatDefault?: string
+  containerProps?: BoxProps
 }
 
 
@@ -29,6 +31,7 @@ const Time: React.FC<ITimeProps> = ({
   formatBelowMinute = 'S.mmm',
   formatBelowHour = 'M:SS.mmm',
   formatDefault = 'H:MM:SS.mmm',
+  containerProps = undefined,
 }) => {
   const formattedTime = useMemo(() => {
     return formatTime(time, {
@@ -40,34 +43,35 @@ const Time: React.FC<ITimeProps> = ({
     })
   }, [time])
 
-  switch (size) {
-    case 'normal':
-      return (
-        <Color hex={colorFg} bgHex={colorBg}>
-          <Text bold={bold}>
-            {formattedTime}
-          </Text>
-        </Color>
-      )
-    case 'large':
-      return (
-        <TextDisplay
-          text={formattedTime}
-          colorBg={colorBg}
-          colorFg={colorFg}
-          font={fontSmall}
-        />
-      )
-    case 'huge':
-      return (
-        <TextDisplay
-          text={formattedTime}
-          colorBg={colorBg}
-          colorFg={colorFg}
-          font={fontBig}
-        />
-      )
-  }
+  return (
+    <Box {...containerProps}>
+      {when([
+        [size === 'normal', () => (
+          <Color hex={colorFg} bgHex={colorBg}>
+            <Text bold={bold}>
+              {formattedTime}
+            </Text>
+          </Color>
+        )],
+        [size === 'large', () => (
+          <TextDisplay
+            text={formattedTime}
+            colorBg={colorBg}
+            colorFg={colorFg}
+            font={fontSmall}
+          />
+        )],
+        [size === 'huge', () => (
+          <TextDisplay
+            text={formattedTime}
+            colorBg={colorBg}
+            colorFg={colorFg}
+            font={fontBig}
+          />
+        )],
+      ], null)}
+    </Box>
+  )
 }
 
 
