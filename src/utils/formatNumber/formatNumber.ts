@@ -1,5 +1,5 @@
 interface IFormatNumberOptions {
-  digitsMin: number
+  digitsMin?: number
 }
 
 
@@ -9,16 +9,20 @@ const defaultOptions = {
 
 const formatNumber = (
   number: number,
-  { digitsMin }: IFormatNumberOptions = defaultOptions,
+  options: IFormatNumberOptions = defaultOptions,
 ) => {
-  let formattedNumber = `${Math.abs(number)}`
-  while (formattedNumber.length < digitsMin) {
-    formattedNumber = `0${formattedNumber}`
+  const {
+    digitsMin,
+  } = { ...defaultOptions, ...options }
+
+  let formattedNumberAbs = `${Math.abs(number)}`
+  while (formattedNumberAbs.length < digitsMin) {
+    formattedNumberAbs = `0${formattedNumberAbs}`
   }
 
   return number < 0
-    ? `-${formattedNumber}`
-    : formattedNumber
+    ? `-${formattedNumberAbs}`
+    : formattedNumberAbs
 }
 
 
