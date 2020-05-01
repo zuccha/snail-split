@@ -2,13 +2,15 @@ import React from 'react'
 import chalk from 'chalk'
 import { Box, Text } from 'ink'
 import zip from '../../utils/zip'
-import font, { height, separator } from './font'
+import fontSmall from './fonts/fontSmall'
+import { IFont } from './fonts/types'
 
 
 interface ITextDisplayProps {
   text: string
   colorBg?: string
   colorFg?: string
+  font?: IFont
 }
 
 
@@ -16,16 +18,17 @@ const TextDisplay: React.FC<ITextDisplayProps> = ({
   text,
   colorBg = undefined,
   colorFg = undefined,
+  font = fontSmall,
 }) => {
   const fontCharacters = text
     // Convert string to array.
     .split('')
     // Take font character for each character.
-    .map(character => font[character])
+    .map(character => font.alphabet[character])
     // Remove characters that don't have a representation within the font.
     .filter(fontCharacter => fontCharacter !== undefined)
     // Separate characters with a small space.
-    .flatMap(fontCharacter => [fontCharacter, separator])
+    .flatMap(fontCharacter => [fontCharacter, font.separator])
     // Remove separator at the end.
     .slice(0, -1)
 
@@ -39,7 +42,7 @@ const TextDisplay: React.FC<ITextDisplayProps> = ({
     .map(line => (
       line
         .map(pixel => {
-          const color = pixel === 1 ? colorFg : undefined
+          const color = pixel === 1 ? colorFg : colorBg
           return color !== undefined
             ? chalk.bgHex(color)('  ')
             : '  '
@@ -49,7 +52,7 @@ const TextDisplay: React.FC<ITextDisplayProps> = ({
     .join('\n')
 
   return (
-    <Box height={height}>
+    <Box height={font.height}>
       <Text>
         {formattedText}
       </Text>

@@ -1,12 +1,12 @@
 import React, { useMemo } from 'react'
 import { Color, Text } from 'ink'
 import formatTime from '../../utils/formatTime'
-import TextDisplay from '../TextDisplay'
+import TextDisplay, { fontBig, fontSmall } from '../TextDisplay'
 
 
 interface ITimeProps {
   time: number
-  size?: 'normal' | 'large'
+  size?: 'normal' | 'large' | 'huge'
   colorBg?: string
   colorFg?: string
   bold?: boolean
@@ -39,6 +39,16 @@ const Time: React.FC<ITimeProps> = ({
           text={formattedTime}
           colorBg={colorBg}
           colorFg={colorFg}
+          font={fontSmall}
+        />
+      )
+    case 'huge':
+      return (
+        <TextDisplay
+          text={formattedTime}
+          colorBg={colorBg}
+          colorFg={colorFg}
+          font={fontBig}
         />
       )
   }

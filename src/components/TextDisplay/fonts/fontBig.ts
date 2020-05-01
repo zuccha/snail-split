@@ -1,10 +1,5 @@
-type ICharacter = (0 | 1)[][]
+import { ICharacter, IFont } from './types'
 
-type IFont = {
-  [character: string]: ICharacter
-}
-
-const height = 7
 
 const separator: ICharacter = [
   [0],
@@ -146,27 +141,25 @@ const column: ICharacter = [
   [0],
 ]
 
-const font: IFont = {
-  '-': dash,
-  '.': dot,
-  '0': digit0,
-  '1': digit1,
-  '2': digit2,
-  '3': digit3,
-  '4': digit4,
-  '5': digit5,
-  '6': digit6,
-  '7': digit7,
-  '8': digit8,
-  '9': digit9,
-  ':': column,
+const fontBig: IFont = {
+  alphabet: {
+    '-': dash,
+    '.': dot,
+    '0': digit0,
+    '1': digit1,
+    '2': digit2,
+    '3': digit3,
+    '4': digit4,
+    '5': digit5,
+    '6': digit6,
+    '7': digit7,
+    '8': digit8,
+    '9': digit9,
+    ':': column,
+  },
+  separator,
+  height: 7,
 }
 
 
-export default font
-
-export { height }
-export { separator }
-
-export { ICharacter }
-export { IFont }
+export default fontBig
