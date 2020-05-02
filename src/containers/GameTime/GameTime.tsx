@@ -2,6 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import { BoxProps } from 'ink'
 import Time from '../../components/Time'
+import selectTime from '../../store/game/selectors/selectTime'
 
 
 interface IGameTimeProps {
@@ -12,7 +13,14 @@ interface IGameTimeProps {
 const GameTime: React.FC<IGameTimeProps> = ({
   containerProps = undefined,
 }) => {
-  return null
+  const time = useSelector(selectTime)
+
+  return (
+    <Time
+      time={time}
+      containerProps={containerProps}
+    />
+  )
 }
 
 
