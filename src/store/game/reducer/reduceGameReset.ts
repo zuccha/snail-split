@@ -2,19 +2,19 @@ import findLastAndMap from '../../../utils/findLastAndMap'
 import { IActionGame, IStateGame } from '../types'
 
 
-const reduceGameReduce = (
+const reduceGameReset = (
   game: IStateGame,
   action: IActionGame,
 ): IStateGame => {
   return {
     ...game,
-    segments: game.segments.map(segment => ({
+    segments: game.segments.map((segment, segmentIndex) => ({
       ...segment,
-      timeLastRelative: undefined,
+      timeLastRelative: segmentIndex === 0 ? 0 : undefined,
     })),
     timerStart: undefined,
   }
 }
 
 
-export default reduceGameReduce
+export default reduceGameReset

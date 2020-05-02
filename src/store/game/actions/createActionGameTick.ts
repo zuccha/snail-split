@@ -1,8 +1,8 @@
-import { IActionGame } from '../types'
+import { IActionGame, GAME_TICK } from '../types'
 
 
 const createActionGameTick = (): IActionGame => ({
-  type: 'game/tick',
+  type: GAME_TICK,
 })
 
 

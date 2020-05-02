@@ -1,11 +1,16 @@
-const GAME_TICK  = 'game/tick'
-const GAME_START = 'game/start'
-const GAME_STOP  = 'game/stop'
-const GAME_RESET = 'game/reset'
-const GAME_SPLIT = 'game/split'
+const GAME_RESET  = 'game/reset'
+const GAME_SPLIT  = 'game/split'
+const GAME_START  = 'game/start'
+const GAME_STOP   = 'game/stop'
+const GAME_TICK   = 'game/tick'
+const GAME_TOGGLE = 'game/toggle'
 
-interface IActionGameTick {
-  type: typeof GAME_TICK
+interface IActionGameReset {
+  type: typeof GAME_RESET
+}
+
+interface IActionGameSplit {
+  type: typeof GAME_SPLIT
 }
 
 interface IActionGameStart {
@@ -16,20 +21,21 @@ interface IActionGameStop {
   type: typeof GAME_STOP
 }
 
-interface IActionGameReset {
-  type: typeof GAME_RESET
+interface IActionGameTick {
+  type: typeof GAME_TICK
 }
 
-interface IActionGameSplit {
-  type: typeof GAME_SPLIT
+interface IActionGameToggle {
+  type: typeof GAME_TOGGLE
 }
 
 export type IActionGame =
-  IActionGameTick
+  IActionGameReset
+  | IActionGameSplit
   | IActionGameStart
   | IActionGameStop
-  | IActionGameReset
-  | IActionGameSplit
+  | IActionGameTick
+  | IActionGameToggle
 
 export interface IStateSegment {
   name: string
@@ -45,9 +51,10 @@ export interface IStateGame {
 }
 
 export {
-  GAME_TICK,
-  GAME_START,
-  GAME_STOP,
   GAME_RESET,
   GAME_SPLIT,
+  GAME_START,
+  GAME_STOP,
+  GAME_TICK,
+  GAME_TOGGLE,
 }

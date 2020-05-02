@@ -1,8 +1,8 @@
-import { IActionGame } from '../types'
+import { IActionGame, GAME_RESET } from '../types'
 
 
 const createActionGameReset = (): IActionGame => ({
-  type: 'game/reset',
+  type: GAME_RESET,
 })
 
 

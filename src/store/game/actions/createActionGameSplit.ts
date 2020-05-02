@@ -1,9 +1,9 @@
-import { IActionGame } from '../types'
+import { IActionGame, GAME_SPLIT } from '../types'
 
 
 const createActionGameSplit = (): IActionGame => ({
-  type: 'game/split',
+  type: GAME_SPLIT,
 })
 
 
-export default createActionGameReset
+export default createActionGameSplit

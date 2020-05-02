@@ -1,8 +1,8 @@
-import { IActionGame } from '../types'
+import { IActionGame, GAME_START } from '../types'
 
 
 const createActionGameStart = (): IActionGame => ({
-  type: 'game/start',
+  type: GAME_START,
 })
 
 
