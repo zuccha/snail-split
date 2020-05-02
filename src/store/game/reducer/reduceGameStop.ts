@@ -18,7 +18,7 @@ const reduceGameStop = (
       segment => segment.timeLastRelative !== undefined,
       segment => ({
         ...segment,
-         timeLastRelative: segment.timeLastRelative! + timeElapsed,
+        timeLastRelative: segment.timeLastRelative! + timeElapsed,
       }),
     ),
     timerStart: undefined,

@@ -62,18 +62,18 @@ const reduceGame = (
   action: IActionGame,
 ): IStateGame => {
   switch (action.type) {
-    case GAME_TICK:
-      return reduceGameTick(game, action)
-    case GAME_START:
-      return reduceGameStart(game, action)
-    case GAME_STOP:
-      return reduceGameStop(game, action)
-    case GAME_RESET:
-      return reduceGameReset(game, action)
-    case GAME_SPLIT:
-      return reduceGameSplit(game, action)
-    default:
-      return game
+  case GAME_TICK:
+    return reduceGameTick(game, action)
+  case GAME_START:
+    return reduceGameStart(game, action)
+  case GAME_STOP:
+    return reduceGameStop(game, action)
+  case GAME_RESET:
+    return reduceGameReset(game, action)
+  case GAME_SPLIT:
+    return reduceGameSplit(game, action)
+  default:
+    return game
   }
 }
 

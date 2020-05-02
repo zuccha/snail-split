@@ -23,7 +23,7 @@ const SplitsColumnDeltaLastBestRelatives: React.FC<ISplitsColumnDeltaLastBestRel
       containerProps={{ width: 12 }}
     />
   )
-};
+}
 
 
 export default SplitsColumnDeltaLastBestRelatives

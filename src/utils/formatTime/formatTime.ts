@@ -1,6 +1,7 @@
 import formatNumber from '../formatNumber'
 import when from '../when'
 
+
 interface IFormatTimeOptions {
   formatZero: string
   formatBelowSecond: string

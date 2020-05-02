@@ -19,7 +19,7 @@ const reduceGameTick = (
       segment => segment.timeLastRelative == undefined,
       segment => ({
         ...segment,
-         timeLastRelative: 0,
+        timeLastRelative: 0,
       }),
     ),
     timerStart: Date.now(),

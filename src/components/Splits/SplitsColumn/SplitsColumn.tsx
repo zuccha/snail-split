@@ -24,8 +24,8 @@ const SplitsColumn: React.FC<IReactColumnArgs> = ({
       {...containerProps}
     >
       <Text>{title}</Text>
-      {values.map(value => (
-        <Text>
+      {values.map((value, valueIndex) => (
+        <Text key={valueIndex}>
           {type === 'string'
             ? (value as string)
             : formatTime(value as number)

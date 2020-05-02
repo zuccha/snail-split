@@ -21,7 +21,7 @@ const SplitsColumnGoldRelatives: React.FC<ISplitsColumnGoldRelativesProps> = ({
       containerProps={{ width: 12 }}
     />
   )
-};
+}
 
 
 export default SplitsColumnGoldRelatives

@@ -15,7 +15,7 @@ const SplitsColumnDeltaLastBestAbsolutes: React.FC<ISplitsColumnDeltaLastBestAbs
     .map(split => split.lastRelative - split.bestRelative)
     .reduce<number[]>((acc, deltaLastBestRelative) => {
       return [...acc, deltaLastBestRelative + (acc.length > 0 ? acc[0] : 0)]
-  }, [])
+    }, [])
 
   return (
     <SplitsColumn
@@ -25,7 +25,7 @@ const SplitsColumnDeltaLastBestAbsolutes: React.FC<ISplitsColumnDeltaLastBestAbs
       containerProps={{ width: 12 }}
     />
   )
-};
+}
 
 
 export default SplitsColumnDeltaLastBestAbsolutes

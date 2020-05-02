@@ -21,7 +21,7 @@ const SplitsColumnNames: React.FC<ISplitsColumnNamesProps> = ({
       containerProps={{ flexGrow: 1 }}
     />
   )
-};
+}
 
 
 export default SplitsColumnNames

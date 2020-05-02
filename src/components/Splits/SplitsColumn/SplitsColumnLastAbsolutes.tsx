@@ -23,7 +23,7 @@ const SplitsColumnLastAbsolutes: React.FC<ISplitsColumnLastAbsolutesProps> = ({
       containerProps={{ width: 12 }}
     />
   )
-};
+}
 
 
 export default SplitsColumnLastAbsolutes

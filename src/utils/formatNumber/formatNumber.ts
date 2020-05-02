@@ -10,7 +10,7 @@ const defaultOptions = {
 const formatNumber = (
   number: number,
   options: IFormatNumberOptions = defaultOptions,
-) => {
+): string => {
   const {
     digitsMin,
   } = { ...defaultOptions, ...options }

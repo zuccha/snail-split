@@ -21,7 +21,7 @@ const SplitsColumnLastRelatives: React.FC<ISplitsColumnLastRelativesProps> = ({
       containerProps={{ width: 12 }}
     />
   )
-};
+}
 
 
 export default SplitsColumnLastRelatives

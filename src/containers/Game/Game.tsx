@@ -5,12 +5,7 @@ import GameSegments from '../GameSegments'
 import GameTime from '../GameTime'
 
 
-interface IGameProps {
-
-}
-
-
-const Game: React.FC<IGameProps> = ({
+const Game: React.FC<{}> = ({
 
 }) => {
   const { stdout } = useStdout()

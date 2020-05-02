@@ -1,8 +1,8 @@
-export const GAME_TICK  = 'game/tick'
-export const GAME_START = 'game/start'
-export const GAME_STOP  = 'game/stop'
-export const GAME_RESET = 'game/reset'
-export const GAME_SPLIT = 'game/split'
+const GAME_TICK  = 'game/tick'
+const GAME_START = 'game/start'
+const GAME_STOP  = 'game/stop'
+const GAME_RESET = 'game/reset'
+const GAME_SPLIT = 'game/split'
 
 interface IActionGameTick {
   type: typeof GAME_TICK
@@ -42,4 +42,12 @@ export interface IStateGame {
   title: string
   segments: IStateSegment[]
   timerStart: number | undefined
+}
+
+export {
+  GAME_TICK,
+  GAME_START,
+  GAME_STOP,
+  GAME_RESET,
+  GAME_SPLIT,
 }

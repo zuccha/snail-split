@@ -14,11 +14,14 @@ module.exports = {
     },
   },
   rules: {
-    '@typescript-eslint/interface-name-prefix': 0,
+    '@typescript-eslint/interface-name-prefix': 'off',
     '@typescript-eslint/member-delimiter-style': ['error', {
       multiline: { delimiter: 'none' },
       singleline: { delimiter: 'comma' },
     }],
+    '@typescript-eslint/no-non-null-assertion': 'off',
+    '@typescript-eslint/no-unused-vars': 'off',
+    '@typescript-eslint/explicit-function-return-type': ['error', { allowExpressions: true }],
     'comma-dangle': ['error', 'always-multiline'],
     'eol-last': ['error', 'always'],
     'import/exports-last': ['error'],
@@ -32,6 +35,7 @@ module.exports = {
     'indent': ['error', 2],
     'no-trailing-spaces': ['error'],
     'quote-props': ['error', 'consistent-as-needed'],
+    'quotes': ['error', 'single'],
     'react/prop-types': 0,
     'semi': ['error', 'never'],
   },

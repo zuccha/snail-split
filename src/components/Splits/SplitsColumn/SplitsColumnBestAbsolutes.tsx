@@ -23,7 +23,7 @@ const SplitsColumnBestAbsolutes: React.FC<ISplitsColumnBestAbsolutesProps> = ({
       containerProps={{ width: 12 }}
     />
   )
-};
+}
 
 
 export default SplitsColumnBestAbsolutes

@@ -4,12 +4,7 @@ import Game from './containers/Game'
 import store from './store'
 
 
-interface IAppProps {
-
-}
-
-
-const App: React.FC<IAppProps> = () => {
+const App: React.FC<{}> = () => {
   return (
     <ReduxProvider store={store}>
       <Game />

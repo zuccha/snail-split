@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, BoxProps, Color, Text } from 'ink'
+import { Box, BoxProps } from 'ink'
 import { ISplit } from './SplitsColumn/types'
 import SplitsColumnNames from './SplitsColumn/SplitsColumnNames'
 import SplitsColumnBestRelatives from './SplitsColumn/SplitsColumnBestRelatives'

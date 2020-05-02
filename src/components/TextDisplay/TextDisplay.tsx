@@ -1,7 +1,7 @@
 import React from 'react'
 import chalk from 'chalk'
 import { Box, Text } from 'ink'
-import zip from '../../utils/zip'
+import swapRowsAndColumns from '../../utils/swapRowsAndColumns'
 import fontSmall from './fonts/fontSmall'
 import { IFont } from './fonts/types'
 
@@ -32,9 +32,8 @@ const TextDisplay: React.FC<ITextDisplayProps> = ({
     // Remove separator at the end.
     .slice(0, -1)
 
-  const formattedText =
-    // Group all characters' pixels by line.
-    zip(fontCharacters)
+  // Group all characters' pixels by line.
+  const formattedText = swapRowsAndColumns(fontCharacters)
     .map(lines => lines.flat())
     // Color each pixel of the right color, depending whether it is a background
     // pixel (0) or a foreground pixel (1). Use `chalk` directly for performance
