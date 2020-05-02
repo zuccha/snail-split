@@ -3,7 +3,7 @@ import { IStateGame } from '../types'
 import selectGame from './selectGame'
 
 
-const selectGameDeltaLastBestRelatives = createSelector(
+const selectGameSegmentDeltaLastBestRelatives = createSelector(
   selectGame,
   (game: IStateGame): (number | undefined)[] => {
     return game.segments.map(segment => (
@@ -15,4 +15,4 @@ const selectGameDeltaLastBestRelatives = createSelector(
 )
 
 
-export default selectGameDeltaLastBestRelatives
+export default selectGameSegmentDeltaLastBestRelatives

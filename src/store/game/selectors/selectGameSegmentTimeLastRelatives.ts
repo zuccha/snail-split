@@ -3,12 +3,12 @@ import { IStateGame } from '../types'
 import selectGame from './selectGame'
 
 
-const selectGameTimeGoldRelatives = createSelector(
+const selectGameSegmentTimeLastRelatives = createSelector(
   selectGame,
   (game: IStateGame): (number | undefined)[] => {
-    return game.segments.map(segment => segment.timeGoldRelative)
+    return game.segments.map(segment => segment.timeLastRelative)
   },
 )
 
 
-export default selectGameTimeGoldRelatives
+export default selectGameSegmentTimeLastRelatives

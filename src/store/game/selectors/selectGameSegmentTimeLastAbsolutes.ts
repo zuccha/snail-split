@@ -3,17 +3,17 @@ import { IStateGame } from '../types'
 import selectGame from './selectGame'
 
 
-const selectGameTimeLastAbsolutes = createSelector(
+const selectGameSegmentTimeLastAbsolutes = createSelector(
   selectGame,
   (game: IStateGame): (number | undefined)[] => {
-    return game.segments.reduce<(number | undefined)[]>((acc, segment) => [
+    return game.segments.reduce<(number | undefined)[]>((acc, segment, index) => [
       ...acc,
       segment.timeLastRelative === undefined
         ? undefined
-        : (acc[0] || 0) + segment.timeLastRelative,
+        : (acc[index - 1] || 0) + segment.timeLastRelative,
     ], [])
   },
 )
 
 
-export default selectGameTimeLastAbsolutes
+export default selectGameSegmentTimeLastAbsolutes

@@ -3,17 +3,17 @@ import { IStateGame } from '../types'
 import selectGame from './selectGame'
 
 
-const selectGameTimeBestAbsolutes = createSelector(
+const selectGameSegmentTimeBestAbsolutes = createSelector(
   selectGame,
   (game: IStateGame): (number | undefined)[] => {
-    return game.segments.reduce<(number | undefined)[]>((acc, segment) => [
+    return game.segments.reduce<(number | undefined)[]>((acc, segment, index) => [
       ...acc,
       segment.timeBestRelative === undefined
         ? undefined
-        : (acc[0] || 0) + segment.timeBestRelative,
+        : (acc[index - 1] || 0) + segment.timeBestRelative,
     ], [])
   },
 )
 
 
-export default selectGameTimeBestAbsolutes
+export default selectGameSegmentTimeBestAbsolutes

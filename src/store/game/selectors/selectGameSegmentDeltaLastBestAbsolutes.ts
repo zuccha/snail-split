@@ -1,12 +1,11 @@
 import { createSelector } from 'reselect'
 import range from '../../../utils/range'
-import { IStateGame } from '../types'
 import selectGame from './selectGame'
-import selectGameTimeBestAbsolutes from './selectGameTimeBestAbsolutes'
-import selectGameTimeLastAbsolutes from './selectGameTimeLastAbsolutes'
+import selectGameTimeBestAbsolutes from './selectGameSegmentTimeBestAbsolutes'
+import selectGameTimeLastAbsolutes from './selectGameSegmentTimeLastAbsolutes'
 
 
-const selectGameDeltaLastBestAbsolutes = createSelector(
+const selectGameSegmentDeltaLastBestAbsolutes = createSelector(
   selectGame,
   selectGameTimeBestAbsolutes,
   selectGameTimeLastAbsolutes,
@@ -21,4 +20,4 @@ const selectGameDeltaLastBestAbsolutes = createSelector(
 )
 
 
-export default selectGameDeltaLastBestAbsolutes
+export default selectGameSegmentDeltaLastBestAbsolutes
