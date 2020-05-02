@@ -1,4 +1,4 @@
-const range = (n: number) => {
+const range = (n: number): number[] => {
   return [...Array(n).keys()]
 }
 
