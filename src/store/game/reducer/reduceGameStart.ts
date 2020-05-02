@@ -1,10 +1,9 @@
 import immer from 'immer'
-import { IActionGame, IStateGame } from '../types'
+import { IStateGame } from '../types'
 
 
 const reduceGameStart = (
   game: IStateGame,
-  action: IActionGame,
 ): IStateGame => {
   // There timer is already running.
   if (game.timerStart !== undefined) {

@@ -1,9 +1,15 @@
+const GAME_LOAD  = 'game/load'
 const GAME_RESET  = 'game/reset'
 const GAME_SPLIT  = 'game/split'
 const GAME_START  = 'game/start'
 const GAME_STOP   = 'game/stop'
 const GAME_TICK   = 'game/tick'
 const GAME_TOGGLE = 'game/toggle'
+
+interface IActionGameLoad {
+  type: typeof GAME_LOAD
+  payload: string
+}
 
 interface IActionGameReset {
   type: typeof GAME_RESET
@@ -30,7 +36,8 @@ interface IActionGameToggle {
 }
 
 type IActionGame =
-  IActionGameReset
+  IActionGameLoad
+  | IActionGameReset
   | IActionGameSplit
   | IActionGameStart
   | IActionGameStop
@@ -45,12 +52,16 @@ interface IStateSegment {
 }
 
 interface IStateGame {
+  errorMessage: string | undefined
+
   title: string
   segments: IStateSegment[]
   timerStart: number | undefined
 }
 
+
 export {
+  GAME_LOAD,
   GAME_RESET,
   GAME_SPLIT,
   GAME_START,
@@ -58,6 +69,13 @@ export {
   GAME_TICK,
   GAME_TOGGLE,
   IActionGame,
+  IActionGameLoad,
+  IActionGameReset,
+  IActionGameSplit,
+  IActionGameStart,
+  IActionGameStop,
+  IActionGameTick,
+  IActionGameToggle,
   IStateGame,
   IStateSegment,
 }

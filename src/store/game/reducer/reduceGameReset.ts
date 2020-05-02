@@ -1,10 +1,9 @@
 import immer from 'immer'
-import { IActionGame, IStateGame } from '../types'
+import { IStateGame } from '../types'
 
 
 const reduceGameReset = (
   game: IStateGame,
-  action: IActionGame,
 ): IStateGame => {
   return immer(game, gameDraft => {
     gameDraft.timerStart = undefined

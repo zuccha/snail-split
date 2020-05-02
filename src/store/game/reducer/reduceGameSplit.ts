@@ -1,11 +1,10 @@
 import immer from 'immer'
 import findLastIndex from '../../../utils/findLastIndex'
-import { IActionGame, IStateGame } from '../types'
+import { IStateGame } from '../types'
 
 
 const reduceGameSplit = (
   game: IStateGame,
-  action: IActionGame,
 ): IStateGame => {
   if (game.timerStart === undefined) {
     return game
@@ -52,7 +51,7 @@ const reduceGameSplit = (
     // Is not last segment, keep the timer going and set next segment as current.
     else {
       gameDraft.timerStart = now
-      game.segments[currentSegmentIndex + 1].timeLastRelative = 0
+      gameDraft.segments[currentSegmentIndex + 1].timeLastRelative = 0
     }
   })
 }

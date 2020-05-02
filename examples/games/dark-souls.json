@@ -1,0 +1,35 @@
+{
+  "title": "Dark Souls",
+  "segments": [
+    {
+      "name": "Asylum Demon",
+      "timeBestRelative": 106000,
+      "timeGoldRelative": 105000
+    },
+    {
+      "name": "Taurus Demon",
+      "timeBestRelative": 188000,
+      "timeGoldRelative": 186000
+    },
+    {
+      "name": "Gargoyles",
+      "timeBestRelative": 155000,
+      "timeGoldRelative": 155000
+    },
+    {
+      "name": "Iron Golem",
+      "timeBestRelative": 341000,
+      "timeGoldRelative": 338000
+    },
+    {
+      "name": "O&S",
+      "timeBestRelative": 215000,
+      "timeGoldRelative": 150000
+    },
+    {
+      "name": "Stray Demon",
+      "timeBestRelative": 121000,
+      "timeGoldRelative": 119000
+    }
+  ]
+}
