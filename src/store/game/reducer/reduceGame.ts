@@ -22,7 +22,7 @@ const initialGame: IStateGame = {
     {
       name: 'Asylum Demon',
       timeBestRelative: 106000,
-      timeLastRelative: 0,
+      timeLastRelative: undefined,
       timeGoldRelative: 105000,
     },
     {
