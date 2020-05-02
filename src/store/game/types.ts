@@ -29,7 +29,7 @@ interface IActionGameToggle {
   type: typeof GAME_TOGGLE
 }
 
-export type IActionGame =
+type IActionGame =
   IActionGameReset
   | IActionGameSplit
   | IActionGameStart
@@ -37,14 +37,14 @@ export type IActionGame =
   | IActionGameTick
   | IActionGameToggle
 
-export interface IStateSegment {
+interface IStateSegment {
   name: string
   timeLastRelative: number | undefined
   timeBestRelative: number | undefined
   timeGoldRelative: number | undefined
 }
 
-export interface IStateGame {
+interface IStateGame {
   title: string
   segments: IStateSegment[]
   timerStart: number | undefined
@@ -57,4 +57,7 @@ export {
   GAME_STOP,
   GAME_TICK,
   GAME_TOGGLE,
+  IActionGame,
+  IStateGame,
+  IStateSegment,
 }

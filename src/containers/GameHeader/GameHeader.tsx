@@ -2,7 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import { BoxProps } from 'ink'
 import Header from '../../components/Header'
-import selectTitle from '../../store/game/selectors/selectTitle'
+import selectTitle from '../../store/game/selectors/selectGameTitle'
 
 
 interface IGameHeaderProps {

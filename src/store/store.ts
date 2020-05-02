@@ -1,8 +1,12 @@
-import { createStore } from 'redux'
+import { combineReducers, createStore } from 'redux'
 import reduceGame from './game/reducer/reduceGame'
 
 
-const store = createStore(reduceGame)
+const reduceRoot = combineReducers({
+  game: reduceGame,
+})
+
+const store = createStore(reduceRoot)
 
 
 export default store

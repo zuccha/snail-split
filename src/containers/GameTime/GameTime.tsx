@@ -2,7 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import { BoxProps } from 'ink'
 import Time from '../../components/Time'
-import selectTime from '../../store/game/selectors/selectTime'
+import selectTime from '../../store/game/selectors/selectGameTime'
 
 
 interface IGameTimeProps {
