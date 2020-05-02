@@ -1,4 +1,5 @@
-import findLastAndMap from '../../../utils/findLastAndMap'
+import immer from 'immer'
+import findLastIndex from '../../../utils/findLastIndex'
 import { IActionGame, IStateGame } from '../types'
 
 
@@ -10,19 +11,21 @@ const reduceGameTick = (
     return game
   }
 
-  const timeElapsed = Date.now() - game.timerStart
-  return {
-    ...game,
-    segments: findLastAndMap(
-      game.segments,
-      segment => segment.timeLastRelative !== undefined,
-      segment => ({
-        ...segment,
-        timeLastRelative: segment.timeLastRelative! + timeElapsed,
-      }),
-    ),
-    timerStart: Date.now(),
+  const currentSegmentIndex = findLastIndex(
+    game.segments,
+    segment => segment.timeLastRelative !== undefined,
+  )
+
+  if (currentSegmentIndex === -1) {
+    return game
   }
+
+  return immer(game, gameDraft => {
+    const now = Date.now()
+    const elapsedTime = now - game.timerStart!
+    gameDraft.segments[currentSegmentIndex].timeLastRelative! += elapsedTime
+    gameDraft.timerStart = now
+  })
 }
 
 
