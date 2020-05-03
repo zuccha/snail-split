@@ -5,12 +5,12 @@ import { SegmentsColumnString } from '../../components/Segments'
 import selectGameSegmentNames from '../../store/game/selectors/selectGameSegmentNames'
 
 
-interface IGameSegmentsNamesProps {
+interface IGameSegmentNamesProps {
   containerProps?: BoxProps
 }
 
 
-const GameSegmentsNames: React.FC<IGameSegmentsNamesProps> = ({
+const GameSegmentNames: React.FC<IGameSegmentNamesProps> = ({
   containerProps = undefined,
 }) => {
   const names = useSelector(selectGameSegmentNames, shallowEqual)
@@ -25,4 +25,4 @@ const GameSegmentsNames: React.FC<IGameSegmentsNamesProps> = ({
 }
 
 
-export default GameSegmentsNames
+export default GameSegmentNames

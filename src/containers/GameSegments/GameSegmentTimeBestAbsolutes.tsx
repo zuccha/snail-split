@@ -5,12 +5,12 @@ import { SegmentsColumnTime } from '../../components/Segments'
 import selectGameSegmentTimeBestAbsolutes from '../../store/game/selectors/selectGameSegmentTimeBestAbsolutes'
 
 
-interface IGameSegmentsTimeBestAbsolutesProps {
+interface IGameSegmentTimeBestAbsolutesProps {
   containerProps?: BoxProps
 }
 
 
-const GameSegmentsTimeBestAbsolutes: React.FC<IGameSegmentsTimeBestAbsolutesProps> = ({
+const GameSegmentTimeBestAbsolutes: React.FC<IGameSegmentTimeBestAbsolutesProps> = ({
   containerProps = undefined,
 }) => {
   const bestAbsolutes = useSelector(selectGameSegmentTimeBestAbsolutes, shallowEqual)
@@ -25,4 +25,4 @@ const GameSegmentsTimeBestAbsolutes: React.FC<IGameSegmentsTimeBestAbsolutesProp
 }
 
 
-export default GameSegmentsTimeBestAbsolutes
+export default GameSegmentTimeBestAbsolutes

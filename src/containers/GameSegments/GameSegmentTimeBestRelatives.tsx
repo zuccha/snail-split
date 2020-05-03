@@ -5,12 +5,12 @@ import { SegmentsColumnTime } from '../../components/Segments'
 import selectGameSegmentTimeBestRelatives from '../../store/game/selectors/selectGameSegmentTimeBestRelatives'
 
 
-interface IGameSegmentsTimeBestRelativesProps {
+interface IGameSegmentTimeBestRelativesProps {
   containerProps?: BoxProps
 }
 
 
-const GameSegmentsTimeBestRelatives: React.FC<IGameSegmentsTimeBestRelativesProps> = ({
+const GameSegmentTimeBestRelatives: React.FC<IGameSegmentTimeBestRelativesProps> = ({
   containerProps = undefined,
 }) => {
   const bestRelatives = useSelector(selectGameSegmentTimeBestRelatives, shallowEqual)
@@ -25,4 +25,4 @@ const GameSegmentsTimeBestRelatives: React.FC<IGameSegmentsTimeBestRelativesProp
 }
 
 
-export default GameSegmentsTimeBestRelatives
+export default GameSegmentTimeBestRelatives

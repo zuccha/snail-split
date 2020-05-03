@@ -5,12 +5,12 @@ import { SegmentsColumnTime } from '../../components/Segments'
 import selectGameSegmentTimeLastRelatives from '../../store/game/selectors/selectGameSegmentTimeLastRelatives'
 
 
-interface IGameSegmentsTimeLastRelativesProps {
+interface IGameSegmentTimeLastRelativesProps {
   containerProps?: BoxProps
 }
 
 
-const GameSegmentsTimeLastRelatives: React.FC<IGameSegmentsTimeLastRelativesProps> = ({
+const GameSegmentTimeLastRelatives: React.FC<IGameSegmentTimeLastRelativesProps> = ({
   containerProps = undefined,
 }) => {
   const lastRelatives = useSelector(selectGameSegmentTimeLastRelatives, shallowEqual)
@@ -25,4 +25,4 @@ const GameSegmentsTimeLastRelatives: React.FC<IGameSegmentsTimeLastRelativesProp
 }
 
 
-export default GameSegmentsTimeLastRelatives
+export default GameSegmentTimeLastRelatives

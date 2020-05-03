@@ -5,12 +5,12 @@ import { SegmentsColumnTime } from '../../components/Segments'
 import selectGameSegmentTimeGoldRelatives from '../../store/game/selectors/selectGameSegmentTimeGoldRelatives'
 
 
-interface IGameSegmentsTimeGoldRelativesProps {
+interface IGameSegmentTimeGoldRelativesProps {
   containerProps?: BoxProps
 }
 
 
-const GameSegmentsTimeGoldRelatives: React.FC<IGameSegmentsTimeGoldRelativesProps> = ({
+const GameSegmentTimeGoldRelatives: React.FC<IGameSegmentTimeGoldRelativesProps> = ({
   containerProps = undefined,
 }) => {
   const goldRelatives = useSelector(selectGameSegmentTimeGoldRelatives, shallowEqual)
@@ -25,4 +25,4 @@ const GameSegmentsTimeGoldRelatives: React.FC<IGameSegmentsTimeGoldRelativesProp
 }
 
 
-export default GameSegmentsTimeGoldRelatives
+export default GameSegmentTimeGoldRelatives

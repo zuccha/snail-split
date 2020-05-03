@@ -5,12 +5,12 @@ import { SegmentsColumnTime } from '../../components/Segments'
 import selectGameSegmentDeltaLastBestAbsolutes from '../../store/game/selectors/selectGameSegmentDeltaLastBestAbsolutes'
 
 
-interface IGameSegmentsDeltaLastBestAbsolutesProps {
+interface IGameSegmentDeltaLastBestAbsolutesProps {
   containerProps?: BoxProps
 }
 
 
-const GameSegmentsDeltaLastBestAbsolutes: React.FC<IGameSegmentsDeltaLastBestAbsolutesProps> = ({
+const GameSegmentDeltaLastBestAbsolutes: React.FC<IGameSegmentDeltaLastBestAbsolutesProps> = ({
   containerProps = undefined,
 }) => {
   const deltaLastBestAbsolutes = useSelector(selectGameSegmentDeltaLastBestAbsolutes, shallowEqual)
@@ -25,4 +25,4 @@ const GameSegmentsDeltaLastBestAbsolutes: React.FC<IGameSegmentsDeltaLastBestAbs
 }
 
 
-export default GameSegmentsDeltaLastBestAbsolutes
+export default GameSegmentDeltaLastBestAbsolutes
