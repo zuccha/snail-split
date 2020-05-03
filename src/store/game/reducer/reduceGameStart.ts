@@ -1,32 +1,16 @@
-import immer from 'immer'
-import { IGame } from '../../../types/game'
+import { IEitherErrorOr, isError } from '../../../types/either-error-or'
+import { IGame, startGame } from '../../../types/game'
 
 
 const reduceGameStart = (
-  game: IGame,
-): IGame => {
-  // There timer is already running.
-  if (game.timerStart !== undefined) {
-    return game
+  eitherErrorOrGame: IEitherErrorOr<IGame>,
+): IEitherErrorOr<IGame> => {
+  if (isError(eitherErrorOrGame)) {
+    return eitherErrorOrGame
   }
 
-  // The game is done.
-  if (game.segments.every(segment => segment.timeLastRelative !== undefined)) {
-    return game
-  }
-
-  // The game has not started yet.
-  if (game.segments.every(segment => segment.timeLastRelative === undefined)) {
-    return immer(game, gameDraft => {
-      gameDraft.timerStart = Date.now()
-      gameDraft.segments[0].timeLastRelative = 0
-    })
-  }
-
-  // The game has already started.
-  return immer(game, gameDraft => {
-    gameDraft.timerStart = Date.now()
-  })
+  const game = eitherErrorOrGame.data
+  return { data: startGame(game) }
 }
 
 

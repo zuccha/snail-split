@@ -16,7 +16,6 @@ const validateGame = (
   const inputGame = maybeGame as { [key: string]: unknown }
 
   return {
-    errorMessage: undefined,
     title: validateString(inputGame.title, ''),
     segments: validateArray(inputGame.segments, [])
       .map(maybeSegment => validateSegment(maybeSegment)),

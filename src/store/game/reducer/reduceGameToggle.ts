@@ -1,14 +1,20 @@
-import { IGame } from '../../../types/game'
-import reduceGameStart from './reduceGameStart'
-import reduceGameStop from './reduceGameStop'
+import { IEitherErrorOr, isError } from '../../../types/either-error-or'
+import { IGame, startGame, stopGame } from '../../../types/game'
 
 
 const reduceGameToggle = (
-  game: IGame,
-): IGame => {
-  return game.timerStart === undefined
-    ? reduceGameStart(game)
-    : reduceGameStop(game)
+  eitherErrorOrGame: IEitherErrorOr<IGame>,
+): IEitherErrorOr<IGame> => {
+  if (isError(eitherErrorOrGame)) {
+    return eitherErrorOrGame
+  }
+
+  const game = eitherErrorOrGame.data
+  return {
+    data: game.timerStart === undefined
+      ? startGame(game)
+      : stopGame(game),
+  }
 }
 
 

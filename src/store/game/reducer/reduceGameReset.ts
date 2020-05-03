@@ -1,16 +1,16 @@
-import immer from 'immer'
-import { IGame } from '../../../types/game'
+import { IEitherErrorOr, isError } from '../../../types/either-error-or'
+import { IGame, resetGame } from '../../../types/game'
 
 
 const reduceGameReset = (
-  game: IGame,
-): IGame => {
-  return immer(game, gameDraft => {
-    gameDraft.timerStart = undefined
-    gameDraft.segments.forEach(segment => {
-      segment.timeLastRelative = undefined
-    })
-  })
+  eitherErrorOrGame: IEitherErrorOr<IGame>,
+): IEitherErrorOr<IGame> => {
+  if (isError(eitherErrorOrGame)) {
+    return eitherErrorOrGame
+  }
+
+  const game = eitherErrorOrGame.data
+  return { data: resetGame(game) }
 }
 
 

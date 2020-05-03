@@ -1,3 +1,4 @@
+import { IEitherErrorOr } from '../../../types/either-error-or'
 import { IGame, defaultGame } from '../../../types/game'
 import {
   GAME_LOAD,
@@ -19,26 +20,26 @@ import reduceGameToggle from './reduceGameToggle'
 
 
 const reduceGame = (
-  game: IGame = defaultGame,
+  eitherErrorOrGame: IEitherErrorOr<IGame> = { data: defaultGame },
   action: IActionGame,
-): IGame => {
+): IEitherErrorOr<IGame> => {
   switch (action.type) {
   case GAME_LOAD:
-    return reduceGameLoad(game, action)
+    return reduceGameLoad(eitherErrorOrGame, action)
   case GAME_RESET:
-    return reduceGameReset(game)
+    return reduceGameReset(eitherErrorOrGame)
   case GAME_SPLIT:
-    return reduceGameSplit(game)
+    return reduceGameSplit(eitherErrorOrGame)
   case GAME_START:
-    return reduceGameStart(game)
+    return reduceGameStart(eitherErrorOrGame)
   case GAME_STOP:
-    return reduceGameStop(game)
+    return reduceGameStop(eitherErrorOrGame)
   case GAME_TICK:
-    return reduceGameTick(game)
+    return reduceGameTick(eitherErrorOrGame)
   case GAME_TOGGLE:
-    return reduceGameToggle(game)
+    return reduceGameToggle(eitherErrorOrGame)
   default:
-    return game
+    return eitherErrorOrGame
   }
 }
 

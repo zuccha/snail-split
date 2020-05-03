@@ -7,7 +7,7 @@ import createActionGameReset from '../../store/game/actions/createActionGameRese
 import createActionGameSplit from '../../store/game/actions/createActionGameSplit'
 import createActionGameToggle from '../../store/game/actions/createActionGameToggle'
 import createActionGameTick from '../../store/game/actions/createActionGameTick'
-import selectGameErrorMessage from '../../store/game/selectors/selectGameErrorMessage'
+import selectGameError from '../../store/game/selectors/selectGameError'
 import GameHeader from '../GameHeader'
 import GameSegments from '../GameSegments'
 import GameTime from '../GameTime'
@@ -19,10 +19,8 @@ const Game: React.FC<{}> = ({
 
 }) => {
   const { stdout } = useStdout()
-
   const dispatch = useDispatch()
-
-  const errorMessage = useSelector(selectGameErrorMessage)
+  const errorMessage = useSelector(selectGameError)
 
   useInput((input, key) => {
     if (input === 'q') {

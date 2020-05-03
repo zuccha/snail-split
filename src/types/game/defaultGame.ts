@@ -5,7 +5,6 @@ const defaultGame: IGame = {
   title: '',
   segments: [],
   timerStart: undefined,
-  errorMessage: undefined,
 }
 
 

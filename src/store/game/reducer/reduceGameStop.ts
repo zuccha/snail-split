@@ -1,30 +1,16 @@
-import immer from 'immer'
-import findLastIndex from '../../../utils/findLastIndex'
-import { IGame } from '../../../types/game'
+import { IEitherErrorOr, isError } from '../../../types/either-error-or'
+import { IGame, stopGame } from '../../../types/game'
 
 
 const reduceGameStop = (
-  game: IGame,
-): IGame => {
-  if (game.timerStart === undefined) {
-    return game
+  eitherErrorOrGame: IEitherErrorOr<IGame>,
+): IEitherErrorOr<IGame> => {
+  if (isError(eitherErrorOrGame)) {
+    return eitherErrorOrGame
   }
 
-  const currentSegmentIndex = findLastIndex(
-    game.segments,
-    segment => segment.timeLastRelative !== undefined,
-  )
-
-  if (currentSegmentIndex === -1) {
-    return game
-  }
-
-  return immer(game, gameDraft => {
-    const now = Date.now()
-    const elapsedTime = now - game.timerStart!
-    gameDraft.segments[currentSegmentIndex].timeLastRelative! += elapsedTime
-    gameDraft.timerStart = undefined
-  })
+  const game = eitherErrorOrGame.data
+  return { data: stopGame(game) }
 }
 
 

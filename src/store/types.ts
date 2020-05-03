@@ -1,8 +1,9 @@
+import { IEitherErrorOr } from '../types/either-error-or'
 import { IGame } from '../types/game'
 
 
 interface IStateRoot {
-  game: IGame
+  game: IEitherErrorOr<IGame>
 }
 
 
