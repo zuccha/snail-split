@@ -1,11 +1,11 @@
 import immer from 'immer'
 import findLastIndex from '../../../utils/findLastIndex'
-import { IStateGame } from '../types'
+import { IGame } from '../../../types/game'
 
 
 const reduceGameStop = (
-  game: IStateGame,
-): IStateGame => {
+  game: IGame,
+): IGame => {
   if (game.timerStart === undefined) {
     return game
   }

@@ -1,11 +1,11 @@
-import { IStateGame } from '../types'
+import { IGame } from '../../../types/game'
 import reduceGameStart from './reduceGameStart'
 import reduceGameStop from './reduceGameStop'
 
 
 const reduceGameToggle = (
-  game: IStateGame,
-): IStateGame => {
+  game: IGame,
+): IGame => {
   return game.timerStart === undefined
     ? reduceGameStart(game)
     : reduceGameStop(game)

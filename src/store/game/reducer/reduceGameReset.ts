@@ -1,10 +1,10 @@
 import immer from 'immer'
-import { IStateGame } from '../types'
+import { IGame } from '../../../types/game'
 
 
 const reduceGameReset = (
-  game: IStateGame,
-): IStateGame => {
+  game: IGame,
+): IGame => {
   return immer(game, gameDraft => {
     gameDraft.timerStart = undefined
     gameDraft.segments.forEach(segment => {

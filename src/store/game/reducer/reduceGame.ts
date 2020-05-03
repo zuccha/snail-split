@@ -1,4 +1,4 @@
-import initialGame from '../initialGame'
+import { IGame, defaultGame } from '../../../types/game'
 import {
   GAME_LOAD,
   GAME_RESET,
@@ -8,7 +8,6 @@ import {
   GAME_TICK,
   GAME_TOGGLE,
   IActionGame,
-  IStateGame,
 } from '../types'
 import reduceGameLoad from './reduceGameLoad'
 import reduceGameReset from './reduceGameReset'
@@ -20,9 +19,9 @@ import reduceGameToggle from './reduceGameToggle'
 
 
 const reduceGame = (
-  game: IStateGame = initialGame,
+  game: IGame = defaultGame,
   action: IActionGame,
-): IStateGame => {
+): IGame => {
   switch (action.type) {
   case GAME_LOAD:
     return reduceGameLoad(game, action)

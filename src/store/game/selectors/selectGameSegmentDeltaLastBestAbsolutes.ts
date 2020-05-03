@@ -9,7 +9,7 @@ const selectGameSegmentDeltaLastBestAbsolutes = createSelector(
   selectGame,
   selectGameTimeBestAbsolutes,
   selectGameTimeLastAbsolutes,
-  (game, timeBestAbsolutes, timeLastAbsolutes): (number | undefined)[] => {
+  (game, timeBestAbsolutes, timeLastAbsolutes) => {
     return range(Math.max(timeBestAbsolutes.length, timeLastAbsolutes.length))
       .map(index => (
         timeLastAbsolutes[index] === undefined || timeBestAbsolutes[index] === undefined

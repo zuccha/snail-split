@@ -44,21 +44,6 @@ type IActionGame =
   | IActionGameTick
   | IActionGameToggle
 
-interface IStateSegment {
-  name: string
-  timeLastRelative: number | undefined
-  timeBestRelative: number | undefined
-  timeGoldRelative: number | undefined
-}
-
-interface IStateGame {
-  errorMessage: string | undefined
-
-  title: string
-  segments: IStateSegment[]
-  timerStart: number | undefined
-}
-
 
 export {
   GAME_LOAD,
@@ -76,6 +61,4 @@ export {
   IActionGameStop,
   IActionGameTick,
   IActionGameToggle,
-  IStateGame,
-  IStateSegment,
 }

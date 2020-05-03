@@ -1,11 +1,10 @@
 import { createSelector } from 'reselect'
-import { IStateGame } from '../types'
 import selectGame from './selectGame'
 
 
 const selectGameSegmentTimeLastAbsolutes = createSelector(
   selectGame,
-  (game: IStateGame): (number | undefined)[] => {
+  game => {
     return game.segments.reduce<(number | undefined)[]>((acc, segment, index) => [
       ...acc,
       segment.timeLastRelative === undefined

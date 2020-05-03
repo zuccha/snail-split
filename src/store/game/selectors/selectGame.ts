@@ -1,8 +1,8 @@
+import { IGame } from '../../../types/game'
 import { IStateRoot } from '../../types'
-import { IStateGame } from '../types'
 
 
-const selectGame = (state: IStateRoot): IStateGame => state.game
+const selectGame = (state: IStateRoot): IGame => state.game
 
 
 export default selectGame

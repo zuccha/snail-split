@@ -1,8 +1,8 @@
-import { IStateGame } from './game/types'
+import { IGame } from '../types/game'
 
 
 interface IStateRoot {
-  game: IStateGame
+  game: IGame
 }
 
 
