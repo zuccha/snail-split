@@ -9,19 +9,19 @@ const startGame = (game: IGame): IGame => {
   }
 
   // The game is already done.
-  if (game.segments.every(segment => segment.timeLastRelative !== undefined)) {
+  if (game.segments.every(segment => segment.currentRelativeTime !== undefined)) {
     return game
   }
 
   // The game is not already done, start the timer.
-  return immer(game, gameDraft => {
-    gameDraft.timerStart = Date.now()
+  return immer(game, draftGame => {
+    draftGame.timerStart = Date.now()
     // If game has not started yet, set the first segment as current.
     if (
       game.segments.length > 0 &&
-        game.segments.every(segment => segment.timeLastRelative === undefined)
+        game.segments.every(segment => segment.currentRelativeTime === undefined)
     ) {
-      gameDraft.segments[0].timeLastRelative = 0
+      draftGame.segments[0].currentRelativeTime = 0
     }
   })
 }

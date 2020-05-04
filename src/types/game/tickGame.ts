@@ -10,7 +10,7 @@ const tickGame = (game: IGame): IGame => {
 
   const currentSegmentIndex = findLastIndex(
     game.segments,
-    segment => segment.timeLastRelative !== undefined,
+    segment => segment.currentRelativeTime !== undefined,
   )
 
   if (currentSegmentIndex === -1) {
@@ -20,7 +20,7 @@ const tickGame = (game: IGame): IGame => {
   return immer(game, gameDraft => {
     const now = Date.now()
     const elapsedTime = now - game.timerStart!
-    gameDraft.segments[currentSegmentIndex].timeLastRelative! += elapsedTime
+    gameDraft.segments[currentSegmentIndex].currentRelativeTime! += elapsedTime
     gameDraft.timerStart = now
   })
 }

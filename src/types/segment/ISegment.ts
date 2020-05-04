@@ -3,9 +3,10 @@ import { ITime } from '../time'
 
 interface ISegment {
   name: string
-  timeLastRelative: ITime
-  timeBestRelative: ITime
-  timeGoldRelative: ITime
+  currentRelativeTime: ITime
+  pbRelativeTime: ITime
+  wrRelativeTime: ITime
+  goldRelativeTime: ITime
 }
 
 

@@ -15,9 +15,10 @@ const validateSegment = (
   const inputSegment = maybeSegment as { [key: string]: unknown }
   return {
     name: validateString(inputSegment.name, defaultValue.name),
-    timeLastRelative: validateTime(inputSegment.timeLastRelative, defaultValue.timeLastRelative),
-    timeBestRelative: validateTime(inputSegment.timeBestRelative, defaultValue.timeBestRelative),
-    timeGoldRelative: validateTime(inputSegment.timeGoldRelative, defaultValue.timeGoldRelative),
+    currentRelativeTime: validateTime(inputSegment.currentRelativeTime, defaultValue.currentRelativeTime),
+    pbRelativeTime: validateTime(inputSegment.pbRelativeTime, defaultValue.pbRelativeTime),
+    wrRelativeTime: validateTime(inputSegment.wrRelativeTime, defaultValue.wrRelativeTime),
+    goldRelativeTime: validateTime(inputSegment.goldRelativeTime, defaultValue.goldRelativeTime),
   }
 }
 

@@ -3,10 +3,10 @@ import IGame from './IGame'
 
 
 const resetGame = (game: IGame): IGame => {
-  return immer(game, gameDraft => {
-    gameDraft.timerStart = undefined
-    gameDraft.segments.forEach(segment => {
-      segment.timeLastRelative = undefined
+  return immer(game, draftGame => {
+    draftGame.timerStart = undefined
+    draftGame.segments.forEach(segment => {
+      segment.currentRelativeTime = undefined
     })
   })
 }

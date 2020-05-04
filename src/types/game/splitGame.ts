@@ -10,46 +10,46 @@ const splitGame = (game: IGame): IGame => {
 
   const currentSegmentIndex = findLastIndex(
     game.segments,
-    segment => segment.timeLastRelative !== undefined,
+    segment => segment.currentRelativeTime !== undefined,
   )
 
   if (currentSegmentIndex === -1) {
     return game
   }
 
-  return immer(game, gameDraft => {
+  return immer(game, draftGame => {
     const now = Date.now()
     const elapsedTime = now - game.timerStart!
-    const currentSegmentDraft = gameDraft.segments[currentSegmentIndex]!
+    const currentSegmentDraft = draftGame.segments[currentSegmentIndex]!
 
       // Update time.
-      currentSegmentDraft.timeLastRelative! += elapsedTime
+      currentSegmentDraft.currentRelativeTime! += elapsedTime
 
       // Update gold if last split was better.
       if (
-        currentSegmentDraft.timeGoldRelative === undefined ||
-        currentSegmentDraft.timeLastRelative! < currentSegmentDraft.timeGoldRelative
+        currentSegmentDraft.goldRelativeTime === undefined ||
+        currentSegmentDraft.currentRelativeTime! < currentSegmentDraft.goldRelativeTime
       ) {
-        currentSegmentDraft.timeGoldRelative = currentSegmentDraft.timeLastRelative
+        currentSegmentDraft.goldRelativeTime = currentSegmentDraft.currentRelativeTime
       }
 
       // Is last segment, game is over.
-      if (currentSegmentIndex === gameDraft.segments.length - 1) {
-        gameDraft.timerStart = undefined
+      if (currentSegmentIndex === draftGame.segments.length - 1) {
+        draftGame.timerStart = undefined
         // Update best if last game was better.
         if (
-          currentSegmentDraft.timeBestRelative === undefined ||
-          currentSegmentDraft.timeLastRelative! < currentSegmentDraft.timeBestRelative
+          currentSegmentDraft.pbRelativeTime === undefined ||
+          currentSegmentDraft.currentRelativeTime! < currentSegmentDraft.pbRelativeTime
         ) {
-          gameDraft.segments.forEach(segment => {
-            segment.timeBestRelative = segment.timeLastRelative
+          draftGame.segments.forEach(segment => {
+            segment.pbRelativeTime = segment.currentRelativeTime
           })
         }
       }
       // Is not last segment, keep the timer going and set next segment as current.
       else {
-        gameDraft.timerStart = now
-        gameDraft.segments[currentSegmentIndex + 1].timeLastRelative = 0
+        draftGame.timerStart = now
+        draftGame.segments[currentSegmentIndex + 1].currentRelativeTime = 0
       }
   })
 }
