@@ -2,24 +2,24 @@ import React from 'react'
 import { Box, BoxProps, Text } from 'ink'
 
 
-interface ISegmentsColumnStringArgs {
+interface ISegmentsColumnTextsArgs {
   title: string
-  values: string[]
+  texts: string[]
   containerProps?: BoxProps
 }
 
 
-const SegmentsColumnString: React.FC<ISegmentsColumnStringArgs> = ({
+const SegmentsColumnTexts: React.FC<ISegmentsColumnTextsArgs> = ({
   title,
-  values,
+  texts,
   containerProps = undefined,
 }) => {
   return (
     <Box flexDirection='column' {...containerProps}>
       <Text>{title}</Text>
-      {values.map((value, valueIndex) => (
-        <Text key={valueIndex}>
-          {value}
+      {texts.map((text, textIndex) => (
+        <Text key={textIndex}>
+          {text}
         </Text>
       ))}
     </Box>
@@ -27,4 +27,4 @@ const SegmentsColumnString: React.FC<ISegmentsColumnStringArgs> = ({
 }
 
 
-export default SegmentsColumnString
+export default SegmentsColumnTexts

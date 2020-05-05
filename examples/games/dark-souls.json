@@ -3,33 +3,33 @@
   "segments": [
     {
       "name": "Asylum Demon",
-      "timeBestRelative": 106000,
-      "timeGoldRelative": 105000
+      "pbRelativeTime": 106000,
+      "goldRelativeTime": 105000
     },
     {
       "name": "Taurus Demon",
-      "timeBestRelative": 188000,
-      "timeGoldRelative": 186000
+      "pbRelativeTime": 188000,
+      "goldRelativeTime": 186000
     },
     {
       "name": "Gargoyles",
-      "timeBestRelative": 155000,
-      "timeGoldRelative": 155000
+      "pbRelativeTime": 155000,
+      "goldRelativeTime": 155000
     },
     {
       "name": "Iron Golem",
-      "timeBestRelative": 341000,
-      "timeGoldRelative": 338000
+      "pbRelativeTime": 341000,
+      "goldRelativeTime": 338000
     },
     {
       "name": "O&S",
-      "timeBestRelative": 215000,
-      "timeGoldRelative": 150000
+      "pbRelativeTime": 215000,
+      "goldRelativeTime": 150000
     },
     {
       "name": "Stray Demon",
-      "timeBestRelative": 121000,
-      "timeGoldRelative": 119000
+      "pbRelativeTime": 121000,
+      "goldRelativeTime": 119000
     }
   ]
 }

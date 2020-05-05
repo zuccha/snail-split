@@ -60,9 +60,7 @@ const Game: React.FC<{}> = ({
       width={stdout.columns}
       flexDirection='column'
     >
-      <GameHeader
-        containerProps={{ flexGrow: 1 }}
-      />
+      <GameHeader containerProps={{ flexGrow: 1 }} />
       <GameSegments />
       <GameTime
         containerProps={{

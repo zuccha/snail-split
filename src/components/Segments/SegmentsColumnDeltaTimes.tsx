@@ -1,18 +1,19 @@
 import React from 'react'
 import { Box, BoxProps, Text } from 'ink'
+import { ITime } from '../../types/time'
 import formatTime from '../../utils/formatTime'
 
 
-interface ISegmentsColumnTimeArgs {
+interface ISegmentsColumnDeltaTimesArgs {
   title: string
-  values: (number | undefined)[]
+  deltaTimes: ITime[]
   containerProps?: BoxProps
 }
 
 
-const SegmentsColumnTime: React.FC<ISegmentsColumnTimeArgs> = ({
+const SegmentsColumnDeltaTimes: React.FC<ISegmentsColumnDeltaTimesArgs> = ({
   title,
-  values,
+  deltaTimes,
   containerProps = undefined,
 }) => {
   return (
@@ -22,11 +23,11 @@ const SegmentsColumnTime: React.FC<ISegmentsColumnTimeArgs> = ({
       {...containerProps}
     >
       <Text>{title}</Text>
-      {values.map((value, valueIndex) => (
-        <Text key={valueIndex}>
-          {value === undefined
+      {deltaTimes.map((deltaTime, deltaTimeIndex) => (
+        <Text key={deltaTimeIndex}>
+          {deltaTime === undefined
             ? '-'
-            : formatTime(value)}
+            : formatTime(deltaTime)}
         </Text>
       ))}
     </Box>
@@ -34,4 +35,4 @@ const SegmentsColumnTime: React.FC<ISegmentsColumnTimeArgs> = ({
 }
 
 
-export default SegmentsColumnTime
+export default SegmentsColumnDeltaTimes
