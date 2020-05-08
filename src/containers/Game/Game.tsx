@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Box, useInput, useStdout } from 'ink'
+import BlessedBox from '../../components/BlessedBox'
 import ErrorMessage from '../../components/ErrorMessage'
 import createActionGameLoad from '../../store/game/actions/createActionGameLoad'
 import createActionGameReset from '../../store/game/actions/createActionGameReset'
@@ -18,24 +19,24 @@ const TICK_INTERVAL = 1000
 const Game: React.FC<{}> = ({
 
 }) => {
-  const { stdout } = useStdout()
+  // const { stdout } = useStdout()
   const dispatch = useDispatch()
   const errorMessage = useSelector(selectGameError)
 
-  useInput((input, key) => {
-    if (input === 'q') {
-      process.exit()
-    }
-    if (input === 'r') {
-      dispatch(createActionGameReset())
-    }
-    if (input === ' ') {
-      dispatch(createActionGameToggle())
-    }
-    if (key.return) {
-      dispatch(createActionGameSplit())
-    }
-  })
+  // useInput((input, key) => {
+  //   if (input === 'q') {
+  //     process.exit()
+  //   }
+  //   if (input === 'r') {
+  //     dispatch(createActionGameReset())
+  //   }
+  //   if (input === ' ') {
+  //     dispatch(createActionGameToggle())
+  //   }
+  //   if (key.return) {
+  //     dispatch(createActionGameSplit())
+  //   }
+  // })
 
   useEffect(() => {
     dispatch(createActionGameLoad('./examples/games/dark-souls.json'))
@@ -44,32 +45,27 @@ const Game: React.FC<{}> = ({
     }, TICK_INTERVAL)
   }, [])
 
+  const windowWidth = process.stdout.columns
+  const windowHeight = process.stdout.rows
+
   if (errorMessage !== undefined) {
-    return <ErrorMessage
-      errorMessage={errorMessage}
-      containerProps={{
-        height: stdout.rows,
-        width: stdout.columns,
-      }}
-    />
+    return (
+      <ErrorMessage
+        errorMessage={errorMessage}
+        space={{ height: windowHeight, width: windowWidth }}
+      />
+    )
   }
 
   return (
-    <Box
-      height={stdout.rows}
-      width={stdout.columns}
-      flexDirection='column'
+    <BlessedBox
+      height={windowHeight}
+      width={windowWidth}
     >
-      <GameHeader containerProps={{ flexGrow: 1 }} />
-      <GameSegments />
-      <GameTime
-        containerProps={{
-          flexGrow: 1,
-          justifyContent: 'flex-end',
-          alignItems: 'flex-end',
-        }}
-      />
-    </Box>
+      <GameHeader space={{ width: windowWidth }} />
+      <GameSegments space={{ width: windowWidth, height: 8, top: 3 }} />
+      <GameTime space={{ width: windowWidth, height: 1, top: 12 }} />
+    </BlessedBox>
   )
 }
 

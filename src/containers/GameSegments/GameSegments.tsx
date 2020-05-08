@@ -1,18 +1,15 @@
 import React, { useMemo } from 'react'
-import { BoxProps } from 'ink'
-import { SegmentsContainer } from '../../components/Segments'
+import BlessedBox from '../../components/BlessedBox'
+import BlessedText from '../../components/BlessedText'
+import Spacer from '../../components/Spacer'
 import IColumnDefinition from '../../types/column-definition'
-import when from '../../utils/when'
-import makeGameSegmentDeltaTimesColumn from './makeGameSegmentDeltaTimesColumn'
-import makeGameSegmentNamesColumn from './makeGameSegmentNamesColumn'
-import makeGameSegmentTimesColumn from './makeGameSegmentTimesColumn'
+import ISpace from '../../types/space'
+import makeGameSegmentDeltaTime from './makeGameSegmentDeltaTime'
+import makeGameSegmentName from './makeGameSegmentName'
+import makeGameSegmentTime from './makeGameSegmentTime'
 
 
 const columnDefinitions: IColumnDefinition[] = [
-  {
-    type: 'text',
-    title: 'Names',
-  },
   {
     title: 'Delta (abs.)',
     type: 'delta',
@@ -28,42 +25,68 @@ const columnDefinitions: IColumnDefinition[] = [
   },
 ]
 
+const segmentIndices = [0, 1, 2, 3, 4, 5]
 
 interface IGameSegmentsProps {
-  containerProps?: BoxProps
+  space?: ISpace
 }
 
-const COLUMN_TIME_WIDTH = 12
+const COLUMN_WIDTH = 14
 
 const GameSegments: React.FC<IGameSegmentsProps> = ({
-  containerProps = undefined,
+  space = {},
 }) => {
-  const columns = useMemo(() => {
-    return columnDefinitions.map(columnDefinition => {
-      const namesOptions = { containerProps: { flexGrow: 1 } }
-      const timesOptions = { containerProps: { width: COLUMN_TIME_WIDTH } }
-
-      let Column: React.FC = () => null
-      switch (columnDefinition.type) {
-      case 'text':
-        Column = makeGameSegmentNamesColumn(columnDefinition, namesOptions)
-        break
-      case 'time':
-        Column = makeGameSegmentTimesColumn(columnDefinition, timesOptions)
-        break
-      case 'delta':
-        Column = makeGameSegmentDeltaTimesColumn(columnDefinition, timesOptions)
-        break
-      }
-
-      return <Column key={columnDefinition.title} />
-    })
-  }, [columnDefinitions])
-
+  const columnNameWidth = typeof space.width === 'number'
+    ? space.width - columnDefinitions.length * COLUMN_WIDTH
+    : 0
   return (
-    <SegmentsContainer containerProps={containerProps}>
-      {columns}
-    </SegmentsContainer>
+    <BlessedBox {...space}>
+      {/* Header */}
+      <BlessedText content='Names' />
+      {columnDefinitions.map((columnDefinition, columnDefinitionIndex) => {
+        const key = `${columnDefinitionIndex}`
+        const title = columnDefinition.title
+        const cellSpace = {
+          width: COLUMN_WIDTH,
+          left: columnNameWidth + COLUMN_WIDTH * columnDefinitionIndex,
+        }
+        return <BlessedText key={key} content={title} {...cellSpace} align='right' />
+      })}
+      {/* Content */}
+      <Spacer space={{ width: space.width, top: 1 }} />
+      {segmentIndices.map(segmentIndex => {
+        const rowSpace = {
+          width: space.width,
+          top: 2 + segmentIndex,
+        }
+        const GameSegmentName = makeGameSegmentName(segmentIndex)
+        return (
+          <BlessedBox key={segmentIndex} {...rowSpace}>
+            <GameSegmentName />
+            {columnDefinitions.map((columnDefinition, columnDefinitionIndex) => {
+              const key = `${segmentIndex}-${columnDefinitionIndex}`
+              const cellSpace = {
+                width: COLUMN_WIDTH,
+                left: columnNameWidth + COLUMN_WIDTH * columnDefinitionIndex,
+              }
+
+              if (columnDefinition.type === 'time') {
+                const GameSegmentTime = makeGameSegmentTime(segmentIndex, columnDefinition)
+                return <GameSegmentTime key={key} space={cellSpace} />
+              }
+
+              if (columnDefinition.type === 'delta') {
+                const GameSegmentDeltaTime = makeGameSegmentDeltaTime(segmentIndex, columnDefinition)
+                return <GameSegmentDeltaTime key={key} space={cellSpace} />
+              }
+
+              return null
+            })}
+          </BlessedBox>
+        )})
+      }
+      <Spacer space={{ width: space.width, top: segmentIndices.length + 2 }} />
+    </BlessedBox>
   )
 }
 

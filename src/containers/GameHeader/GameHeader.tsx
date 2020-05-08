@@ -1,18 +1,18 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { BoxProps } from 'ink'
 import Header from '../../components/Header'
 import selectTitle from '../../store/game/selectors/selectGameTitle'
 import { isError } from '../../types/either-error-or'
+import ISpace from '../../types/space'
 
 
 interface IGameHeaderProps {
-  containerProps?: BoxProps
+  space?: ISpace
 }
 
 
 const GameHeader: React.FC<IGameHeaderProps> = ({
-  containerProps = undefined,
+  space = {},
 }) => {
   const title = useSelector(selectTitle)
   if (isError(title)) {
@@ -20,7 +20,7 @@ const GameHeader: React.FC<IGameHeaderProps> = ({
   }
 
   return (
-    <Header title={title.data} containerProps={containerProps} />
+    <Header title={title.data} space={space} />
   )
 }
 

@@ -1,26 +1,19 @@
 import React from 'react'
-import { Box, BoxProps, Color, Text } from 'ink'
+import ISpace from '../../types/space'
+import BlessedText from '../BlessedText'
 
 
 interface IErrorMessageProps {
   errorMessage: string
-  containerProps?: BoxProps
+  space?: ISpace
 }
 
 
 const ErrorMessage: React.FC<IErrorMessageProps> = ({
   errorMessage,
-  containerProps = undefined,
+  space = {},
 }) => {
-  return (
-    <Box justifyContent='center' alignItems='center' {...containerProps}>
-      <Color hex='#ff0000'>
-        <Text>
-          {errorMessage}
-        </Text>
-      </Color>
-    </Box>
-  )
+  return <BlessedText content={errorMessage} {...space} />
 }
 
 

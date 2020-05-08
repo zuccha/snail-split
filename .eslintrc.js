@@ -19,6 +19,7 @@ module.exports = {
       multiline: { delimiter: 'none' },
       singleline: { delimiter: 'comma' },
     }],
+    '@typescript-eslint/no-empty-interface': 'off',
     '@typescript-eslint/no-non-null-assertion': 'off',
     '@typescript-eslint/no-unused-vars': 'off',
     '@typescript-eslint/explicit-function-return-type': ['error', { allowExpressions: true }],
