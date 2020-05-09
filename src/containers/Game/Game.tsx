@@ -9,7 +9,7 @@ import useSelector from '../../store/useSelector'
 import GameHeader from '../GameHeader'
 import GameSegments from '../GameSegments'
 import GameTime from '../GameTime'
-import useInput from './useInput'
+import useInputs from './useInputs'
 
 
 const TICK_INTERVAL = 100
@@ -18,14 +18,18 @@ const Game: React.FC = () => {
   const dispatch = useDispatch()
   const errorMessage = useSelector(selectGameError)
 
-  useInput()
+  useInputs()
 
   useEffect(() => {
     dispatch(createActionGameLoad('./examples/games/dark-souls.json'))
-    setInterval(() => {
+    const tickIntervalId = setInterval(() => {
       dispatch(createActionGameTick())
     }, TICK_INTERVAL)
-  }, [])
+
+    return () => {
+      clearInterval(tickIntervalId)
+    }
+  }, [dispatch])
 
   const windowWidth = process.stdout.columns
   const windowHeight = process.stdout.rows

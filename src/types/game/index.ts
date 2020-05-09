@@ -1,5 +1,6 @@
 export { default as IGame } from './IGame'
 export { default as defaultGame } from './defaultGame'
+export { default as getCurrentSegmentIndex } from './getCurrentSegmentIndex'
 export { default as makeComputeSegmentDeltaTime } from './makeComputeSegmentDeltaTime'
 export { default as makeComputeSegmentTime } from './makeComputeSegmentTime'
 export { default as resetGame } from './resetGame'

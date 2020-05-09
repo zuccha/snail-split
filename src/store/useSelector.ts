@@ -11,11 +11,23 @@ const useSelector = <T>(
   select: (state: IStateRoot) => T,
   equal: (left: T, right: T) => boolean = equalIdentity,
 ): T => {
+  const mountedRef = useRef(true)
   const stateRef = useRef(select(store.getState()))
   const [, forceUpdate] = useState(0)
 
   useEffect(() => {
+    mountedRef.current = true
+    return () => {
+      mountedRef.current = false
+    }
+  }, [])
+
+  useEffect(() => {
     const update = (): void => {
+      if (!mountedRef.current) {
+        return
+      }
+
       const newState = select(store.getState())
       if (equal(stateRef.current, newState)) {
         return
