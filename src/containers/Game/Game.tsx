@@ -14,8 +14,8 @@ import useInputs from './useInputs'
 
 const TICK_INTERVAL = 100
 
-const GAME_SEGMENTS_TOP = GAME_HEADER_HEIGHT
-const GAME_TIME_TOP = GAME_SEGMENTS_TOP + GAME_SEGMENTS_HEIGHT
+const GAME_SEGMENTS_TOP = GAME_HEADER_HEIGHT + 1
+const GAME_TIME_TOP = GAME_SEGMENTS_TOP + GAME_SEGMENTS_HEIGHT + 1
 
 const Game: React.FC = () => {
   const dispatch = useDispatch()

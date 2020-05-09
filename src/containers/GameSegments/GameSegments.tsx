@@ -38,14 +38,14 @@ const ROW_HEADER_HEIGHT = 1
 const ROW_ITEM_HEIGHT = 1
 const WINDOW_HEIGHT = WINDOW_SIZE * ROW_ITEM_HEIGHT
 const COLUMN_WIDTH = 14
-const GAME_SEGMENTS_HEIGHT = ROW_HEADER_HEIGHT
-  + SPACER_HEIGHT
-  + WINDOW_HEIGHT
-  + SPACER_HEIGHT
 
-const SPACER_1_TOP = ROW_HEADER_HEIGHT
+const SPACER_0_TOP = 0
+const ROW_HEADER_TOP = SPACER_0_TOP + SPACER_HEIGHT
+const SPACER_1_TOP = ROW_HEADER_TOP + ROW_HEADER_HEIGHT
 const WINDOW_TOP = SPACER_1_TOP + SPACER_HEIGHT
 const SPACER_2_TOP = WINDOW_TOP + WINDOW_HEIGHT
+
+const GAME_SEGMENTS_HEIGHT = SPACER_2_TOP + SPACER_HEIGHT
 
 const GameSegments: React.FC<IGameSegmentsProps> = ({
   space = {},
@@ -59,18 +59,21 @@ const GameSegments: React.FC<IGameSegmentsProps> = ({
   return (
     <BlessedBox {...space}>
       {/* Header */}
-      <BlessedText content='Names' />
-      {columnDefinitions.map((columnDefinition, columnDefinitionIndex) => {
-        const key = `${columnDefinitionIndex}`
-        const title = columnDefinition.title
-        const cellSpace = {
-          width: COLUMN_WIDTH,
-          left: columnNameWidth + COLUMN_WIDTH * columnDefinitionIndex,
-        }
-        return <BlessedText key={key} content={title} {...cellSpace} align='right' />
-      })}
-      {/* Content */}
+      <Spacer space={{ width: space.width, top: SPACER_0_TOP }} />
+      <BlessedBox top={ROW_HEADER_TOP}>
+        <BlessedText content='Names' />
+        {columnDefinitions.map((columnDefinition, columnDefinitionIndex) => {
+          const key = `${columnDefinitionIndex}`
+          const title = columnDefinition.title
+          const cellSpace = {
+            width: COLUMN_WIDTH,
+            left: columnNameWidth + COLUMN_WIDTH * columnDefinitionIndex,
+          }
+          return <BlessedText key={key} content={title} {...cellSpace} align='right' />
+        })}
+      </BlessedBox>
       <Spacer space={{ width: space.width, top: SPACER_1_TOP }} />
+      {/* Content */}
       {range(WINDOW_SIZE).map(rowIndex => {
         const segmentIndex = rowIndex + windowOffset
         const rowSpace = {
@@ -104,6 +107,7 @@ const GameSegments: React.FC<IGameSegmentsProps> = ({
           </BlessedBox>
         )})
       }
+      {/* Footer */}
       <Spacer space={{ width: space.width, top: SPACER_2_TOP }} />
     </BlessedBox>
   )
