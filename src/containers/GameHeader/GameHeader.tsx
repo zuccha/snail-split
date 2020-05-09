@@ -31,7 +31,6 @@ const GameHeader: React.FC<IGameHeaderProps> = ({
       titleColorFg={theme.header.titleColorFg}
       borderColorBg={theme.header.borderColorBg}
       borderColorFg={theme.header.borderColorFg}
-      borderGlyph={theme.header.borderGlyph}
     />
   )
 }

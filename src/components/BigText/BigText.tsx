@@ -55,7 +55,7 @@ const BigText: React.FC<IBigTextProps> = ({
   const containerWidth = lastGlyphOffset + lastGlyphWidth
 
   return (
-    <BlessedBox {...space} width={containerWidth}>
+    <BlessedBox width={containerWidth} {...space}>
       {glyphsAndOffsets.map(([glyph, glyphOffset], glyphIndex) => (
         <BlessedBox key={glyphIndex} left={glyphOffset}>
           {glyph.map((line, lineIndex) => (

@@ -2,7 +2,6 @@ import React from 'react'
 import ISpace from '../../types/space'
 import BlessedBox from '../BlessedBox'
 import BlessedText from '../BlessedText'
-import Spacer, { SPACER_HEIGHT } from '../Spacer'
 
 
 interface IHeaderProps {
@@ -12,11 +11,10 @@ interface IHeaderProps {
   titleColorFg?: string
   borderColorBg?: string
   borderColorFg?: string
-  borderGlyph?: string
 }
 
 
-const HEADER_HEIGHT = SPACER_HEIGHT * 2 + 1
+const HEADER_HEIGHT = 3
 
 const Header: React.FC<IHeaderProps> = ({
   title,
@@ -25,32 +23,28 @@ const Header: React.FC<IHeaderProps> = ({
   titleColorFg = undefined,
   borderColorBg = undefined,
   borderColorFg = undefined,
-  borderGlyph = '=',
 }) => {
   return (
-    <BlessedBox {...space}>
-      <Spacer
-        space={{ width: space.width }}
-        separator={borderGlyph}
-        colorBg={borderColorBg}
-        colorFg={borderColorFg}
-      />
+    <BlessedBox
+      height={HEADER_HEIGHT}
+      {...space}
+      border='line'
+      style={{
+        border: {
+          bg: borderColorBg,
+          fg: borderColorFg,
+        },
+      }}
+    >
       <BlessedText
         content={title}
         align='center'
-        width='100%'
-        top={1}
+        width='100%-2'
         style={{
           bg: titleColorBg,
           fg: titleColorFg,
           bold: true,
         }}
-      />
-      <Spacer
-        space={{ width: space.width, top: 2 }}
-        separator={borderGlyph}
-        colorBg={borderColorBg}
-        colorFg={borderColorFg}
       />
     </BlessedBox>
   )

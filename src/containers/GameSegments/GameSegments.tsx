@@ -2,6 +2,7 @@ import React from 'react'
 import BlessedBox from '../../components/BlessedBox'
 import BlessedText from '../../components/BlessedText'
 import Spacer, { SPACER_HEIGHT } from '../../components/Spacer'
+import theme from '../../theme'
 import IColumnDefinition from '../../types/column-definition'
 import ISpace from '../../types/space'
 import range from '../../utils/range'
@@ -34,18 +35,15 @@ interface IGameSegmentsProps {
 
 const WINDOW_SIZE = 6
 
-const ROW_HEADER_HEIGHT = 1
+const ROW_HEADER_HEIGHT = 3
 const ROW_ITEM_HEIGHT = 1
-const WINDOW_HEIGHT = WINDOW_SIZE * ROW_ITEM_HEIGHT
+const WINDOW_HEIGHT = WINDOW_SIZE * ROW_ITEM_HEIGHT + 2
 const COLUMN_WIDTH = 14
 
-const SPACER_0_TOP = 0
-const ROW_HEADER_TOP = SPACER_0_TOP + SPACER_HEIGHT
-const SPACER_1_TOP = ROW_HEADER_TOP + ROW_HEADER_HEIGHT
-const WINDOW_TOP = SPACER_1_TOP + SPACER_HEIGHT
-const SPACER_2_TOP = WINDOW_TOP + WINDOW_HEIGHT
+const ROW_HEADER_TOP = 0
+const WINDOW_TOP = ROW_HEADER_TOP + ROW_HEADER_HEIGHT - 1
 
-const GAME_SEGMENTS_HEIGHT = SPACER_2_TOP + SPACER_HEIGHT
+const GAME_SEGMENTS_HEIGHT = WINDOW_TOP + WINDOW_HEIGHT
 
 const GameSegments: React.FC<IGameSegmentsProps> = ({
   space = {},
@@ -53,15 +51,31 @@ const GameSegments: React.FC<IGameSegmentsProps> = ({
   const windowOffset = useWindowOffset(WINDOW_SIZE)
 
   const columnNameWidth = typeof space.width === 'number'
-    ? space.width - columnDefinitions.length * COLUMN_WIDTH
+    ? (space.width - 2) - columnDefinitions.length * COLUMN_WIDTH
     : 0
 
   return (
-    <BlessedBox {...space}>
+    <BlessedBox height={GAME_SEGMENTS_HEIGHT} {...space}>
       {/* Header */}
-      <Spacer space={{ width: space.width, top: SPACER_0_TOP }} />
-      <BlessedBox top={ROW_HEADER_TOP}>
-        <BlessedText content='Names' />
+      <BlessedBox
+        height={ROW_HEADER_HEIGHT}
+        top={ROW_HEADER_TOP}
+        border='line'
+        style={{
+          border: {
+            bg: theme.segments.dividerColorBg,
+            fg: theme.segments.dividerColorFg,
+          },
+        }}
+      >
+        <BlessedText
+          content='Names'
+          width={columnNameWidth}
+          style={{
+            bg: theme.segments.headerColorBg,
+            fg: theme.segments.headerColorFg,
+          }}
+        />
         {columnDefinitions.map((columnDefinition, columnDefinitionIndex) => {
           const key = `${columnDefinitionIndex}`
           const title = columnDefinition.title
@@ -69,46 +83,63 @@ const GameSegments: React.FC<IGameSegmentsProps> = ({
             width: COLUMN_WIDTH,
             left: columnNameWidth + COLUMN_WIDTH * columnDefinitionIndex,
           }
-          return <BlessedText key={key} content={title} {...cellSpace} align='right' />
+          return (
+            <BlessedText
+              key={key}
+              content={title}
+              {...cellSpace}
+              align='right'
+              style={{
+                bg: theme.segments.headerColorBg,
+                fg: theme.segments.headerColorFg,
+              }}
+            />
+          )
         })}
       </BlessedBox>
-      <Spacer space={{ width: space.width, top: SPACER_1_TOP }} />
       {/* Content */}
-      {range(WINDOW_SIZE).map(rowIndex => {
-        const segmentIndex = rowIndex + windowOffset
-        const rowSpace = {
-          width: space.width,
-          top: WINDOW_TOP + rowIndex * ROW_ITEM_HEIGHT,
+      <BlessedBox
+        height={WINDOW_HEIGHT}
+        top={WINDOW_TOP}
+        border='line'
+        style={{
+          border: {
+            bg: theme.segments.headerColorBg,
+            fg: theme.segments.headerColorFg,
+          },
+        }}
+      >
+        {range(WINDOW_SIZE).map(rowIndex => {
+          const segmentIndex = rowIndex + windowOffset
+          const rowSpace = { top: rowIndex * ROW_ITEM_HEIGHT }
+          const GameSegmentName = makeGameSegmentName(segmentIndex)
+          return (
+            <BlessedBox key={rowIndex} {...rowSpace}>
+              <GameSegmentName space={{ width: columnNameWidth }} />
+              {columnDefinitions.map((columnDefinition, columnDefinitionIndex) => {
+                const key = `${rowIndex}-${columnDefinitionIndex}`
+                const segmentIndex = rowIndex + windowOffset
+                const cellSpace = {
+                  width: COLUMN_WIDTH,
+                  left: columnNameWidth + COLUMN_WIDTH * columnDefinitionIndex,
+                }
+
+                if (columnDefinition.type === 'time') {
+                  const GameSegmentTime = makeGameSegmentTime(segmentIndex, columnDefinition)
+                  return <GameSegmentTime key={key} space={cellSpace} />
+                }
+
+                if (columnDefinition.type === 'delta') {
+                  const GameSegmentDeltaTime = makeGameSegmentDeltaTime(segmentIndex, columnDefinition)
+                  return <GameSegmentDeltaTime key={key} space={cellSpace} />
+                }
+
+                return null
+              })}
+            </BlessedBox>
+          )})
         }
-        const GameSegmentName = makeGameSegmentName(segmentIndex)
-        return (
-          <BlessedBox key={rowIndex} {...rowSpace}>
-            <GameSegmentName />
-            {columnDefinitions.map((columnDefinition, columnDefinitionIndex) => {
-              const key = `${rowIndex}-${columnDefinitionIndex}`
-              const segmentIndex = rowIndex + windowOffset
-              const cellSpace = {
-                width: COLUMN_WIDTH,
-                left: columnNameWidth + COLUMN_WIDTH * columnDefinitionIndex,
-              }
-
-              if (columnDefinition.type === 'time') {
-                const GameSegmentTime = makeGameSegmentTime(segmentIndex, columnDefinition)
-                return <GameSegmentTime key={key} space={cellSpace} />
-              }
-
-              if (columnDefinition.type === 'delta') {
-                const GameSegmentDeltaTime = makeGameSegmentDeltaTime(segmentIndex, columnDefinition)
-                return <GameSegmentDeltaTime key={key} space={cellSpace} />
-              }
-
-              return null
-            })}
-          </BlessedBox>
-        )})
-      }
-      {/* Footer */}
-      <Spacer space={{ width: space.width, top: SPACER_2_TOP }} />
+      </BlessedBox>
     </BlessedBox>
   )
 }

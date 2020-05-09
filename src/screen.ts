@@ -5,6 +5,7 @@ const screen = blessed.screen({
   autoPadding: true,
   smartCSR: true,
   title: 'Rigel LiveSplit',
+  dockBorders: true,
 })
 
 

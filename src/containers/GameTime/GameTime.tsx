@@ -26,7 +26,7 @@ const GameTime: React.FC<IGameTimeProps> = ({
   const formattedTime = formatTime(time.data)
 
   return (
-    <BlessedBox {...space}>
+    <BlessedBox height={font.height} {...space}>
       <BigText
         text={formattedTime}
         font={font}
