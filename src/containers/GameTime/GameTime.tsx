@@ -2,7 +2,7 @@ import React from 'react'
 import Time from '../../components/Time'
 import selectTime from '../../store/game/selectors/selectGameTime'
 import useSelector from '../../store/useSelector'
-import { isError } from '../../types/either-error-or'
+import { isError, equalEitherErrorOr } from '../../types/either-error-or'
 import ISpace from '../../types/space'
 
 
@@ -14,7 +14,7 @@ interface IGameTimeProps {
 const GameTime: React.FC<IGameTimeProps> = ({
   space = {},
 }) => {
-  const time = useSelector(selectTime)
+  const time = useSelector(selectTime, equalEitherErrorOr)
 
   if (isError(time)) {
     return null

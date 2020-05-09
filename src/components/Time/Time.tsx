@@ -1,13 +1,14 @@
 import React, { useMemo } from 'react'
 import ISpace from '../../types/space'
-import formatTime from '../../utils/formatTime'
-import when from '../../utils/when'
-import BlessedText from '../BlessedText'
+import { formatTime } from '../../types/time'
+import BigText from '../BigText'
+import font from '../BigText/fonts/slim'
 
 
 interface ITimeProps {
   time: number
   size?: 'normal' | 'large' | 'huge'
+  formatEmpty?: string
   formatZero?: string
   formatBelowSecond?: string
   formatBelowMinute?: string
@@ -19,7 +20,7 @@ interface ITimeProps {
 
 const Time: React.FC<ITimeProps> = ({
   time,
-  size = 'normal',
+  formatEmpty = '-',
   formatZero = '0.000',
   formatBelowSecond = '0.mmm',
   formatBelowMinute = 'S.mmm',
@@ -29,6 +30,7 @@ const Time: React.FC<ITimeProps> = ({
 }) => {
   const formattedTime = useMemo(() => {
     return formatTime(time, {
+      formatEmpty,
       formatZero,
       formatBelowSecond,
       formatBelowMinute,
@@ -37,11 +39,13 @@ const Time: React.FC<ITimeProps> = ({
     })
   }, [time])
 
-  return when([
-    [size === 'normal', () => (<BlessedText content={formattedTime} {...space} />)],
-    [size === 'large', () => null],
-    [size === 'huge', () => null],
-  ], null)
+  return (
+    <BigText
+      text={formattedTime}
+      font={font}
+      space={space}
+    />
+  )
 }
 
 
