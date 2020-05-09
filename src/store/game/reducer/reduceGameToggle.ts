@@ -1,5 +1,5 @@
 import { IEitherErrorOr, isError } from '../../../types/either-error-or'
-import { IGame, startGame, stopGame } from '../../../types/game'
+import { IGame, toggleGame } from '../../../types/game'
 
 
 const reduceGameToggle = (
@@ -11,9 +11,7 @@ const reduceGameToggle = (
 
   const game = eitherErrorOrGame.data
   return {
-    data: game.timerStart === undefined
-      ? startGame(game)
-      : stopGame(game),
+    data: toggleGame(game),
   }
 }
 

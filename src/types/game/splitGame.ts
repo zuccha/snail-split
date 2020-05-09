@@ -4,23 +4,32 @@ import IGame from './IGame'
 
 
 const splitGame = (game: IGame): IGame => {
-  if (game.timerStart === undefined) {
+  if (game.status === 'initial') {
     return game
   }
 
-  const currentSegmentIndex = findLastIndex(
-    game.segments,
-    segment => segment.currentRelativeTime !== undefined,
-  )
-
-  if (currentSegmentIndex === -1) {
+  if (game.status === 'pending') {
     return game
   }
 
-  return immer(game, draftGame => {
-    const now = Date.now()
-    const elapsedTime = now - game.timerStart!
-    const currentSegmentDraft = draftGame.segments[currentSegmentIndex]!
+  if (game.status === 'ongoing') {
+    if (game.timerStart === undefined) {
+      return game
+    }
+
+    const currentSegmentIndex = findLastIndex(
+      game.segments,
+      segment => segment.currentRelativeTime !== undefined,
+    )
+
+    if (currentSegmentIndex === -1) {
+      return game
+    }
+
+    return immer(game, draftGame => {
+      const now = Date.now()
+      const elapsedTime = now - draftGame.timerStart!
+      const currentSegmentDraft = draftGame.segments[currentSegmentIndex]!
 
       // Update time.
       currentSegmentDraft.currentRelativeTime! += elapsedTime
@@ -36,6 +45,7 @@ const splitGame = (game: IGame): IGame => {
       // Is last segment, game is over.
       if (currentSegmentIndex === draftGame.segments.length - 1) {
         draftGame.timerStart = undefined
+        draftGame.status = 'done'
         // Update best if last game was better.
         if (
           currentSegmentDraft.pbRelativeTime === undefined ||
@@ -51,7 +61,14 @@ const splitGame = (game: IGame): IGame => {
         draftGame.timerStart = now
         draftGame.segments[currentSegmentIndex + 1].currentRelativeTime = 0
       }
-  })
+    })
+  }
+
+  if (game.status === 'done') {
+    return game
+  }
+
+  return game
 }
 
 

@@ -1,4 +1,5 @@
 import { validateArray } from '../array'
+import { validateGameStatus } from '../game-status'
 import { validateSegment } from '../segment'
 import { validateString } from '../string'
 import IGame from './IGame'
@@ -20,6 +21,7 @@ const validateGame = (
     segments: validateArray(inputGame.segments, [])
       .map(maybeSegment => validateSegment(maybeSegment)),
     timerStart: undefined,
+    status: validateGameStatus(inputGame.status, 'initial'),
   }
 }
 

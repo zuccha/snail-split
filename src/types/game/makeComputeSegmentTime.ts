@@ -41,9 +41,9 @@ const makeComputeSegmentTime = (
 
       while (index < segmentIndex && absoluteTime !== undefined) {
         const relativeTime = game.segments[index][relativeTimeKey]
-        absoluteTime = relativeTime
-          ? absoluteTime + relativeTime
-          : undefined
+        absoluteTime = relativeTime === undefined
+          ? undefined
+          : absoluteTime + relativeTime
         index = index + 1
       }
 

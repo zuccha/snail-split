@@ -81,9 +81,9 @@ const makeComputeSegmentDeltaTime = (
           leftRelativeTimeKey,
           rightRelativeTimeKey,
         )
-        absoluteTime = relativeTime
-          ? absoluteTime + relativeTime
-          : undefined
+        absoluteTime = relativeTime === undefined
+          ? undefined
+          : absoluteTime + relativeTime
         index = index + 1
       }
 
