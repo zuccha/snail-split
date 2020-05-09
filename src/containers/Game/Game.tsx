@@ -15,9 +15,10 @@ import useInputs from './useInputs'
 
 const TICK_INTERVAL = 100
 
-const PADDING = 1
+const PADDING_H = 2
+const PADDING_V = 1
 
-const GAME_HEADER_TOP = PADDING
+const GAME_HEADER_TOP = PADDING_V
 const GAME_SEGMENTS_TOP = GAME_HEADER_TOP + GAME_HEADER_HEIGHT + 1
 const GAME_TIME_TOP = GAME_SEGMENTS_TOP + GAME_SEGMENTS_HEIGHT + 1
 
@@ -61,22 +62,22 @@ const Game: React.FC = () => {
     >
       <GameHeader
         space={{
-          width: windowWidth - PADDING * 2,
-          left: PADDING,
+          width: windowWidth - PADDING_H * 2,
+          left: PADDING_H,
           top: GAME_HEADER_TOP,
         }}
       />
       <GameSegments
         space={{
-          width: windowWidth - PADDING * 2,
-          left: PADDING,
+          width: windowWidth - PADDING_H * 2,
+          left: PADDING_H,
           top: GAME_SEGMENTS_TOP,
         }}
       />
       <GameTime
         space={{
-          width: windowWidth - PADDING * 2,
-          left: PADDING,
+          width: windowWidth - PADDING_H * 2,
+          left: PADDING_H,
           top: GAME_TIME_TOP,
         }} />
     </BlessedBox>

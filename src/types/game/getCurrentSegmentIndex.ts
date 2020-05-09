@@ -3,7 +3,9 @@ import IGame from './IGame'
 
 
 const getCurrentSegmentIndex = (game: IGame): number => {
-  return findLastIndex(game.segments, segment => segment.currentRelativeTime !== undefined)
+  return game.status === 'ongoing' || game.status === 'pending'
+    ? findLastIndex(game.segments, segment => segment.currentRelativeTime !== undefined)
+    : -1
 }
 
 

@@ -20,6 +20,8 @@ const dark = {
     itemEvenColorFg: colors.gray400,
     itemOddColorBg: colors.gray700,
     itemOddColorFg: colors.gray400,
+    itemCurrentColorBg: colors.blue700,
+    itemCurrentColorFg: colors.gray400,
     deltaTimeColorFgNegative: colors.green600,
     deltaTimeColorFgNeutral: colors.gray400,
     deltaTimeColorFgPositive: colors.red700,

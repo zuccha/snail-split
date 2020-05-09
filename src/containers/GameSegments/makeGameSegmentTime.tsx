@@ -1,5 +1,6 @@
 import React from 'react'
 import BlessedText from '../../components/BlessedText'
+import selectGameCurrentSegmentIndex from '../../store/game/selectors/selectGameCurrentSegmentIndex'
 import makeSelectGameSegmentTime from '../../store/game/selectors/makeSelectGameSegmentTime'
 import useSelector from '../../store/useSelector'
 import theme from '../../theme'
@@ -24,24 +25,35 @@ const makeGameSegmentTime = (
     columnDefinition.timeFrame,
   )
 
-  const style = segmentIndex % 2 === 0
-    ? {
-      bg: theme.segments.itemEvenColorBg,
-      fg: theme.segments.itemEvenColorFg,
-    }
-    : {
-      bg: theme.segments.itemOddColorBg,
-      fg: theme.segments.itemOddColorFg,
-    }
+  const colorBg = segmentIndex % 2 === 0
+    ? theme.segments.itemEvenColorBg
+    : theme.segments.itemOddColorBg
+
+  const colorFg = segmentIndex % 2 === 0
+    ? theme.segments.itemEvenColorFg
+    : theme.segments.itemOddColorFg
 
   const GameSegmentTime: React.FC<IGameSegmentTimeProps> = ({
     space = {},
   }) => {
     const time = useSelector(selectGameSegmentTime, equalEitherErrorOr)
+    const currentSegmentIndex = useSelector(selectGameCurrentSegmentIndex)
 
     if (isError(time)) {
       return null
     }
+
+    const style = segmentIndex === currentSegmentIndex
+      ? {
+        bg: theme.segments.itemCurrentColorBg,
+        fg: theme.segments.itemCurrentColorFg,
+        bold: true,
+      }
+      : {
+        bg: colorBg,
+        fg: colorFg,
+        bold: false,
+      }
 
     return (
       <BlessedText

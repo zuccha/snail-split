@@ -1,6 +1,7 @@
 import React from 'react'
 import BlessedText from '../../components/BlessedText'
 import makeSelectGameSegmentDeltaTime from '../../store/game/selectors/makeSelectGameSegmentDeltaTime'
+import selectGameCurrentSegmentIndex from '../../store/game/selectors/selectGameCurrentSegmentIndex'
 import useSelector from '../../store/useSelector'
 import theme from '../../theme'
 import { IColumnDefinitionDelta } from '../../types/column-definition'
@@ -34,6 +35,7 @@ const makeGameSegmentDeltaTime = (
     space = {},
   }) => {
     const time = useSelector(selectGameSegmentDeltaTime, equalEitherErrorOr)
+    const currentSegmentIndex = useSelector(selectGameCurrentSegmentIndex)
 
     if (isError(time)) {
       return null
@@ -45,14 +47,27 @@ const makeGameSegmentDeltaTime = (
       [time.data! > 0, () => theme.segments.deltaTimeColorFgPositive],
     ], theme.segments.deltaTimeColorFgNeutral)
 
+    const formattedTime = segmentIndex <= currentSegmentIndex
+      ? formatTime(time.data, { showPlus: true })
+      : ''
+
+    const style = segmentIndex === currentSegmentIndex
+      ? {
+        bg: theme.segments.itemCurrentColorBg,
+        fg: colorFg,
+        bold: true,
+      }
+      : {
+        bg: colorBg,
+        fg: colorFg,
+        bold: false,
+      }
+
     return (
       <BlessedText
-        content={formatTime(time.data, { showPlus: true })}
+        content={formattedTime}
         align='right'
-        style={{
-          bg: colorBg,
-          fg: colorFg,
-        }}
+        style={style}
         {...space}
       />
     )
