@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import React from 'react'
 import BlessedBox from '../../components/BlessedBox'
 import BlessedText from '../../components/BlessedText'
 import Spacer from '../../components/Spacer'

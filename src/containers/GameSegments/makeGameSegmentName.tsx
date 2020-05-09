@@ -1,8 +1,8 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
 import BlessedText from '../../components/BlessedText'
 import makeSelectGameSegmentName from '../../store/game/selectors/makeSelectGameSegmentName'
-import { isError, shallowEqualEitherErrorOrData } from '../../types/either-error-or'
+import useSelector from '../../store/useSelector'
+import { isError, equalEitherErrorOr } from '../../types/either-error-or'
 import ISpace from '../../types/space'
 
 
@@ -19,7 +19,7 @@ const makeGameSegmentName = (
   const GameSegmentName: React.FC<IGameSegmentNameProps> = ({
     space = {},
   }) => {
-    const name = useSelector(selectGameSegmentName, shallowEqualEitherErrorOrData)
+    const name = useSelector(selectGameSegmentName, equalEitherErrorOr)
 
     if (isError(name)) {
       return null

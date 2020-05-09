@@ -1,9 +1,9 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
 import BlessedText from '../../components/BlessedText'
 import makeSelectGameSegmentDeltaTime from '../../store/game/selectors/makeSelectGameSegmentDeltaTime'
+import useSelector from '../../store/useSelector'
 import { IColumnDefinitionDelta } from '../../types/column-definition'
-import { isError, shallowEqualEitherErrorOrData } from '../../types/either-error-or'
+import { isError, equalEitherErrorOr } from '../../types/either-error-or'
 import ISpace from '../../types/space'
 import { formatTime } from '../../types/time'
 
@@ -27,7 +27,7 @@ const makeGameSegmentDeltaTime = (
   const GameSegmentDeltaTime: React.FC<IGameSegmentDeltaTimeProps> = ({
     space = {},
   }) => {
-    const time = useSelector(selectGameSegmentDeltaTime, shallowEqualEitherErrorOrData)
+    const time = useSelector(selectGameSegmentDeltaTime, equalEitherErrorOr)
 
     if (isError(time)) {
       return null

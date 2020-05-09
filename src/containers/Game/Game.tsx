@@ -1,42 +1,24 @@
 import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { Box, useInput, useStdout } from 'ink'
 import BlessedBox from '../../components/BlessedBox'
 import ErrorMessage from '../../components/ErrorMessage'
 import createActionGameLoad from '../../store/game/actions/createActionGameLoad'
-import createActionGameReset from '../../store/game/actions/createActionGameReset'
-import createActionGameSplit from '../../store/game/actions/createActionGameSplit'
-import createActionGameToggle from '../../store/game/actions/createActionGameToggle'
 import createActionGameTick from '../../store/game/actions/createActionGameTick'
 import selectGameError from '../../store/game/selectors/selectGameError'
+import useDispatch from '../../store/useDispatch'
+import useSelector from '../../store/useSelector'
 import GameHeader from '../GameHeader'
 import GameSegments from '../GameSegments'
 import GameTime from '../GameTime'
+import useInput from './useInput'
 
 
-const TICK_INTERVAL = 1000
+const TICK_INTERVAL = 100
 
-const Game: React.FC<{}> = ({
-
-}) => {
-  // const { stdout } = useStdout()
+const Game: React.FC = () => {
   const dispatch = useDispatch()
   const errorMessage = useSelector(selectGameError)
 
-  // useInput((input, key) => {
-  //   if (input === 'q') {
-  //     process.exit()
-  //   }
-  //   if (input === 'r') {
-  //     dispatch(createActionGameReset())
-  //   }
-  //   if (input === ' ') {
-  //     dispatch(createActionGameToggle())
-  //   }
-  //   if (key.return) {
-  //     dispatch(createActionGameSplit())
-  //   }
-  // })
+  useInput()
 
   useEffect(() => {
     dispatch(createActionGameLoad('./examples/games/dark-souls.json'))

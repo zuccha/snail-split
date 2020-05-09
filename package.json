@@ -32,8 +32,6 @@
     "react": "^16.13.1",
     "react-blessed": "^0.6.2",
     "react-devtools-core": "^4.6.0",
-    "react-dom": "^16.13.1",
-    "react-redux": "^7.2.0",
     "redux": "^4.0.5",
     "reselect": "^4.0.0",
     "ws": "^7.2.5"

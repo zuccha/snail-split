@@ -1,9 +1,9 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
 import BlessedText from '../../components/BlessedText'
 import makeSelectGameSegmentTime from '../../store/game/selectors/makeSelectGameSegmentTime'
+import useSelector from '../../store/useSelector'
 import { IColumnDefinitionTime } from '../../types/column-definition'
-import { isError, shallowEqualEitherErrorOrData } from '../../types/either-error-or'
+import { isError, equalEitherErrorOr } from '../../types/either-error-or'
 import ISpace from '../../types/space'
 import { formatTime } from '../../types/time'
 
@@ -26,7 +26,7 @@ const makeGameSegmentTime = (
   const GameSegmentTime: React.FC<IGameSegmentTimeProps> = ({
     space = {},
   }) => {
-    const time = useSelector(selectGameSegmentTime, shallowEqualEitherErrorOrData)
+    const time = useSelector(selectGameSegmentTime, equalEitherErrorOr)
 
     if (isError(time)) {
       return null

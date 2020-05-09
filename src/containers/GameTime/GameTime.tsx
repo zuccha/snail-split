@@ -1,7 +1,7 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
 import Time from '../../components/Time'
 import selectTime from '../../store/game/selectors/selectGameTime'
+import useSelector from '../../store/useSelector'
 import { isError } from '../../types/either-error-or'
 import ISpace from '../../types/space'
 
