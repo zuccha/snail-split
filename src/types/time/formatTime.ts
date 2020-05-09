@@ -4,12 +4,13 @@ import ITime from './ITime'
 
 
 interface IFormatTimeOptions {
-  formatEmpty: string
-  formatZero: string
-  formatBelowSecond: string
-  formatBelowMinute: string
-  formatBelowHour: string
-  formatDefault: string
+  formatEmpty?: string
+  formatZero?: string
+  formatBelowSecond?: string
+  formatBelowMinute?: string
+  formatBelowHour?: string
+  formatDefault?: string
+  showPlus?: boolean
 }
 
 
@@ -20,6 +21,7 @@ const defaultOptions = {
   formatBelowMinute: 'S.mmm',
   formatBelowHour: 'M:SS.mmm',
   formatDefault: 'H:MM:SS.mmm',
+  showPlus: false,
 }
 
 const findReplaceAndFormat = (
@@ -44,6 +46,7 @@ const formatTime = (
     formatBelowMinute,
     formatBelowSecond,
     formatZero,
+    showPlus,
   } = { ...defaultOptions, ...options }
 
   if (time === undefined) {
@@ -82,9 +85,10 @@ const formatTime = (
     }],
   ], formatZero)
 
-  return time < 0
-    ? `-${formattedTime}`
-    : formattedTime
+  return when([
+    [time < 0, () => `-${formattedTime}`],
+    [time > 0 && showPlus, () => `+${formattedTime}`],
+  ], formattedTime)
 }
 
 

@@ -22,13 +22,13 @@ const dark = {
     itemOddColorFg: colors.gray400,
     deltaTimeColorFgNegative: colors.green600,
     deltaTimeColorFgNeutral: colors.gray400,
-    deltaTimeColorFgPositive: colors.red600,
+    deltaTimeColorFgPositive: colors.red700,
   },
   time: {
     colorBg: colors.gray900,
     colorFgNegative: colors.red600,
     colorFgNeutral: colors.gray400,
-    colorFgPositive: colors.green600,
+    colorFgPositive: colors.green700,
   },
 }
 

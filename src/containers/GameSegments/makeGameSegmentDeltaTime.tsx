@@ -7,6 +7,7 @@ import { IColumnDefinitionDelta } from '../../types/column-definition'
 import { isError, equalEitherErrorOr } from '../../types/either-error-or'
 import ISpace from '../../types/space'
 import { formatTime } from '../../types/time'
+import when from '../../utils/when'
 
 
 interface IGameSegmentDeltaTimeProps {
@@ -25,15 +26,9 @@ const makeGameSegmentDeltaTime = (
     columnDefinition.timeFrame,
   )
 
-  const style = segmentIndex % 2 === 0
-    ? {
-      bg: theme.segments.itemEvenColorBg,
-      fg: theme.segments.itemEvenColorFg,
-    }
-    : {
-      bg: theme.segments.itemOddColorBg,
-      fg: theme.segments.itemOddColorFg,
-    }
+  const colorBg = segmentIndex % 2 === 0
+    ? theme.segments.itemEvenColorBg
+    : theme.segments.itemOddColorBg
 
   const GameSegmentDeltaTime: React.FC<IGameSegmentDeltaTimeProps> = ({
     space = {},
@@ -44,11 +39,20 @@ const makeGameSegmentDeltaTime = (
       return null
     }
 
+    const colorFg = when([
+      [time.data === undefined, () => theme.segments.deltaTimeColorFgNeutral],
+      [time.data! < 0, () => theme.segments.deltaTimeColorFgNegative],
+      [time.data! > 0, () => theme.segments.deltaTimeColorFgPositive],
+    ], theme.segments.deltaTimeColorFgNeutral)
+
     return (
       <BlessedText
-        content={formatTime(time.data)}
+        content={formatTime(time.data, { showPlus: true })}
         align='right'
-        style={style}
+        style={{
+          bg: colorBg,
+          fg: colorFg,
+        }}
         {...space}
       />
     )
