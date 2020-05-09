@@ -13,7 +13,6 @@ interface IBigTextProps {
   space?: ISpace
 }
 
-
 const PIXEL_WIDTH = 1
 
 const BigText: React.FC<IBigTextProps> = ({
@@ -24,9 +23,14 @@ const BigText: React.FC<IBigTextProps> = ({
   space = {},
 }) => {
   const glyphsAndOffsets = useMemo(() => {
+    if (text === '') {
+      return []
+    }
+
     const glyphs = text
       .split('')
       .map(character => font.glyphs[character])
+      .map(glyph => glyph || font.missing)
       .flatMap(glyph => [glyph, font.separator])
       .slice(0, -1)
 
@@ -41,8 +45,17 @@ const BigText: React.FC<IBigTextProps> = ({
     return glyphsAndOffsets
   }, [text, font])
 
+  if (glyphsAndOffsets.length === 0) {
+    return null
+  }
+
+  const lastGlyph = glyphsAndOffsets[glyphsAndOffsets.length - 1][0]
+  const lastGlyphWidth = lastGlyph[0].length * PIXEL_WIDTH
+  const lastGlyphOffset = glyphsAndOffsets[glyphsAndOffsets.length - 1][1]
+  const containerWidth = lastGlyphOffset + lastGlyphWidth
+
   return (
-    <BlessedBox {...space}>
+    <BlessedBox {...space} width={containerWidth}>
       {glyphsAndOffsets.map(([glyph, glyphOffset], glyphIndex) => (
         <BlessedBox key={glyphIndex} left={glyphOffset}>
           {glyph.map((line, lineIndex) => (

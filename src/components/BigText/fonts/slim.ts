@@ -9,6 +9,14 @@ const separator: IFontGlyph = [
   [ 0 ],
 ]
 
+const missing: IFontGlyph = [
+  [ 1 ,  1 ,  1 ],
+  [ 1 ,  1 ,  1 ],
+  [ 1 ,  1 ,  1 ],
+  [ 1 ,  1 ,  1 ],
+  [ 1 ,  1 ,  1 ],
+]
+
 const digit0: IFontGlyph = [
   [ 1 ,  1 ,  1 ],
   [ 1 ,  0 ,  1 ],
@@ -115,8 +123,9 @@ const dash: IFontGlyph = [
 
 
 const slim: IFont = {
-  separator,
   height: 5,
+  missing,
+  separator,
   glyphs: {
     '0': digit0,
     '1': digit1,

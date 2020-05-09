@@ -4,6 +4,7 @@ type IFontGlyph = IFontGlyphPixel[][]
 
 interface IFont {
   height: number
+  missing: IFontGlyph
   separator: IFontGlyph
   glyphs: { [glyph: string]: IFontGlyph }
 }

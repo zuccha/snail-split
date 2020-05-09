@@ -1,9 +1,12 @@
 import React from 'react'
-import Time from '../../components/Time'
+import BigText from '../../components/BigText'
+import font from '../../components/BigText/fonts/slim'
+import BlessedBox from '../../components/BlessedBox'
 import selectTime from '../../store/game/selectors/selectGameTime'
 import useSelector from '../../store/useSelector'
 import { isError, equalEitherErrorOr } from '../../types/either-error-or'
 import ISpace from '../../types/space'
+import { formatTime } from '../../types/time'
 
 
 interface IGameTimeProps {
@@ -20,7 +23,17 @@ const GameTime: React.FC<IGameTimeProps> = ({
     return null
   }
 
-  return <Time time={time.data} space={space} />
+  const formattedTime = formatTime(time.data)
+
+  return (
+    <BlessedBox {...space}>
+      <BigText
+        text={formattedTime}
+        font={font}
+        space={{ right: 0 }}
+      />
+    </BlessedBox>
+  )
 }
 
 
