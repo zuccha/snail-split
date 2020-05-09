@@ -1,1 +1,1 @@
-export { default } from './GameSegments'
+export { default, GAME_SEGMENTS_HEIGHT } from './GameSegments'

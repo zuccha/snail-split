@@ -1,5 +1,5 @@
 import React from 'react'
-import Header from '../../components/Header'
+import Header, { HEADER_HEIGHT } from '../../components/Header'
 import selectTitle from '../../store/game/selectors/selectGameTitle'
 import useSelector from '../../store/useSelector'
 import { isError } from '../../types/either-error-or'
@@ -10,6 +10,8 @@ interface IGameHeaderProps {
   space?: ISpace
 }
 
+
+const GAME_HEADER_HEIGHT = HEADER_HEIGHT
 
 const GameHeader: React.FC<IGameHeaderProps> = ({
   space = {},
@@ -27,3 +29,5 @@ const GameHeader: React.FC<IGameHeaderProps> = ({
 
 
 export default GameHeader
+
+export { GAME_HEADER_HEIGHT }

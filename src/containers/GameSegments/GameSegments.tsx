@@ -1,7 +1,7 @@
 import React from 'react'
 import BlessedBox from '../../components/BlessedBox'
 import BlessedText from '../../components/BlessedText'
-import Spacer from '../../components/Spacer'
+import Spacer, { SPACER_HEIGHT } from '../../components/Spacer'
 import IColumnDefinition from '../../types/column-definition'
 import ISpace from '../../types/space'
 import range from '../../utils/range'
@@ -33,7 +33,19 @@ interface IGameSegmentsProps {
 
 
 const WINDOW_SIZE = 6
+
+const ROW_HEADER_HEIGHT = 1
+const ROW_ITEM_HEIGHT = 1
+const WINDOW_HEIGHT = WINDOW_SIZE * ROW_ITEM_HEIGHT
 const COLUMN_WIDTH = 14
+const GAME_SEGMENTS_HEIGHT = ROW_HEADER_HEIGHT
+  + SPACER_HEIGHT
+  + WINDOW_HEIGHT
+  + SPACER_HEIGHT
+
+const SPACER_1_TOP = ROW_HEADER_HEIGHT
+const WINDOW_TOP = SPACER_1_TOP + SPACER_HEIGHT
+const SPACER_2_TOP = WINDOW_TOP + WINDOW_HEIGHT
 
 const GameSegments: React.FC<IGameSegmentsProps> = ({
   space = {},
@@ -58,12 +70,12 @@ const GameSegments: React.FC<IGameSegmentsProps> = ({
         return <BlessedText key={key} content={title} {...cellSpace} align='right' />
       })}
       {/* Content */}
-      <Spacer space={{ width: space.width, top: 1 }} />
+      <Spacer space={{ width: space.width, top: SPACER_1_TOP }} />
       {range(WINDOW_SIZE).map(rowIndex => {
         const segmentIndex = rowIndex + windowOffset
         const rowSpace = {
           width: space.width,
-          top: 2 + rowIndex,
+          top: WINDOW_TOP + rowIndex * ROW_ITEM_HEIGHT,
         }
         const GameSegmentName = makeGameSegmentName(segmentIndex)
         return (
@@ -92,10 +104,12 @@ const GameSegments: React.FC<IGameSegmentsProps> = ({
           </BlessedBox>
         )})
       }
-      <Spacer space={{ width: space.width, top: WINDOW_SIZE + 2 }} />
+      <Spacer space={{ width: space.width, top: SPACER_2_TOP }} />
     </BlessedBox>
   )
 }
 
 
 export default GameSegments
+
+export { GAME_SEGMENTS_HEIGHT }

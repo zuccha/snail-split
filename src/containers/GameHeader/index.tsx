@@ -1,1 +1,1 @@
-export { default } from './GameHeader'
+export { default, GAME_HEADER_HEIGHT } from './GameHeader'

@@ -6,13 +6,16 @@ import createActionGameTick from '../../store/game/actions/createActionGameTick'
 import selectGameError from '../../store/game/selectors/selectGameError'
 import useDispatch from '../../store/useDispatch'
 import useSelector from '../../store/useSelector'
-import GameHeader from '../GameHeader'
-import GameSegments from '../GameSegments'
+import GameHeader, { GAME_HEADER_HEIGHT } from '../GameHeader'
+import GameSegments, { GAME_SEGMENTS_HEIGHT } from '../GameSegments'
 import GameTime from '../GameTime'
 import useInputs from './useInputs'
 
 
 const TICK_INTERVAL = 100
+
+const GAME_SEGMENTS_TOP = GAME_HEADER_HEIGHT
+const GAME_TIME_TOP = GAME_SEGMENTS_TOP + GAME_SEGMENTS_HEIGHT
 
 const Game: React.FC = () => {
   const dispatch = useDispatch()
@@ -49,8 +52,8 @@ const Game: React.FC = () => {
       width={windowWidth}
     >
       <GameHeader space={{ width: windowWidth }} />
-      <GameSegments space={{ width: windowWidth, height: 8, top: 3 }} />
-      <GameTime space={{ width: windowWidth, height: 1, top: 12 }} />
+      <GameSegments space={{ width: windowWidth, top: GAME_SEGMENTS_TOP }} />
+      <GameTime space={{ width: windowWidth, top: GAME_TIME_TOP }} />
     </BlessedBox>
   )
 }

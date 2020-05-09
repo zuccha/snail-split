@@ -2,13 +2,16 @@ import React from 'react'
 import ISpace from '../../types/space'
 import BlessedBox from '../BlessedBox'
 import BlessedText from '../BlessedText'
-import Spacer from '../Spacer'
+import Spacer, { SPACER_HEIGHT } from '../Spacer'
 
 
 interface IHeaderProps {
   title: string
   space?: ISpace
 }
+
+
+const HEADER_HEIGHT = SPACER_HEIGHT * 2 + 1
 
 const Header: React.FC<IHeaderProps> = ({
   title,
@@ -25,3 +28,5 @@ const Header: React.FC<IHeaderProps> = ({
 
 
 export default Header
+
+export { HEADER_HEIGHT }

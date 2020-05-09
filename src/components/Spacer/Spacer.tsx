@@ -9,6 +9,8 @@ interface ISpacerProps {
 }
 
 
+const SPACER_HEIGHT = 1
+
 const Spacer: React.FC<ISpacerProps> = ({
   separator = '-',
   space = {},
@@ -24,3 +26,5 @@ const Spacer: React.FC<ISpacerProps> = ({
 
 
 export default Spacer
+
+export { SPACER_HEIGHT }
