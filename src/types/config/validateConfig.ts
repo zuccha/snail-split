@@ -44,6 +44,7 @@ const validateConfig = (
 
     autosave: validateBoolean(inputConfig.autosave, defaultConfig.autosave),
     autosaveInterval: validateNumber(inputConfig.autosaveInterval, defaultConfig.autosaveInterval),
+    autosaveShowMessage: validateBoolean(inputConfig.autosaveShowMessage, defaultConfig.autosaveShowMessage),
 
     timeFormatDefault: validateString(inputConfig.timeFormatDefault, defaultConfig.timeFormatDefault),
     timeFormatBelowHour: validateString(inputConfig.timeFormatBelowHour, defaultConfig.timeFormatBelowHour),

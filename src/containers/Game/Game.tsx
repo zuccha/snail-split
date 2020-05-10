@@ -1,14 +1,12 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import BlessedBox from '../../components/BlessedBox'
-import useConfig from '../../store/config/hooks/useConfig'
-import createActionGameTick from '../../store/game/actions/createActionGameTick'
-import useDispatch from '../../store/useDispatch'
 import theme from '../../theme'
 import GameHeader, { GAME_HEADER_HEIGHT } from '../GameHeader'
 import GameSegments, { GAME_SEGMENTS_HEIGHT } from '../GameSegments'
 import GameSnackbar from '../GameSnackbar/GameSnackbar'
 import GameTime from '../GameTime'
 import useInputs from './useInputs'
+import useLoop from './useLoop'
 
 
 interface IGameProps {
@@ -26,24 +24,13 @@ const GAME_SNACKBAR_BOTTOM = PADDING_V
 
 
 const Game: React.FC<IGameProps> = ({ filename }) => {
-  const dispatch = useDispatch()
-  const config = useConfig()
   const [screenSize, setScreenSize] = useState({
     width: process.stdout.columns,
     height: process.stdout.rows,
   })
 
   useInputs(filename)
-
-  useEffect(() => {
-    const tickIntervalId = setInterval(() => {
-      dispatch(createActionGameTick())
-    }, 1000 / config.fps)
-
-    return () => {
-      clearInterval(tickIntervalId)
-    }
-  }, [dispatch])
+  useLoop(filename)
 
   const handleResize = useCallback(() => {
     setScreenSize({

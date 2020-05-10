@@ -6,6 +6,7 @@ interface IConfig {
 
   autosave: boolean
   autosaveInterval: number
+  autosaveShowMessage: boolean
 
   timeFormatDefault: string
   timeFormatBelowHour: string

@@ -6,6 +6,7 @@ const defaultConfig: IConfig = {
 
   autosave: true,
   autosaveInterval: 5000,
+  autosaveShowMessage: false,
 
   segmentColumnDefinitions: [
     {
