@@ -1,6 +1,7 @@
 import {
   IGame,
   defaultGame,
+  invalidatePreviousSegment,
   resetGame,
   splitGame,
   startGame,
@@ -9,6 +10,7 @@ import {
   toggleGame,
 } from '../../../types/game'
 import {
+  GAME_INVALIDATE_PREVIOUS_SEGMENT,
   GAME_LOAD,
   GAME_RESET,
   GAME_SPLIT,
@@ -25,6 +27,8 @@ const reduceGame = (
   action: IActionGame,
 ): IGame => {
   switch (action.type) {
+  case GAME_INVALIDATE_PREVIOUS_SEGMENT:
+    return invalidatePreviousSegment(game)
   case GAME_LOAD:
     return action.payload
   case GAME_RESET:

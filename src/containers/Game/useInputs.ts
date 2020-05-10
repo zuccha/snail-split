@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
-import fs from 'fs'
 import screen from '../../screen'
+import createActionGameInvalidatePreviousSegment from '../../store/game/actions/createActionGameInvalidatePreviousSegment'
 import createActionGameReset from '../../store/game/actions/createActionGameReset'
 import createActionGameSplit from '../../store/game/actions/createActionGameSplit'
 import createActionGameToggle from '../../store/game/actions/createActionGameToggle'
@@ -20,8 +20,8 @@ const useInputs = (filename: string): void => {
       process.exit(0)
     }
 
-    const hanldeToggleGame = (): void => {
-      dispatch(createActionGameToggle())
+    const handleInvalidatePreviousSegment = (): void => {
+      dispatch(createActionGameInvalidatePreviousSegment())
     }
 
     const handleResetGame = (): void => {
@@ -40,22 +40,28 @@ const useInputs = (filename: string): void => {
       dispatch(createActionGameSplit())
     }
 
+    const hanldeToggleGame = (): void => {
+      dispatch(createActionGameToggle())
+    }
+
     screen.key('escape', exit)
     screen.key('q', exit)
     screen.key('C-c', exit)
-    screen.key('space', hanldeToggleGame)
+    screen.key('backspace', handleInvalidatePreviousSegment)
     screen.key('r', handleResetGame)
     screen.key('s', handleSaveGame)
     screen.key('return', handleSplitGame)
+    screen.key('space', hanldeToggleGame)
 
     return () => {
       screen.unkey('escape', exit)
       screen.unkey('q', exit)
       screen.unkey('C-c', exit)
-      screen.unkey('space', hanldeToggleGame)
-      screen.unkey('s', handleSaveGame)
+      screen.unkey('backspace', handleInvalidatePreviousSegment)
       screen.unkey('r', handleResetGame)
+      screen.unkey('s', handleSaveGame)
       screen.unkey('return', handleSplitGame)
+      screen.unkey('space', hanldeToggleGame)
     }
   }, [dispatch])
 }

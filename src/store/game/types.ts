@@ -1,6 +1,7 @@
 import { IGame } from '../../types/game'
 
 
+const GAME_INVALIDATE_PREVIOUS_SEGMENT  = 'game/invalidate-previous-segment'
 const GAME_LOAD  = 'game/load'
 const GAME_RESET  = 'game/reset'
 const GAME_SPLIT  = 'game/split'
@@ -8,6 +9,10 @@ const GAME_START  = 'game/start'
 const GAME_STOP   = 'game/stop'
 const GAME_TICK   = 'game/tick'
 const GAME_TOGGLE = 'game/toggle'
+
+interface IActionGameInvalidatePreviousSegment {
+  type: typeof GAME_INVALIDATE_PREVIOUS_SEGMENT
+}
 
 interface IActionGameLoad {
   type: typeof GAME_LOAD
@@ -40,6 +45,7 @@ interface IActionGameToggle {
 
 type IActionGame =
   IActionGameLoad
+  | IActionGameInvalidatePreviousSegment
   | IActionGameReset
   | IActionGameSplit
   | IActionGameStart
@@ -49,6 +55,7 @@ type IActionGame =
 
 
 export {
+  GAME_INVALIDATE_PREVIOUS_SEGMENT,
   GAME_LOAD,
   GAME_RESET,
   GAME_SPLIT,
@@ -57,6 +64,7 @@ export {
   GAME_TICK,
   GAME_TOGGLE,
   IActionGame,
+  IActionGameInvalidatePreviousSegment,
   IActionGameLoad,
   IActionGameReset,
   IActionGameSplit,

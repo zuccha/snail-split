@@ -29,9 +29,17 @@ const makeComputeSegmentTime = (
 
       const previousSegment = game.segments[segmentIndex - 1]
       const currentSegment = game.segments[segmentIndex]
-      return previousSegment === undefined || currentSegment === undefined
-        ? undefined
-        : currentSegment[absoluteTimeKey]! - previousSegment[absoluteTimeKey]!
+
+      if (false
+        || previousSegment === undefined
+        || currentSegment === undefined
+        || previousSegment[absoluteTimeKey] === undefined
+        || currentSegment[absoluteTimeKey] === undefined
+      ) {
+        return undefined
+      }
+
+      return currentSegment[absoluteTimeKey]! - previousSegment[absoluteTimeKey]!
     }
   }
 
