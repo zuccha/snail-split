@@ -1,9 +1,9 @@
 import { IActionGame, GAME_LOAD } from '../types'
 
 
-const createActionGameLoad = (filename: string): IActionGame => ({
+const createActionGameLoad = (maybeGame: unknown): IActionGame => ({
   type: GAME_LOAD,
-  payload: filename,
+  payload: maybeGame,
 })
 
 

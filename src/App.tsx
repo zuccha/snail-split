@@ -3,6 +3,7 @@ import Game from './containers/Game'
 import createActionConfigLoad from './store/config/actions/createActionConfigLoad'
 import createActionGameLoad from './store/game/actions/createActionGameLoad'
 import useDispatch from './store/useDispatch'
+import readJson from './utils/readJson'
 
 
 const configFilename = './examples/configs/base.json'
@@ -15,8 +16,21 @@ const App: React.FC = () => {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    dispatch(createActionConfigLoad(configFilename))
-    dispatch(createActionGameLoad(gameFilenameInput))
+    const configJson = readJson(configFilename)
+    if (configJson.errorMessage !== undefined) {
+      console.error(`Failed to load config: ${configJson.errorMessage}.`)
+      process.exit(1)
+    }
+
+    const gameJson = readJson(gameFilenameInput)
+    if (configJson.errorMessage !== undefined) {
+      console.error(`Failed to game config: ${gameJson.errorMessage}.`)
+      process.exit(1)
+    }
+
+    dispatch(createActionConfigLoad(configJson.data))
+    dispatch(createActionGameLoad(gameJson.data))
+
     setLoading(false)
   }, [])
 

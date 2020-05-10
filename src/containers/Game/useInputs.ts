@@ -1,7 +1,6 @@
 import { useEffect } from 'react'
 import screen from '../../screen'
 import createActionGameReset from '../../store/game/actions/createActionGameReset'
-import createActionGameSave from '../../store/game/actions/createActionGameSave'
 import createActionGameSplit from '../../store/game/actions/createActionGameSplit'
 import createActionGameToggle from '../../store/game/actions/createActionGameToggle'
 import useDispatch from '../../store/useDispatch'
@@ -14,7 +13,7 @@ const useInputs = (filename: string): void => {
     const exit = (): void => { process.exit(0) }
     const toggleGame = (): void => { dispatch(createActionGameToggle()) }
     const resetGame = (): void => { dispatch(createActionGameReset()) }
-    const saveGame = (): void => { dispatch(createActionGameSave(filename)) }
+    // const saveGame = (): void => { dispatch(createActionGameSave(filename)) }
     const splitGame = (): void => { dispatch(createActionGameSplit()) }
 
     screen.key('escape', exit)
@@ -22,7 +21,7 @@ const useInputs = (filename: string): void => {
     screen.key('C-c', exit)
     screen.key('space', toggleGame)
     screen.key('r', resetGame)
-    screen.key('s', saveGame)
+    // screen.key('s', saveGame)
     screen.key('return', splitGame)
 
     return () => {
@@ -30,7 +29,7 @@ const useInputs = (filename: string): void => {
       screen.unkey('q', exit)
       screen.unkey('C-c', exit)
       screen.unkey('space', toggleGame)
-      screen.unkey('s', saveGame)
+      // screen.unkey('s', saveGame)
       screen.unkey('r', resetGame)
       screen.unkey('return', splitGame)
     }

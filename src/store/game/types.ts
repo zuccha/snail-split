@@ -1,6 +1,8 @@
+import { IGame } from '../../types/game'
+
+
 const GAME_LOAD  = 'game/load'
 const GAME_RESET  = 'game/reset'
-const GAME_SAVE  = 'game/save'
 const GAME_SPLIT  = 'game/split'
 const GAME_START  = 'game/start'
 const GAME_STOP   = 'game/stop'
@@ -9,16 +11,11 @@ const GAME_TOGGLE = 'game/toggle'
 
 interface IActionGameLoad {
   type: typeof GAME_LOAD
-  payload: string
+  payload: unknown
 }
 
 interface IActionGameReset {
   type: typeof GAME_RESET
-}
-
-interface IActionGameSave {
-  type: typeof GAME_SAVE
-  payload: string
 }
 
 interface IActionGameSplit {
@@ -44,7 +41,6 @@ interface IActionGameToggle {
 type IActionGame =
   IActionGameLoad
   | IActionGameReset
-  | IActionGameSave
   | IActionGameSplit
   | IActionGameStart
   | IActionGameStop
@@ -55,7 +51,6 @@ type IActionGame =
 export {
   GAME_LOAD,
   GAME_RESET,
-  GAME_SAVE,
   GAME_SPLIT,
   GAME_START,
   GAME_STOP,
@@ -64,7 +59,6 @@ export {
   IActionGame,
   IActionGameLoad,
   IActionGameReset,
-  IActionGameSave,
   IActionGameSplit,
   IActionGameStart,
   IActionGameStop,

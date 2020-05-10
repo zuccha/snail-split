@@ -1,9 +1,9 @@
 import { IActionConfig, CONFIG_LOAD } from '../types'
 
 
-const createActionConfigLoad = (filename: string): IActionConfig => ({
+const createActionConfigLoad = (maybeConfig: unknown): IActionConfig => ({
   type: CONFIG_LOAD,
-  payload: filename,
+  payload: maybeConfig,
 })
 
 
