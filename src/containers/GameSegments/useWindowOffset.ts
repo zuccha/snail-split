@@ -30,7 +30,7 @@ const useWindowOffset = (windowSize: number): number => {
 
     const moveWindowDown = (): void => {
       setWindowOffset(prevWindowOffset => (
-        Math.min(segmentsCount - windowSize, prevWindowOffset + 1)
+        Math.min(Math.max(0, segmentsCount - windowSize), prevWindowOffset + 1)
       ))
     }
 
