@@ -6,10 +6,12 @@ import createActionGameSplit from '../../store/game/actions/createActionGameSpli
 import createActionGameToggle from '../../store/game/actions/createActionGameToggle'
 import store from '../../store'
 import useDispatch from '../../store/useDispatch'
+import useEnqueueSnackbar from '../../store/snackbar/hooks/useEnqueueSnackbar'
 
 
 const useInputs = (filename: string): void => {
   const dispatch = useDispatch()
+  const enqueueSnackbar = useEnqueueSnackbar()
 
   useEffect(() => {
     const exit = (): void => {
@@ -29,9 +31,9 @@ const useInputs = (filename: string): void => {
         const game = store.getState().game
         const gameJson = JSON.stringify(game, null, 2)
         fs.writeFileSync(filename, gameJson)
-        // TODO: Notify success.
+        enqueueSnackbar(`Saved to file ${filename}`, 'success')
       } catch (e) {
-        // TODO: Notify failure.
+        enqueueSnackbar(`Failed to save to file ${filename}`, 'failure')
       }
     }
 

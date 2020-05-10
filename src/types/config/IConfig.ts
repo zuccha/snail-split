@@ -29,6 +29,8 @@ interface IConfig {
   segmentDeltaFormatBelowSecond: string
   segmentDeltaFormatZero: string
   segmentDeltaFormatEmpty: string
+
+  snackbarDuration: number
 }
 
 

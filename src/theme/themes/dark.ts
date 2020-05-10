@@ -32,6 +32,16 @@ const dark = {
     colorFgNeutral: colors.gray400,
     colorFgPositive: colors.green700,
   },
+  snackbar: {
+    neutralColorBg: colors.gray900,
+    neutralColorFg: colors.gray400,
+    successColorBg: colors.gray900,
+    successColorFg: colors.green600,
+    failureColorBg: colors.gray900,
+    failureColorFg: colors.red600,
+    warningColorBg: colors.gray900,
+    warningColorFg: colors.orange600,
+  },
 }
 
 

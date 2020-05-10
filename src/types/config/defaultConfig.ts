@@ -43,6 +43,8 @@ const defaultConfig: IConfig = {
   segmentDeltaFormatBelowSecond: '0.mmm',
   segmentDeltaFormatZero: '0.000',
   segmentDeltaFormatEmpty: '-',
+
+  snackbarDuration: 3000,
 }
 
 

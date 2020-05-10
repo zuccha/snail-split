@@ -67,6 +67,8 @@ const validateConfig = (
     segmentDeltaFormatBelowSecond: validateString(inputConfig.segmentDeltaFormatBelowSecond, defaultConfig.segmentDeltaFormatBelowSecond),
     segmentDeltaFormatZero: validateString(inputConfig.segmentDeltaFormatZero, defaultConfig.segmentDeltaFormatZero),
     segmentDeltaFormatEmpty: validateString(inputConfig.segmentDeltaFormatEmpty, defaultConfig.segmentDeltaFormatEmpty),
+
+    snackbarDuration: validateNumber(inputConfig.snackbarDuration, defaultConfig.snackbarDuration),
   }
 }
 
