@@ -1,8 +1,10 @@
 import { combineReducers, createStore } from 'redux'
+import reduceConfig from './config/reducer/reduceConfig'
 import reduceGame from './game/reducer/reduceGame'
 
 
 const reduceRoot = combineReducers({
+  config: reduceConfig,
   game: reduceGame,
 })
 

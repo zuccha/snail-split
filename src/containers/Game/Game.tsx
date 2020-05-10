@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import BlessedBox from '../../components/BlessedBox'
+import useConfig from '../../store/config/hooks/useConfig'
 import createActionGameTick from '../../store/game/actions/createActionGameTick'
 import useDispatch from '../../store/useDispatch'
 import theme from '../../theme'
@@ -9,8 +10,6 @@ import GameTime from '../GameTime'
 import useInputs from './useInputs'
 
 
-const TICK_INTERVAL = 100
-
 const PADDING_H = 2
 const PADDING_V = 1
 
@@ -18,16 +17,17 @@ const GAME_HEADER_TOP = PADDING_V
 const GAME_SEGMENTS_TOP = GAME_HEADER_TOP + GAME_HEADER_HEIGHT + 1
 const GAME_TIME_TOP = GAME_SEGMENTS_TOP + GAME_SEGMENTS_HEIGHT + 1
 
-const x = 1
+
 const Game: React.FC = () => {
   const dispatch = useDispatch()
+  const config = useConfig()
 
   useInputs()
 
   useEffect(() => {
     const tickIntervalId = setInterval(() => {
       dispatch(createActionGameTick())
-    }, TICK_INTERVAL)
+    }, 1000 / config.fps)
 
     return () => {
       clearInterval(tickIntervalId)

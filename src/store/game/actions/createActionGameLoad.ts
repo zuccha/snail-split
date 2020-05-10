@@ -1,10 +1,10 @@
 import { IActionGame, GAME_LOAD } from '../types'
 
 
-const createActionGameReset = (filename: string): IActionGame => ({
+const createActionGameLoad = (filename: string): IActionGame => ({
   type: GAME_LOAD,
   payload: filename,
 })
 
 
-export default createActionGameReset
+export default createActionGameLoad
