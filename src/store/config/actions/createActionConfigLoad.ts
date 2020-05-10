@@ -1,9 +1,10 @@
+import { IConfig } from '../../../types/config'
 import { IActionConfig, CONFIG_LOAD } from '../types'
 
 
-const createActionConfigLoad = (maybeConfig: unknown): IActionConfig => ({
+const createActionConfigLoad = (config: IConfig): IActionConfig => ({
   type: CONFIG_LOAD,
-  payload: maybeConfig,
+  payload: config,
 })
 
 

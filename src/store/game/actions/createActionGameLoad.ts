@@ -1,9 +1,10 @@
+import { IGame } from '../../../types/game'
 import { IActionGame, GAME_LOAD } from '../types'
 
 
-const createActionGameLoad = (maybeGame: unknown): IActionGame => ({
+const createActionGameLoad = (game: IGame): IActionGame => ({
   type: GAME_LOAD,
-  payload: maybeGame,
+  payload: game,
 })
 
 

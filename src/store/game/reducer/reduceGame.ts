@@ -7,7 +7,6 @@ import {
   stopGame,
   tickGame,
   toggleGame,
-  validateGame,
 } from '../../../types/game'
 import {
   GAME_LOAD,
@@ -27,7 +26,7 @@ const reduceGame = (
 ): IGame => {
   switch (action.type) {
   case GAME_LOAD:
-    return validateGame(action.payload)
+    return action.payload
   case GAME_RESET:
     return resetGame(game)
   case GAME_SPLIT:

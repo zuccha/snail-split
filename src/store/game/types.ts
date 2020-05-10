@@ -11,7 +11,7 @@ const GAME_TOGGLE = 'game/toggle'
 
 interface IActionGameLoad {
   type: typeof GAME_LOAD
-  payload: unknown
+  payload: IGame
 }
 
 interface IActionGameReset {

@@ -1,8 +1,11 @@
+import { IConfig } from '../../types/config'
+
+
 const CONFIG_LOAD  = 'config/load'
 
 interface IActionConfigLoad {
   type: typeof CONFIG_LOAD
-  payload: unknown
+  payload: IConfig
 }
 
 type IActionConfig = IActionConfigLoad
