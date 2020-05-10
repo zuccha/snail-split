@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import BlessedBox from '../../components/BlessedBox'
 import useConfig from '../../store/config/hooks/useConfig'
 import createActionGameTick from '../../store/game/actions/createActionGameTick'
@@ -21,6 +21,10 @@ const GAME_TIME_TOP = GAME_SEGMENTS_TOP + GAME_SEGMENTS_HEIGHT + 1
 const Game: React.FC = () => {
   const dispatch = useDispatch()
   const config = useConfig()
+  const [screenSize, setScreenSize] = useState({
+    width: process.stdout.columns,
+    height: process.stdout.rows,
+  })
 
   useInputs()
 
@@ -34,34 +38,37 @@ const Game: React.FC = () => {
     }
   }, [dispatch])
 
-  const windowWidth = process.stdout.columns
-  const windowHeight = process.stdout.rows
+  const handleResize = useCallback(() => {
+    setScreenSize({
+      width: process.stdout.columns,
+      height: process.stdout.rows,
+    })
+  }, [process])
 
   return (
     <BlessedBox
-      height={windowHeight}
-      width={windowWidth}
-      style={{
-        bg: theme.app.colorBg,
-      }}
+      height={screenSize.height}
+      width={screenSize.width}
+      style={{ bg: theme.app.colorBg }}
+      onResize={handleResize}
     >
       <GameHeader
         space={{
-          width: windowWidth - PADDING_H * 2,
+          width: screenSize.width - PADDING_H * 2,
           left: PADDING_H,
           top: GAME_HEADER_TOP,
         }}
       />
       <GameSegments
         space={{
-          width: windowWidth - PADDING_H * 2,
+          width: screenSize.width - PADDING_H * 2,
           left: PADDING_H,
           top: GAME_SEGMENTS_TOP,
         }}
       />
       <GameTime
         space={{
-          width: windowWidth - PADDING_H * 2,
+          width: screenSize.width - PADDING_H * 2,
           left: PADDING_H,
           top: GAME_TIME_TOP,
         }} />
