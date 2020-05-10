@@ -3,9 +3,9 @@ import ISegment from './ISegment'
 
 const segmentDefault: ISegment = {
   name: '',
-  currentRelativeTime: undefined,
-  pbRelativeTime: undefined,
-  wrRelativeTime: undefined,
+  currentAbsoluteTime: undefined,
+  pbAbsoluteTime: undefined,
+  wrAbsoluteTime: undefined,
   goldRelativeTime: undefined,
 }
 

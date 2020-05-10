@@ -11,45 +11,36 @@ const makeComputeSegmentTime = (
   timeCategory: ITimeCategory,
   timeFrame: ITimeFrame,
 ): ((game: IGame) => ITime) => {
-  const relativeTimeKey: (keyof ISegment) | undefined = when([
-    [timeCategory === 'current', () => 'currentRelativeTime'],
-    [timeCategory === 'pb',      () => 'pbRelativeTime'],
-    [timeCategory === 'wr',      () => 'wrRelativeTime'],
-    [timeCategory === 'gold',    () => 'goldRelativeTime'],
+  const absoluteTimeKey: (keyof ISegment) | undefined = when([
+    [timeCategory === 'current', () => 'currentAbsoluteTime'],
+    [timeCategory === 'pb',      () => 'pbAbsoluteTime'],
+    [timeCategory === 'wr',      () => 'wrAbsoluteTime'],
   ], undefined)
 
-  if (relativeTimeKey === undefined) {
+  if (absoluteTimeKey === undefined) {
     return () => undefined
   }
 
   if (timeFrame === 'relative') {
     return game => {
-      if (game.segments[segmentIndex] === undefined) {
-        return undefined
+      if (segmentIndex === 0) {
+        return game.segments[segmentIndex][absoluteTimeKey]
       }
 
-      return game.segments[segmentIndex][relativeTimeKey]
+      const previousSegment = game.segments[segmentIndex - 1]
+      const currentSegment = game.segments[segmentIndex]
+      return previousSegment === undefined || currentSegment === undefined
+        ? undefined
+        : currentSegment[absoluteTimeKey]! - previousSegment[absoluteTimeKey]!
     }
   }
 
   if (timeFrame === 'absolute') {
     return game => {
-      if (game.segments[segmentIndex] === undefined) {
-        return undefined
-      }
-
-      let absoluteTime = game.segments[segmentIndex][relativeTimeKey]
-      let index = 0
-
-      while (index < segmentIndex && absoluteTime !== undefined) {
-        const relativeTime = game.segments[index][relativeTimeKey]
-        absoluteTime = relativeTime === undefined
-          ? undefined
-          : absoluteTime + relativeTime
-        index = index + 1
-      }
-
-      return absoluteTime
+      const currentSegment = game.segments[segmentIndex]
+      return currentSegment === undefined
+        ? undefined
+        : currentSegment[absoluteTimeKey]
     }
   }
 

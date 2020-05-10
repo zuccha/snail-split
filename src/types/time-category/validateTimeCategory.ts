@@ -9,7 +9,6 @@ const validateTimeCategory = (
     maybeTimeCategory === 'current'
     || maybeTimeCategory === 'pb'
     || maybeTimeCategory === 'wr'
-    || maybeTimeCategory === 'gold'
   ) {
     return maybeTimeCategory
   }

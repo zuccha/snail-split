@@ -19,7 +19,7 @@ const stopGame = (game: IGame): IGame => {
 
     const currentSegmentIndex = findLastIndex(
       game.segments,
-      segment => segment.currentRelativeTime !== undefined,
+      segment => segment.currentAbsoluteTime !== undefined,
     )
 
     if (currentSegmentIndex === -1) {
@@ -29,7 +29,7 @@ const stopGame = (game: IGame): IGame => {
     return immer(game, gameDraft => {
       const now = Date.now()
       const elapsedTime = now - game.timerStart!
-      gameDraft.segments[currentSegmentIndex].currentRelativeTime! += elapsedTime
+      gameDraft.segments[currentSegmentIndex].currentAbsoluteTime! += elapsedTime
       gameDraft.timerStart = undefined
       gameDraft.status = 'pending'
     })

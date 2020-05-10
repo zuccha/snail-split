@@ -7,7 +7,7 @@ const resetGame = (game: IGame): IGame => {
     draftGame.status = 'initial'
     draftGame.timerStart = undefined
     draftGame.segments.forEach(segment => {
-      segment.currentRelativeTime = undefined
+      segment.currentAbsoluteTime = undefined
     })
   })
 }

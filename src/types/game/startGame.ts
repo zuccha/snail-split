@@ -9,11 +9,11 @@ const startGame = (game: IGame): IGame => {
       draftGame.status = 'ongoing'
 
       // Make sure we reset all segments.
-      draftGame.segments.forEach(segment => segment.currentRelativeTime = undefined)
+      draftGame.segments.forEach(segment => segment.currentAbsoluteTime = undefined)
 
       // Set first segment as current one.
       if (draftGame.segments.length > 0) {
-        draftGame.segments[0].currentRelativeTime = 0
+        draftGame.segments[0].currentAbsoluteTime = 0
       }
     })
   }

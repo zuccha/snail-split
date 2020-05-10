@@ -1,13 +1,18 @@
 import { createSelector } from 'reselect'
+import findLast from '../../../utils/findLast'
 import selectGame from './selectGame'
 
 
 const selectGameTime = createSelector(
   selectGame,
   game => {
-    return game.segments.reduce((acc, segment) => (
-      acc + (segment.currentRelativeTime || 0)
-    ), 0)
+    const currentSegment = findLast(
+      game.segments,
+      segment => segment.currentAbsoluteTime !== undefined,
+    )
+    return currentSegment
+      ? currentSegment.currentAbsoluteTime!
+      : 0
   },
 )
 
