@@ -8,6 +8,7 @@ import theme from '../../theme'
 import ISpace from '../../types/space'
 import { formatTime } from '../../types/time'
 import when from '../../utils/when'
+import useConfig from '../../store/config/hooks/useConfig'
 
 
 interface IGameTimeProps {
@@ -18,9 +19,17 @@ interface IGameTimeProps {
 const GameTime: React.FC<IGameTimeProps> = ({
   space = {},
 }) => {
+  const config = useConfig()
   const time = useSelector(selectTime)
 
-  const formattedTime = formatTime(time)
+  const formattedTime = formatTime(time, {
+    formatDefault: config.timeFormatDefault,
+    formatBelowHour: config.timeFormatBelowHour,
+    formatBelowMinute: config.timeFormatBelowMinute,
+    formatBelowSecond: config.timeFormatBelowSecond,
+    formatZero: config.timeFormatZero,
+    formatEmpty: config.timeFormatEmpty,
+  })
 
   const colorFg = when([
     [time < 0, () => theme.time.colorFgNegative],
