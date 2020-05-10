@@ -1,6 +1,8 @@
 import when from '../../utils/when'
 import { ISegment } from '../segment'
-import { ITime, ITimeCategory, ITimeFrame } from '../time'
+import { ITime } from '../time'
+import { ITimeCategory } from '../time-category'
+import { ITimeFrame } from '../time-frame'
 import IGame from './IGame'
 
 

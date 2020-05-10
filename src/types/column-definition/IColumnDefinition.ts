@@ -1,4 +1,5 @@
-import { ITimeCategory, ITimeFrame } from '../time'
+import { ITimeCategory } from '../time-category'
+import { ITimeFrame } from '../time-frame'
 
 
 interface IColumnDefinitionDelta {
@@ -9,11 +10,6 @@ interface IColumnDefinitionDelta {
   timeFrame: ITimeFrame
 }
 
-interface IColumnDefinitionText {
-  type: 'text'
-  title: string
-}
-
 interface IColumnDefinitionTime {
   type: 'time'
   title: string
@@ -21,16 +17,12 @@ interface IColumnDefinitionTime {
   timeFrame: ITimeFrame
 }
 
-type IColumnDefinition =
-  IColumnDefinitionDelta
-  | IColumnDefinitionText
-  | IColumnDefinitionTime
+type IColumnDefinition = IColumnDefinitionDelta | IColumnDefinitionTime
 
 
 export default IColumnDefinition
 
 export {
   IColumnDefinitionDelta,
-  IColumnDefinitionText,
   IColumnDefinitionTime,
 }

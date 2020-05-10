@@ -1,5 +1,5 @@
-import formatNumber from '../../utils/formatNumber'
 import when from '../../utils/when'
+import { formatNumber } from '../number'
 import ITime from './ITime'
 
 

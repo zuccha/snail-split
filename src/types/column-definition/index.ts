@@ -1,6 +1,7 @@
 export {
-  default,
+  default as IColumnDefinition,
   IColumnDefinitionDelta,
-  IColumnDefinitionText,
   IColumnDefinitionTime,
 } from './IColumnDefinition'
+export { default as validateColumnDefinitionDelta } from './validateColumnDefinitionDelta'
+export { default as validateColumnDefinitionTime } from './validateColumnDefinitionTime'
