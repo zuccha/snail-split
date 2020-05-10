@@ -1,5 +1,6 @@
 import React from 'react'
 import BlessedText from '../../components/BlessedText'
+import useConfig from '../../store/config/hooks/useConfig'
 import selectGameCurrentSegmentIndex from '../../store/game/selectors/selectGameCurrentSegmentIndex'
 import makeSelectGameSegmentTime from '../../store/game/selectors/makeSelectGameSegmentTime'
 import useSelector from '../../store/useSelector'
@@ -35,8 +36,18 @@ const makeGameSegmentTime = (
   const GameSegmentTime: React.FC<IGameSegmentTimeProps> = ({
     space = {},
   }) => {
+    const config = useConfig()
     const time = useSelector(selectGameSegmentTime)
     const currentSegmentIndex = useSelector(selectGameCurrentSegmentIndex)
+
+    const formattedTime = formatTime(time, {
+      formatDefault: config.segmentTimeFormatDefault,
+      formatBelowHour: config.segmentTimeFormatBelowHour,
+      formatBelowMinute: config.segmentTimeFormatBelowMinute,
+      formatBelowSecond: config.segmentTimeFormatBelowSecond,
+      formatZero: config.segmentTimeFormatZero,
+      formatEmpty: config.segmentTimeFormatEmpty,
+    })
 
     const style = segmentIndex === currentSegmentIndex
       ? {
@@ -52,7 +63,7 @@ const makeGameSegmentTime = (
 
     return (
       <BlessedText
-        content={formatTime(time)}
+        content={formattedTime}
         align='right'
         {...space}
         style={style}

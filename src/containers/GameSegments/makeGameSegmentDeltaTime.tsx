@@ -1,5 +1,6 @@
 import React from 'react'
 import BlessedText from '../../components/BlessedText'
+import useConfig from '../../store/config/hooks/useConfig'
 import makeSelectGameSegmentDeltaTime from '../../store/game/selectors/makeSelectGameSegmentDeltaTime'
 import selectGameCurrentSegmentIndex from '../../store/game/selectors/selectGameCurrentSegmentIndex'
 import useSelector from '../../store/useSelector'
@@ -33,6 +34,7 @@ const makeGameSegmentDeltaTime = (
   const GameSegmentDeltaTime: React.FC<IGameSegmentDeltaTimeProps> = ({
     space = {},
   }) => {
+    const config = useConfig()
     const time = useSelector(selectGameSegmentDeltaTime)
     const currentSegmentIndex = useSelector(selectGameCurrentSegmentIndex)
 
@@ -43,7 +45,15 @@ const makeGameSegmentDeltaTime = (
     ], theme.segments.deltaTimeColorFgNeutral)
 
     const formattedTime = segmentIndex <= currentSegmentIndex
-      ? formatTime(time, { showPlus: true })
+      ? formatTime(time, {
+        formatDefault: config.segmentDeltaFormatDefault,
+        formatBelowHour: config.segmentDeltaFormatBelowHour,
+        formatBelowMinute: config.segmentDeltaFormatBelowMinute,
+        formatBelowSecond: config.segmentDeltaFormatBelowSecond,
+        formatZero: config.segmentDeltaFormatZero,
+        formatEmpty: config.segmentDeltaFormatEmpty,
+        showPlus: true,
+      })
       : ''
 
     const style = segmentIndex === currentSegmentIndex
