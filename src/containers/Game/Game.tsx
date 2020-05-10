@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
 import BlessedBox from '../../components/BlessedBox'
-import createActionGameLoad from '../../store/game/actions/createActionGameLoad'
 import createActionGameTick from '../../store/game/actions/createActionGameTick'
 import useDispatch from '../../store/useDispatch'
 import theme from '../../theme'
@@ -26,7 +25,6 @@ const Game: React.FC = () => {
   useInputs()
 
   useEffect(() => {
-    dispatch(createActionGameLoad('./examples/games/dark-souls.json'))
     const tickIntervalId = setInterval(() => {
       dispatch(createActionGameTick())
     }, TICK_INTERVAL)
