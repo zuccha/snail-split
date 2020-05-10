@@ -2,7 +2,7 @@ import React from 'react'
 import BlessedBox from '../../components/BlessedBox'
 import BlessedText from '../../components/BlessedText'
 import theme from '../../theme'
-import { IColumnDefinition } from '../../types/column-definition'
+import useConfig from '../../store/config/hooks/useConfig'
 import ISpace from '../../types/space'
 import range from '../../utils/range'
 import makeGameSegmentDeltaTime from './makeGameSegmentDeltaTime'
@@ -10,22 +10,6 @@ import makeGameSegmentName from './makeGameSegmentName'
 import makeGameSegmentTime from './makeGameSegmentTime'
 import useWindowOffset from './useWindowOffset'
 
-
-const columnDefinitions: IColumnDefinition[] = [
-  {
-    title: 'Delta (abs.)',
-    type: 'delta',
-    leftTimeCategory: 'current',
-    rightTimeCategory: 'pb',
-    timeFrame: 'absolute',
-  },
-  {
-    title: 'PB (abs.)',
-    type: 'time',
-    timeCategory: 'pb',
-    timeFrame: 'absolute',
-  },
-]
 
 interface IGameSegmentsProps {
   space?: ISpace
@@ -47,8 +31,10 @@ const GAME_SEGMENTS_HEIGHT = WINDOW_TOP + WINDOW_HEIGHT
 const GameSegments: React.FC<IGameSegmentsProps> = ({
   space = {},
 }) => {
+  const config = useConfig()
   const windowOffset = useWindowOffset(WINDOW_SIZE)
 
+  const columnDefinitions = config.segmentColumnDefinitions
   const columnNameWidth = typeof space.width === 'number'
     ? (space.width - 2) - columnDefinitions.length * COLUMN_WIDTH
     : 0

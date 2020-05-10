@@ -10,7 +10,7 @@ import { validateColumnDefinitionDelta, validateColumnDefinitionTime, IColumnDef
 const validateColumnDefinitions = (
   maybeColumnDefinitions: unknown,
 ): IColumnDefinition[] => {
-  const columnDefinitions = validateArray(maybeColumnDefinitions, [])
+  const columnDefinitions = validateArray(maybeColumnDefinitions, defaultConfig.segmentColumnDefinitions)
     .map(maybeColumnDefinition => {
       if (!maybeColumnDefinition || typeof maybeColumnDefinition !== 'object') {
         return undefined
