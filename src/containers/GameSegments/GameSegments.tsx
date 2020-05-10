@@ -33,7 +33,7 @@ interface IGameSegmentsProps {
 }
 
 
-const WINDOW_SIZE = 6
+const WINDOW_SIZE = 10
 
 const ROW_HEADER_HEIGHT = 3
 const ROW_ITEM_HEIGHT = 1

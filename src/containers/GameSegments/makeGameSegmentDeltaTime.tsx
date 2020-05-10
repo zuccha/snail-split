@@ -5,7 +5,6 @@ import selectGameCurrentSegmentIndex from '../../store/game/selectors/selectGame
 import useSelector from '../../store/useSelector'
 import theme from '../../theme'
 import { IColumnDefinitionDelta } from '../../types/column-definition'
-import { isError, equalEitherErrorOr } from '../../types/either-error-or'
 import ISpace from '../../types/space'
 import { formatTime } from '../../types/time'
 import when from '../../utils/when'
@@ -34,21 +33,17 @@ const makeGameSegmentDeltaTime = (
   const GameSegmentDeltaTime: React.FC<IGameSegmentDeltaTimeProps> = ({
     space = {},
   }) => {
-    const time = useSelector(selectGameSegmentDeltaTime, equalEitherErrorOr)
+    const time = useSelector(selectGameSegmentDeltaTime)
     const currentSegmentIndex = useSelector(selectGameCurrentSegmentIndex)
 
-    if (isError(time)) {
-      return null
-    }
-
     const colorFg = when([
-      [time.data === undefined, () => theme.segments.deltaTimeColorFgNeutral],
-      [time.data! < 0, () => theme.segments.deltaTimeColorFgNegative],
-      [time.data! > 0, () => theme.segments.deltaTimeColorFgPositive],
+      [time === undefined, () => theme.segments.deltaTimeColorFgNeutral],
+      [time! < 0, () => theme.segments.deltaTimeColorFgNegative],
+      [time! > 0, () => theme.segments.deltaTimeColorFgPositive],
     ], theme.segments.deltaTimeColorFgNeutral)
 
     const formattedTime = segmentIndex <= currentSegmentIndex
-      ? formatTime(time.data, { showPlus: true })
+      ? formatTime(time, { showPlus: true })
       : ''
 
     const style = segmentIndex === currentSegmentIndex

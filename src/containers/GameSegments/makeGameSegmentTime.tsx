@@ -5,7 +5,6 @@ import makeSelectGameSegmentTime from '../../store/game/selectors/makeSelectGame
 import useSelector from '../../store/useSelector'
 import theme from '../../theme'
 import { IColumnDefinitionTime } from '../../types/column-definition'
-import { isError, equalEitherErrorOr } from '../../types/either-error-or'
 import ISpace from '../../types/space'
 import { formatTime } from '../../types/time'
 
@@ -36,12 +35,8 @@ const makeGameSegmentTime = (
   const GameSegmentTime: React.FC<IGameSegmentTimeProps> = ({
     space = {},
   }) => {
-    const time = useSelector(selectGameSegmentTime, equalEitherErrorOr)
+    const time = useSelector(selectGameSegmentTime)
     const currentSegmentIndex = useSelector(selectGameCurrentSegmentIndex)
-
-    if (isError(time)) {
-      return null
-    }
 
     const style = segmentIndex === currentSegmentIndex
       ? {
@@ -57,7 +52,7 @@ const makeGameSegmentTime = (
 
     return (
       <BlessedText
-        content={formatTime(time.data)}
+        content={formatTime(time)}
         align='right'
         {...space}
         style={style}

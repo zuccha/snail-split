@@ -1,9 +1,8 @@
-import { IEitherErrorOr, isError } from '../../../types/either-error-or'
-import { IGame, defaultGame } from '../../../types/game'
+import { IGame } from '../../../types/game'
 import { IStateRoot } from '../../types'
 
 
-const selectGame = (state: IStateRoot): IEitherErrorOr<IGame> => {
+const selectGame = (state: IStateRoot): IGame => {
   return state.game
 }
 

@@ -4,7 +4,6 @@ import selectGameCurrentSegmentIndex from '../../store/game/selectors/selectGame
 import makeSelectGameSegmentName from '../../store/game/selectors/makeSelectGameSegmentName'
 import useSelector from '../../store/useSelector'
 import theme from '../../theme'
-import { isError, equalEitherErrorOr } from '../../types/either-error-or'
 import ISpace from '../../types/space'
 
 
@@ -29,12 +28,8 @@ const makeGameSegmentName = (
   const GameSegmentName: React.FC<IGameSegmentNameProps> = ({
     space = {},
   }) => {
-    const name = useSelector(selectGameSegmentName, equalEitherErrorOr)
+    const name = useSelector(selectGameSegmentName)
     const currentSegmentIndex = useSelector(selectGameCurrentSegmentIndex)
-
-    if (isError(name)) {
-      return null
-    }
 
     const style = segmentIndex === currentSegmentIndex
       ? {
@@ -50,7 +45,7 @@ const makeGameSegmentName = (
 
     return (
       <BlessedText
-        content={name.data}
+        content={name}
         {...space}
         style={style}
       />

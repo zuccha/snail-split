@@ -5,7 +5,6 @@ import BlessedBox from '../../components/BlessedBox'
 import selectTime from '../../store/game/selectors/selectGameTime'
 import useSelector from '../../store/useSelector'
 import theme from '../../theme'
-import { isError, equalEitherErrorOr } from '../../types/either-error-or'
 import ISpace from '../../types/space'
 import { formatTime } from '../../types/time'
 import when from '../../utils/when'
@@ -19,17 +18,13 @@ interface IGameTimeProps {
 const GameTime: React.FC<IGameTimeProps> = ({
   space = {},
 }) => {
-  const time = useSelector(selectTime, equalEitherErrorOr)
+  const time = useSelector(selectTime)
 
-  if (isError(time)) {
-    return null
-  }
-
-  const formattedTime = formatTime(time.data)
+  const formattedTime = formatTime(time)
 
   const colorFg = when([
-    [time.data < 0, () => theme.time.colorFgNegative],
-    [time.data > 0, () => theme.time.colorFgPositive],
+    [time < 0, () => theme.time.colorFgNegative],
+    [time > 0, () => theme.time.colorFgPositive],
   ], theme.time.colorFgNeutral)
 
   return (

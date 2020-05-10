@@ -1,19 +1,21 @@
-import { IEitherErrorOr } from '../../../types/either-error-or'
 import { IGame, validateGame } from '../../../types/game'
 import readJson from '../../../utils/readJson'
 import { IActionGameLoad } from '../types'
 
 
 const reduceGameLoad = (
-  eitherErrorOrGame: IEitherErrorOr<IGame>,
+  game: IGame,
   action: IActionGameLoad,
-): IEitherErrorOr<IGame> => {
+): IGame => {
   const filename = action.payload
   const json = readJson(filename)
 
-  return json.errorMessage === undefined
-    ? { data: validateGame(json.data) }
-    : { error: `Failed to load game: ${json.errorMessage}.` }
+  if (json.errorMessage !== undefined) {
+    console.error(`Failed to load game: ${json.errorMessage}.`)
+    process.exit(1)
+  }
+
+  return validateGame(json.data)
 }
 
 

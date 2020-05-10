@@ -1,11 +1,8 @@
 import React, { useEffect } from 'react'
 import BlessedBox from '../../components/BlessedBox'
-import ErrorMessage from '../../components/ErrorMessage'
 import createActionGameLoad from '../../store/game/actions/createActionGameLoad'
 import createActionGameTick from '../../store/game/actions/createActionGameTick'
-import selectGameError from '../../store/game/selectors/selectGameError'
 import useDispatch from '../../store/useDispatch'
-import useSelector from '../../store/useSelector'
 import theme from '../../theme'
 import GameHeader, { GAME_HEADER_HEIGHT } from '../GameHeader'
 import GameSegments, { GAME_SEGMENTS_HEIGHT } from '../GameSegments'
@@ -22,10 +19,9 @@ const GAME_HEADER_TOP = PADDING_V
 const GAME_SEGMENTS_TOP = GAME_HEADER_TOP + GAME_HEADER_HEIGHT + 1
 const GAME_TIME_TOP = GAME_SEGMENTS_TOP + GAME_SEGMENTS_HEIGHT + 1
 
-
+const x = 1
 const Game: React.FC = () => {
   const dispatch = useDispatch()
-  const errorMessage = useSelector(selectGameError)
 
   useInputs()
 
@@ -42,15 +38,6 @@ const Game: React.FC = () => {
 
   const windowWidth = process.stdout.columns
   const windowHeight = process.stdout.rows
-
-  if (errorMessage !== undefined) {
-    return (
-      <ErrorMessage
-        errorMessage={errorMessage}
-        space={{ height: windowHeight, width: windowWidth }}
-      />
-    )
-  }
 
   return (
     <BlessedBox

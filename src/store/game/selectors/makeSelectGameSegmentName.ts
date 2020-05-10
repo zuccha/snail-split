@@ -1,10 +1,9 @@
 import { createSelector } from 'reselect'
-import { isError, IEitherErrorOr } from '../../../types/either-error-or'
 import { IStateRoot } from '../../types'
 import selectGame from './selectGame'
 
 
-type ISelectGameSegmentName = (state: IStateRoot) => IEitherErrorOr<string>
+type ISelectGameSegmentName = (state: IStateRoot) => string
 
 
 const makeSelectGameSegmentName = (
@@ -12,22 +11,10 @@ const makeSelectGameSegmentName = (
 ): ISelectGameSegmentName => {
   return createSelector(
     selectGame,
-    eitherErrorOrGame => {
-      if (isError(eitherErrorOrGame)) {
-        return {
-          error: 'Failed to select segment name: game does not exits',
-        }
-      }
-
-      const game = eitherErrorOrGame.data
-
-      if (game.segments[segmentIndex] === undefined) {
-        return { data: '' }
-      }
-
-      return {
-        data: game.segments[segmentIndex].name,
-      }
+    game => {
+      return game.segments[segmentIndex] === undefined
+        ? ''
+        : game.segments[segmentIndex].name
     },
   )
 }

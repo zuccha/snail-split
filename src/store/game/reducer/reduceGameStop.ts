@@ -3,14 +3,9 @@ import { IGame, stopGame } from '../../../types/game'
 
 
 const reduceGameStop = (
-  eitherErrorOrGame: IEitherErrorOr<IGame>,
-): IEitherErrorOr<IGame> => {
-  if (isError(eitherErrorOrGame)) {
-    return eitherErrorOrGame
-  }
-
-  const game = eitherErrorOrGame.data
-  return { data: stopGame(game) }
+  game: IGame,
+): IGame => {
+  return stopGame(game)
 }
 
 

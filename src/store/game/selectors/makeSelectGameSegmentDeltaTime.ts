@@ -1,12 +1,11 @@
 import { createSelector } from 'reselect'
-import { IEitherErrorOr, isError } from '../../../types/either-error-or'
 import { makeComputeSegmentDeltaTime } from '../../../types/game'
 import { ITime, ITimeCategory, ITimeFrame } from '../../../types/time'
 import { IStateRoot } from '../../types'
 import selectGame from './selectGame'
 
 
-type ISelectGameSegmentDeltaTime = (state: IStateRoot) => IEitherErrorOr<ITime>
+type ISelectGameSegmentDeltaTime = (state: IStateRoot) => ITime
 
 
 const makeSelectGameSegmentDeltaTime = (
@@ -24,18 +23,8 @@ const makeSelectGameSegmentDeltaTime = (
 
   return createSelector(
     selectGame,
-    eitherErrorOrGame => {
-      if (isError(eitherErrorOrGame)) {
-        return {
-          error: `Failed to select delta time for segment ${segmentIndex}, `
-            + `${leftTimeCategory}-${rightTimeCategory} ${timeFrame}: `
-            + 'game does not exist',
-        }
-      }
-
-      return {
-        data: selectComputeDeltaTime(eitherErrorOrGame.data),
-      }
+    game => {
+      return selectComputeDeltaTime(game)
     },
   )
 }
