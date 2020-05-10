@@ -5,6 +5,7 @@ import { IGameStatus } from '../game-status'
 
 interface IGame {
   title: string
+  category: string
   segments: ISegment[]
   timerStart: ITime
   status: IGameStatus

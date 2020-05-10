@@ -17,11 +17,12 @@ const validateGame = (
   const inputGame = maybeGame as { [key: string]: unknown }
 
   return {
-    title: validateString(inputGame.title, ''),
-    segments: validateArray(inputGame.segments, [])
+    title: validateString(inputGame.title),
+    category: validateString(inputGame.category),
+    segments: validateArray(inputGame.segments)
       .map(maybeSegment => validateSegment(maybeSegment)),
     timerStart: undefined,
-    status: validateGameStatus(inputGame.status, 'initial'),
+    status: validateGameStatus(inputGame.status),
   }
 }
 
