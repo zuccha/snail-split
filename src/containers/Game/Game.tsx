@@ -10,6 +10,11 @@ import GameTime from '../GameTime'
 import useInputs from './useInputs'
 
 
+interface IGameProps {
+  filename: string
+}
+
+
 const PADDING_H = 2
 const PADDING_V = 1
 
@@ -18,7 +23,7 @@ const GAME_SEGMENTS_TOP = GAME_HEADER_TOP + GAME_HEADER_HEIGHT + 1
 const GAME_TIME_TOP = GAME_SEGMENTS_TOP + GAME_SEGMENTS_HEIGHT + 1
 
 
-const Game: React.FC = () => {
+const Game: React.FC<IGameProps> = ({ filename }) => {
   const dispatch = useDispatch()
   const config = useConfig()
   const [screenSize, setScreenSize] = useState({
@@ -26,7 +31,7 @@ const Game: React.FC = () => {
     height: process.stdout.rows,
   })
 
-  useInputs()
+  useInputs(filename)
 
   useEffect(() => {
     const tickIntervalId = setInterval(() => {

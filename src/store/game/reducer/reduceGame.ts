@@ -2,6 +2,7 @@ import { IGame, defaultGame } from '../../../types/game'
 import {
   GAME_LOAD,
   GAME_RESET,
+  GAME_SAVE,
   GAME_SPLIT,
   GAME_START,
   GAME_STOP,
@@ -11,6 +12,7 @@ import {
 } from '../types'
 import reduceGameLoad from './reduceGameLoad'
 import reduceGameReset from './reduceGameReset'
+import reduceGameSave from './reduceGameSave'
 import reduceGameSplit from './reduceGameSplit'
 import reduceGameStart from './reduceGameStart'
 import reduceGameStop from './reduceGameStop'
@@ -27,6 +29,8 @@ const reduceGame = (
     return reduceGameLoad(game, action)
   case GAME_RESET:
     return reduceGameReset(game)
+  case GAME_SAVE:
+    return reduceGameSave(game, action)
   case GAME_SPLIT:
     return reduceGameSplit(game)
   case GAME_START:

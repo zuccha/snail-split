@@ -5,13 +5,18 @@ import createActionGameLoad from './store/game/actions/createActionGameLoad'
 import useDispatch from './store/useDispatch'
 
 
+const configFilename = './examples/configs/base.json'
+const gameFilenameInput = './examples/games/dark-souls.json'
+const gameFilenameOutput = './examples/games/dark-souls-save.json'
+
+
 const App: React.FC = () => {
   const dispatch = useDispatch()
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    dispatch(createActionConfigLoad('./examples/configs/base.json'))
-    dispatch(createActionGameLoad('./examples/games/dark-souls.json'))
+    dispatch(createActionConfigLoad(configFilename))
+    dispatch(createActionGameLoad(gameFilenameInput))
     setLoading(false)
   }, [])
 
@@ -19,7 +24,7 @@ const App: React.FC = () => {
     return null
   }
 
-  return <Game />
+  return <Game filename={gameFilenameOutput} />
 }
 
 
