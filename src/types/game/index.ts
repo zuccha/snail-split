@@ -1,5 +1,7 @@
 export { default as IGame } from './IGame'
 export { default as defaultGame } from './defaultGame'
+export { default as computeBestPossibleTime } from './computeBestPossibleTime'
+export { default as computeSumOfBests } from './computeSumOfBests'
 export { default as getCurrentSegmentIndex } from './getCurrentSegmentIndex'
 export { default as makeComputeSegmentDeltaTime } from './makeComputeSegmentDeltaTime'
 export { default as makeComputeSegmentTime } from './makeComputeSegmentTime'

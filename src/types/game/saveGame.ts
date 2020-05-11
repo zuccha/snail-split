@@ -8,7 +8,13 @@ const saveGame = (
   filename: string,
 ): IEitherErrorOr<undefined> => {
   try {
-    const gameJson = JSON.stringify(game, null, 2)
+    const gameOutput = {
+      title: game.title,
+      category: game.category,
+      segments: game.segments,
+      status: game.status === 'ongoing' ? 'pending' : game.status,
+    }
+    const gameJson = JSON.stringify(gameOutput, null, 2)
     fs.writeFileSync(filename, gameJson)
     return { data: undefined }
   } catch (e) {

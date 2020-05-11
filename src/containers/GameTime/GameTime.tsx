@@ -17,6 +17,9 @@ interface IGameTimeProps {
 }
 
 
+const GAME_TIME_HEIGHT = 5
+
+
 const GameTime: React.FC<IGameTimeProps> = ({
   space = {},
 }) => {
@@ -60,3 +63,5 @@ const GameTime: React.FC<IGameTimeProps> = ({
 
 
 export default GameTime
+
+export { GAME_TIME_HEIGHT }

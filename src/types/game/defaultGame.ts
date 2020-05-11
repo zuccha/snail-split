@@ -7,6 +7,8 @@ const defaultGame: IGame = {
   segments: [],
   timerStart: undefined,
   status: 'initial',
+  bestPossibleTime: undefined,
+  sumOfBests: undefined,
 }
 
 

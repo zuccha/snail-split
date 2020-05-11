@@ -1,18 +1,12 @@
 import immer from 'immer'
 import findLastIndex from '../../utils/findLastIndex'
 import IGame from './IGame'
+import computeBestPossibleTime from './computeBestPossibleTime'
+import computeSumOfBests from './computeSumOfBests'
 import makeComputeSegmentTime from './makeComputeSegmentTime'
 
 
 const splitGame = (game: IGame): IGame => {
-  if (game.status === 'initial') {
-    return game
-  }
-
-  if (game.status === 'pending') {
-    return game
-  }
-
   if (game.status === 'ongoing') {
     if (game.timerStart === undefined) {
       return game
@@ -48,6 +42,10 @@ const splitGame = (game: IGame): IGame => {
         currentSegmentDraft.goldRelativeTime = currentSegmentRelativeTime
       }
 
+      // Update sum of bests and best possible time.
+      draftGame.bestPossibleTime = computeBestPossibleTime(draftGame)
+      draftGame.sumOfBests = computeSumOfBests(draftGame)
+
       // Is last segment, game is over.
       if (currentSegmentIndex === draftGame.segments.length - 1) {
         draftGame.timerStart = undefined
@@ -69,10 +67,6 @@ const splitGame = (game: IGame): IGame => {
           currentSegmentDraft.currentAbsoluteTime
       }
     })
-  }
-
-  if (game.status === 'done') {
-    return game
   }
 
   return game

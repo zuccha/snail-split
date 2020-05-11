@@ -9,6 +9,8 @@ interface IGame {
   segments: ISegment[]
   timerStart: ITime
   status: IGameStatus
+  bestPossibleTime: ITime
+  sumOfBests: ITime
 }
 
 

@@ -1,10 +1,12 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useCallback, useState } from 'react'
 import BlessedBox from '../../components/BlessedBox'
 import theme from '../../theme'
+import GameBestPossibleTime, { GAME_BEST_POSSIBLE_TIME_HEIGHT } from '../GameBestPossibleTime'
 import GameHeader, { GAME_HEADER_HEIGHT } from '../GameHeader'
 import GameSegments, { GAME_SEGMENTS_HEIGHT } from '../GameSegments'
 import GameSnackbar from '../GameSnackbar/GameSnackbar'
-import GameTime from '../GameTime'
+import GameSumOfBests from '../GameSumOfBests'
+import GameTime, { GAME_TIME_HEIGHT } from '../GameTime'
 import useInputs from './useInputs'
 import useLoop from './useLoop'
 
@@ -20,6 +22,8 @@ const PADDING_V = 1
 const GAME_HEADER_TOP = PADDING_V
 const GAME_SEGMENTS_TOP = GAME_HEADER_TOP + GAME_HEADER_HEIGHT + 1
 const GAME_TIME_TOP = GAME_SEGMENTS_TOP + GAME_SEGMENTS_HEIGHT + 1
+const GAME_BEST_POSSIBLE_TIME_TOP = GAME_TIME_TOP + GAME_TIME_HEIGHT + 4
+const GAME_SUM_OF_BESTS_TOP = GAME_BEST_POSSIBLE_TIME_TOP + GAME_BEST_POSSIBLE_TIME_HEIGHT
 const GAME_SNACKBAR_BOTTOM = PADDING_V
 
 
@@ -39,6 +43,8 @@ const Game: React.FC<IGameProps> = ({ filename }) => {
     })
   }, [process])
 
+  const width = screenSize.width - PADDING_H * 2
+
   return (
     <BlessedBox
       height={screenSize.height}
@@ -48,27 +54,41 @@ const Game: React.FC<IGameProps> = ({ filename }) => {
     >
       <GameHeader
         space={{
-          width: screenSize.width - PADDING_H * 2,
+          width,
           left: PADDING_H,
           top: GAME_HEADER_TOP,
         }}
       />
       <GameSegments
         space={{
-          width: screenSize.width - PADDING_H * 2,
+          width,
           left: PADDING_H,
           top: GAME_SEGMENTS_TOP,
         }}
       />
       <GameTime
         space={{
-          width: screenSize.width - PADDING_H * 2,
+          width,
           left: PADDING_H,
           top: GAME_TIME_TOP,
         }} />
+      <GameBestPossibleTime
+        space={{
+          width,
+          left: PADDING_H,
+          top: GAME_BEST_POSSIBLE_TIME_TOP,
+        }}
+      />
+      <GameSumOfBests
+        space={{
+          width,
+          left: PADDING_H,
+          top: GAME_SUM_OF_BESTS_TOP,
+        }}
+      />
       <GameSnackbar
         space={{
-          width: screenSize.width - PADDING_H * 2,
+          width,
           left: PADDING_H,
           bottom: GAME_SNACKBAR_BOTTOM,
         }}

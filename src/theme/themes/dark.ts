@@ -4,6 +4,7 @@ import colors from '../colors'
 const dark = {
   app: {
     colorBg: colors.gray900,
+    colorFg: colors.gray400,
   },
   header: {
     titleColorBg: colors.gray900,
