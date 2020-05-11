@@ -47,6 +47,9 @@ const defaultConfig: IConfig = {
   segmentDeltaFormatEmpty: '-',
 
   snackbarDuration: 3000,
+
+  showBestPossibleTime: true,
+  showSumOfBests: true,
 }
 
 

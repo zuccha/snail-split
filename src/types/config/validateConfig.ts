@@ -83,6 +83,9 @@ const validateConfig = (
     segmentDeltaFormatEmpty: validateString(inputConfig.segmentDeltaFormatEmpty, defaultConfig.segmentDeltaFormatEmpty),
 
     snackbarDuration: validateNumber(inputConfig.snackbarDuration, defaultConfig.snackbarDuration),
+
+    showBestPossibleTime: validateBoolean(inputConfig.showBestPossibleTime, defaultConfig.showBestPossibleTime),
+    showSumOfBests: validateBoolean(inputConfig.showSumOfBests, defaultConfig.showSumOfBests),
   }
 }
 

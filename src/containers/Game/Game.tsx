@@ -1,5 +1,6 @@
 import React, { useCallback, useState } from 'react'
 import BlessedBox from '../../components/BlessedBox'
+import useConfig from '../../store/config/hooks/useConfig'
 import theme from '../../theme'
 import GameBestPossibleTime, { GAME_BEST_POSSIBLE_TIME_HEIGHT } from '../GameBestPossibleTime'
 import GameHeader, { GAME_HEADER_HEIGHT } from '../GameHeader'
@@ -22,12 +23,13 @@ const PADDING_V = 1
 const GAME_HEADER_TOP = PADDING_V
 const GAME_SEGMENTS_TOP = GAME_HEADER_TOP + GAME_HEADER_HEIGHT + 1
 const GAME_TIME_TOP = GAME_SEGMENTS_TOP + GAME_SEGMENTS_HEIGHT + 1
-const GAME_BEST_POSSIBLE_TIME_TOP = GAME_TIME_TOP + GAME_TIME_HEIGHT + 4
+const GAME_BEST_POSSIBLE_TIME_TOP = GAME_TIME_TOP + GAME_TIME_HEIGHT + 3
 const GAME_SUM_OF_BESTS_TOP = GAME_BEST_POSSIBLE_TIME_TOP + GAME_BEST_POSSIBLE_TIME_HEIGHT
 const GAME_SNACKBAR_BOTTOM = PADDING_V
 
 
 const Game: React.FC<IGameProps> = ({ filename }) => {
+  const config = useConfig()
   const [screenSize, setScreenSize] = useState({
     width: process.stdout.columns,
     height: process.stdout.rows,
@@ -72,20 +74,24 @@ const Game: React.FC<IGameProps> = ({ filename }) => {
           left: PADDING_H,
           top: GAME_TIME_TOP,
         }} />
-      <GameBestPossibleTime
-        space={{
-          width,
-          left: PADDING_H,
-          top: GAME_BEST_POSSIBLE_TIME_TOP,
-        }}
-      />
-      <GameSumOfBests
-        space={{
-          width,
-          left: PADDING_H,
-          top: GAME_SUM_OF_BESTS_TOP,
-        }}
-      />
+      {config.showBestPossibleTime && (
+        <GameBestPossibleTime
+          space={{
+            width,
+            left: PADDING_H,
+            top: GAME_BEST_POSSIBLE_TIME_TOP,
+          }}
+        />
+      )}
+      {config.showSumOfBests && (
+        <GameSumOfBests
+          space={{
+            width,
+            left: PADDING_H,
+            top: GAME_SUM_OF_BESTS_TOP,
+          }}
+        />
+      )}
       <GameSnackbar
         space={{
           width,

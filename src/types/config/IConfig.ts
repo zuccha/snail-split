@@ -33,6 +33,9 @@ interface IConfig {
   segmentDeltaFormatEmpty: string
 
   snackbarDuration: number
+
+  showBestPossibleTime: boolean
+  showSumOfBests: boolean
 }
 
 
