@@ -8,6 +8,7 @@ interface IConfig {
   autosaveInterval: number
   autosaveShowMessage: boolean
 
+  timeFont: 'slim' | 'fat'
   timeFormatDefault: string
   timeFormatBelowHour: string
   timeFormatBelowMinute: string

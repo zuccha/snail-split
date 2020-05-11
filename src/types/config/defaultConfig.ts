@@ -24,6 +24,7 @@ const defaultConfig: IConfig = {
     },
   ],
 
+  timeFont: 'slim',
   timeFormatDefault: 'H:MM:SS.mmm',
   timeFormatBelowHour: 'M:SS.mmm',
   timeFormatBelowMinute: 'S.mmm',

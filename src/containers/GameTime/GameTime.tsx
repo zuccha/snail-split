@@ -1,6 +1,7 @@
 import React from 'react'
 import BigText from '../../components/BigText'
-import font from '../../components/BigText/fonts/slim'
+import fontSlim from '../../components/BigText/fonts/fontSlim'
+import fontFat from '../../components/BigText/fonts/fontFat'
 import BlessedBox from '../../components/BlessedBox'
 import selectTime from '../../store/game/selectors/selectGameTime'
 import useSelector from '../../store/useSelector'
@@ -35,6 +36,10 @@ const GameTime: React.FC<IGameTimeProps> = ({
     [time < 0, () => theme.time.colorFgNegative],
     [time > 0, () => theme.time.colorFgPositive],
   ], theme.time.colorFgNeutral)
+
+  const font = config.timeFont === 'slim'
+    ? fontSlim
+    : fontFat
 
   return (
     <BlessedBox

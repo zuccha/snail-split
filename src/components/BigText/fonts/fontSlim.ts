@@ -122,7 +122,7 @@ const dash: IFontGlyph = [
 ]
 
 
-const slim: IFont = {
+const fontSlim: IFont = {
   height: 5,
   missing,
   separator,
@@ -144,4 +144,4 @@ const slim: IFont = {
 }
 
 
-export default slim
+export default fontSlim

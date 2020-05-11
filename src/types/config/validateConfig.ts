@@ -7,6 +7,9 @@ import { validateBoolean } from '../boolean'
 import { validateColumnDefinitionDelta, validateColumnDefinitionTime, IColumnDefinition } from '../column-definition'
 
 
+type ITimeFont = 'slim' | 'fat'
+
+
 const validateColumnDefinitions = (
   maybeColumnDefinitions: unknown,
 ): IColumnDefinition[] => {
@@ -29,6 +32,15 @@ const validateColumnDefinitions = (
   return columnDefinitions as IColumnDefinition[]
 }
 
+const validateTimeFont = (
+  maybeTimeFont: unknown,
+  defaultValue: ITimeFont = 'slim',
+): ITimeFont => {
+  return maybeTimeFont === 'slim' || maybeTimeFont === 'fat'
+    ? maybeTimeFont
+    : defaultValue
+}
+
 const validateConfig = (
   maybeConfig: unknown,
   defaultValue = defaultConfig,
@@ -46,6 +58,7 @@ const validateConfig = (
     autosaveInterval: validateNumber(inputConfig.autosaveInterval, defaultConfig.autosaveInterval),
     autosaveShowMessage: validateBoolean(inputConfig.autosaveShowMessage, defaultConfig.autosaveShowMessage),
 
+    timeFont: validateTimeFont(inputConfig.timeFont, defaultConfig.timeFont),
     timeFormatDefault: validateString(inputConfig.timeFormatDefault, defaultConfig.timeFormatDefault),
     timeFormatBelowHour: validateString(inputConfig.timeFormatBelowHour, defaultConfig.timeFormatBelowHour),
     timeFormatBelowMinute: validateString(inputConfig.timeFormatBelowMinute, defaultConfig.timeFormatBelowMinute),
