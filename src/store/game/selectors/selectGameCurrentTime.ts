@@ -3,18 +3,18 @@ import findLast from '../../../utils/findLast'
 import selectGame from './selectGame'
 
 
-const selectGameTime = createSelector(
+const selectGameCurrentTime = createSelector(
   selectGame,
   game => {
     const currentSegment = findLast(
       game.segments,
       segment => segment.currentAbsoluteTime !== undefined,
     )
-    return currentSegment
-      ? currentSegment.currentAbsoluteTime!
-      : 0
+    return currentSegment !== undefined
+      ? currentSegment.currentAbsoluteTime
+      : undefined
   },
 )
 
 
-export default selectGameTime
+export default selectGameCurrentTime

@@ -30,7 +30,7 @@ const defaultConfig: IConfig = {
   timeFormatBelowMinute: 'S.mmm',
   timeFormatBelowSecond: '0.mmm',
   timeFormatZero: '0.000',
-  timeFormatEmpty: '-',
+  timeFormatEmpty: '0.000',
 
   segmentTimeFormatDefault: 'H:MM:SS.mmm',
   segmentTimeFormatBelowHour: 'M:SS.mmm',
