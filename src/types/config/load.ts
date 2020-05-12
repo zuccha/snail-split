@@ -1,17 +1,17 @@
 import readJson from '../../utils/readJson'
 import * as EitherErrorOr from '../either-error-or'
-import IConfig from './IConfig'
-import validateConfig from './validateConfig'
+import Config from './Config'
+import validate from './validate'
 
 
-const loadConfig = (
+const load = (
   filename: string,
-): EitherErrorOr.EitherErrorOr<IConfig> => {
+): EitherErrorOr.EitherErrorOr<Config> => {
   const json = readJson(filename)
   return json.errorMessage === undefined
-    ? { data: validateConfig(json.data) }
+    ? { data: validate(json.data) }
     : { error: json.errorMessage }
 }
 
 
-export default loadConfig
+export default load

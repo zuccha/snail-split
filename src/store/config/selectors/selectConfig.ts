@@ -1,8 +1,8 @@
-import { IConfig } from '../../../types/config'
+import * as Config from '../../../types/config'
 import { IStateRoot } from '../../types'
 
 
-const selectConfig = (state: IStateRoot): IConfig => {
+const selectConfig = (state: IStateRoot): Config.Config => {
   return state.config
 }
 

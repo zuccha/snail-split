@@ -1,11 +1,11 @@
-import { IConfig, defaultConfig } from '../../../types/config'
+import * as Config from '../../../types/config'
 import { CONFIG_LOAD, IActionConfig } from '../types'
 
 
 const reduceConfig = (
-  config: IConfig = defaultConfig,
+  config: Config.Config = Config.defaultConfig,
   action: IActionConfig,
-): IConfig => {
+): Config.Config => {
   switch (action.type) {
   case CONFIG_LOAD:
     return action.payload

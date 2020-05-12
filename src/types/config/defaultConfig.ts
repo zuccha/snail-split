@@ -1,7 +1,7 @@
-import IConfig from './IConfig'
+import Config from './Config'
 
 
-const defaultConfig: IConfig = {
+const defaultConfig: Config = {
   fps: 30,
 
   autosave: true,

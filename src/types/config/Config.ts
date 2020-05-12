@@ -1,7 +1,7 @@
 import { IColumnDefinition } from '../column-definition'
 
 
-interface IConfig {
+interface Config {
   fps: number
 
   autosave: boolean
@@ -39,4 +39,4 @@ interface IConfig {
 }
 
 
-export default IConfig
+export default Config

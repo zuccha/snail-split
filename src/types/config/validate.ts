@@ -1,7 +1,7 @@
 import { validateArray } from '../array'
 import * as Integer from '../integer'
 import { validateString } from '../string'
-import IConfig from './IConfig'
+import Config from './Config'
 import defaultConfig from './defaultConfig'
 import { validateBoolean } from '../boolean'
 import { validateColumnDefinitionDelta, validateColumnDefinitionTime, IColumnDefinition } from '../column-definition'
@@ -41,10 +41,10 @@ const validateTimeFont = (
     : defaultValue
 }
 
-const validateConfig = (
+const validate = (
   maybeConfig: unknown,
   defaultValue = defaultConfig,
-): IConfig => {
+): Config => {
   if (typeof maybeConfig !== 'object' || maybeConfig === null) {
     return defaultValue
   }
@@ -90,4 +90,4 @@ const validateConfig = (
 }
 
 
-export default validateConfig
+export default validate

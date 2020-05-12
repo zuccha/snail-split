@@ -4,7 +4,7 @@ import createActionConfigLoad from './store/config/actions/createActionConfigLoa
 import createActionGameLoad from './store/game/actions/createActionGameLoad'
 import useDispatch from './store/useDispatch'
 import * as EitherErrorOr from './types/either-error-or'
-import { loadConfig } from './types/config'
+import * as Config from './types/config'
 import * as Game from './types/game'
 
 
@@ -18,7 +18,7 @@ const App: React.FC = () => {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    const eitherErrorOrConfig = loadConfig(configFilename)
+    const eitherErrorOrConfig = Config.load(configFilename)
     if (EitherErrorOr.isError(eitherErrorOrConfig)) {
       console.error(`Failed to load config: ${eitherErrorOrConfig.error}.`)
       process.exit(1)

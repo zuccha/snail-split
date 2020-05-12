@@ -1,11 +1,11 @@
-import { IConfig } from '../../types/config'
+import * as Config from '../../types/config'
 
 
 const CONFIG_LOAD  = 'config/load'
 
 interface IActionConfigLoad {
   type: typeof CONFIG_LOAD
-  payload: IConfig
+  payload: Config.Config
 }
 
 type IActionConfig = IActionConfigLoad

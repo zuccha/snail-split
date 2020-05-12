@@ -1,4 +1,4 @@
-export { default as IConfig } from './IConfig'
+export { default as Config } from './Config'
 export { default as defaultConfig } from './defaultConfig'
-export { default as loadConfig } from './loadConfig'
-export { default as validateConfig } from './validateConfig'
+export { default as load } from './load'
+export { default as validate } from './validate'
