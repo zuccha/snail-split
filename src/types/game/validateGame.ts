@@ -1,5 +1,5 @@
 import { validateArray } from '../array'
-import { validateGameStatus } from '../game-status'
+import * as GameStatus from '../game-status'
 import * as Segment from '../segment'
 import { validateString } from '../string'
 import * as Time from '../time'
@@ -23,7 +23,7 @@ const validateGame = (
     segments: validateArray(inputGame.segments)
       .map(maybeSegment => Segment.validate(maybeSegment)),
     timerStart: undefined,
-    status: validateGameStatus(inputGame.status),
+    status: GameStatus.validate(inputGame.status),
     bestPossibleTime: Time.validate(inputGame.bestPossibleTime),
     sumOfBests: Time.validate(inputGame.sumOfBests),
   }

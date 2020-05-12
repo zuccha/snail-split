@@ -1,10 +1,10 @@
-import IGameStatus from './IGameStatus'
+import GameStatus from './GameStatus'
 
 
-const validateGameStatus = (
+const validate = (
   maybeGameStatus: unknown,
-  defaultValue: IGameStatus = 'initial',
-): IGameStatus => {
+  defaultValue: GameStatus = 'initial',
+): GameStatus => {
   if (
     maybeGameStatus === 'initial' ||
     maybeGameStatus === 'pending' ||
@@ -18,4 +18,4 @@ const validateGameStatus = (
 }
 
 
-export default validateGameStatus
+export default validate

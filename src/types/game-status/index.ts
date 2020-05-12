@@ -1,2 +1,2 @@
-export { default as IGameStatus } from './IGameStatus'
-export { default as validateGameStatus } from './validateGameStatus'
+export { default as GameStatus } from './GameStatus'
+export { default as validate } from './validate'
