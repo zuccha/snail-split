@@ -3,11 +3,11 @@ import BlessedBox from '../../components/BlessedBox'
 import useConfig from '../../store/config/hooks/useConfig'
 import theme from '../../theme'
 import GameBestPossibleTime, { GAME_BEST_POSSIBLE_TIME_HEIGHT } from '../GameBestPossibleTime'
+import GameCurrentTime, { GAME_CURRENT_TIME_HEIGHT } from '../GameCurrentTime'
 import GameHeader, { GAME_HEADER_HEIGHT } from '../GameHeader'
 import GameSegments, { GAME_SEGMENTS_HEIGHT } from '../GameSegments'
 import GameSnackbar from '../GameSnackbar/GameSnackbar'
 import GameSumOfBests from '../GameSumOfBests'
-import GameTime, { GAME_TIME_HEIGHT } from '../GameTime'
 import useInputs from './useInputs'
 import useLoop from './useLoop'
 
@@ -22,8 +22,8 @@ const PADDING_V = 1
 
 const GAME_HEADER_TOP = PADDING_V
 const GAME_SEGMENTS_TOP = GAME_HEADER_TOP + GAME_HEADER_HEIGHT + 1
-const GAME_TIME_TOP = GAME_SEGMENTS_TOP + GAME_SEGMENTS_HEIGHT + 1
-const GAME_BEST_POSSIBLE_TIME_TOP = GAME_TIME_TOP + GAME_TIME_HEIGHT + 3
+const GAME_CURRENT_TIME_TOP = GAME_SEGMENTS_TOP + GAME_SEGMENTS_HEIGHT + 1
+const GAME_BEST_POSSIBLE_TIME_TOP = GAME_CURRENT_TIME_TOP + GAME_CURRENT_TIME_HEIGHT + 3
 const GAME_SUM_OF_BESTS_TOP = GAME_BEST_POSSIBLE_TIME_TOP + GAME_BEST_POSSIBLE_TIME_HEIGHT
 const GAME_SNACKBAR_BOTTOM = PADDING_V
 
@@ -68,11 +68,11 @@ const Game: React.FC<IGameProps> = ({ filename }) => {
           top: GAME_SEGMENTS_TOP,
         }}
       />
-      <GameTime
+      <GameCurrentTime
         space={{
           width,
           left: PADDING_H,
-          top: GAME_TIME_TOP,
+          top: GAME_CURRENT_TIME_TOP,
         }} />
       {config.showBestPossibleTime && (
         <GameBestPossibleTime

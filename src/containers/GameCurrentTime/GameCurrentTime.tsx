@@ -14,15 +14,15 @@ import when from '../../utils/when'
 import useConfig from '../../store/config/hooks/useConfig'
 
 
-interface IGameTimeProps {
+interface IGameCurrentTimeProps {
   space?: Space.Space
 }
 
 
-const GAME_TIME_HEIGHT = 5
+const GAME_CURRENT_TIME_HEIGHT = 5 // Font size height.
 
 
-const GameTime: React.FC<IGameTimeProps> = ({
+const GameCurrentTime: React.FC<IGameCurrentTimeProps> = ({
   space = {},
 }) => {
   const config = useConfig()
@@ -69,6 +69,6 @@ const GameTime: React.FC<IGameTimeProps> = ({
 }
 
 
-export default GameTime
+export default GameCurrentTime
 
-export { GAME_TIME_HEIGHT }
+export { GAME_CURRENT_TIME_HEIGHT }
