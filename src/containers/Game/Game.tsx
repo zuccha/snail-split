@@ -6,8 +6,8 @@ import GameBestPossibleTime, { GAME_BEST_POSSIBLE_TIME_HEIGHT } from '../GameBes
 import GameCurrentTime, { GAME_CURRENT_TIME_HEIGHT } from '../GameCurrentTime'
 import GameHeader, { GAME_HEADER_HEIGHT } from '../GameHeader'
 import GameSegments, { GAME_SEGMENTS_HEIGHT } from '../GameSegments'
-import GameSnackbar from '../GameSnackbar/GameSnackbar'
 import GameSumOfBests from '../GameSumOfBests'
+import Snackbar from '../Snackbar'
 import useInputs from './useInputs'
 import useLoop from './useLoop'
 
@@ -25,7 +25,7 @@ const GAME_SEGMENTS_TOP = GAME_HEADER_TOP + GAME_HEADER_HEIGHT + 1
 const GAME_CURRENT_TIME_TOP = GAME_SEGMENTS_TOP + GAME_SEGMENTS_HEIGHT + 1
 const GAME_BEST_POSSIBLE_TIME_TOP = GAME_CURRENT_TIME_TOP + GAME_CURRENT_TIME_HEIGHT + 3
 const GAME_SUM_OF_BESTS_TOP = GAME_BEST_POSSIBLE_TIME_TOP + GAME_BEST_POSSIBLE_TIME_HEIGHT
-const GAME_SNACKBAR_BOTTOM = PADDING_V
+const SNACKBAR_BOTTOM = PADDING_V
 
 
 const Game: React.FC<IGameProps> = ({ filename }) => {
@@ -92,11 +92,11 @@ const Game: React.FC<IGameProps> = ({ filename }) => {
           }}
         />
       )}
-      <GameSnackbar
+      <Snackbar
         space={{
           width,
           left: PADDING_H,
-          bottom: GAME_SNACKBAR_BOTTOM,
+          bottom: SNACKBAR_BOTTOM,
         }}
       />
     </BlessedBox>

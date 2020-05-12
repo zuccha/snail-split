@@ -11,15 +11,15 @@ interface IStyle {
   fg?: string
 }
 
-interface IGameSnackbarProps {
+interface ISnackbarProps {
   space?: Space.Space
 }
 
 
-const GAME_SNACKBAR_HEIGHT = 1
+const SNACKBAR_HEIGHT = 1
 
 
-const GameSnackbar: React.FC<IGameSnackbarProps> = ({
+const Snackbar: React.FC<ISnackbarProps> = ({
   space = {},
 }) => {
   const snackbar = useSnackbar()
@@ -53,6 +53,6 @@ const GameSnackbar: React.FC<IGameSnackbarProps> = ({
 }
 
 
-export default GameSnackbar
+export default Snackbar
 
-export { GAME_SNACKBAR_HEIGHT }
+export { SNACKBAR_HEIGHT }
