@@ -1,10 +1,10 @@
-import findLastIndex from '../../utils/findLastIndex'
+import * as A from '../array'
 import Game from './Game'
 
 
 const getCurrentSegmentIndex = (game: Game): number => {
   return game.status === 'ongoing' || game.status === 'pending'
-    ? findLastIndex(game.segments, segment => segment.currentAbsoluteTime !== undefined)
+    ? A.findLastIndex(game.segments, segment => segment.currentAbsoluteTime !== undefined)
     : -1
 }
 

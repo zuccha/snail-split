@@ -1,2 +1,3 @@
-export { default as equalArrays } from './equalArrays'
-export { default as validateArray } from './validateArray'
+export { default as findLast } from './findLast'
+export { default as findLastIndex } from './findLastIndex'
+export { default as validate } from './validate'

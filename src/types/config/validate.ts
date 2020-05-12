@@ -1,4 +1,4 @@
-import { validateArray } from '../array'
+import * as A from '../array'
 import * as Integer from '../integer'
 import * as S from '../string'
 import Config from './Config'
@@ -13,7 +13,7 @@ type ITimeFont = 'slim' | 'fat'
 const validateColumnDefinitions = (
   maybeColumnDefinitions: unknown,
 ): ColumnDefinition.ColumnDefinition[] => {
-  const columnDefinitions = validateArray(maybeColumnDefinitions, defaultConfig.segmentColumnDefinitions)
+  const columnDefinitions = A.validate(maybeColumnDefinitions, defaultConfig.segmentColumnDefinitions)
     .map(maybeColumnDefinition => {
       if (!maybeColumnDefinition || typeof maybeColumnDefinition !== 'object') {
         return undefined

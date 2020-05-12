@@ -1,11 +1,11 @@
 import immer from 'immer'
 import Game from './Game'
-import findLastIndex from '../../utils/findLastIndex'
+import * as A from '../array'
 
 
 const invalidatePreviousSegment = (game: Game): Game => {
   if (game.status === 'pending' || game.status === 'ongoing') {
-    const currentSegmentIndex = findLastIndex(
+    const currentSegmentIndex = A.findLastIndex(
       game.segments,
       segment => segment.currentAbsoluteTime !== undefined,
     )

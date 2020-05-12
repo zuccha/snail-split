@@ -1,4 +1,4 @@
-const validateArray = (
+const validate = (
   maybeArray: unknown,
   defaultValue: unknown[] = [],
 ): unknown[] => {
@@ -10,4 +10,4 @@ const validateArray = (
 }
 
 
-export default validateArray
+export default validate

@@ -1,10 +1,10 @@
 import * as Time from '../time'
 import Game from './Game'
-import findLastIndex from '../../utils/findLastIndex'
+import * as A from '../array'
 
 
 const computeBestPossibleTime = (game: Game): Time.Time => {
-  const currentSegmentIndex = findLastIndex(
+  const currentSegmentIndex = A.findLastIndex(
     game.segments,
     segment => segment.currentAbsoluteTime !== undefined,
   )

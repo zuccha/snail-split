@@ -1,12 +1,12 @@
 import { createSelector } from 'reselect'
-import findLast from '../../../utils/findLast'
+import * as A from '../../../types/array'
 import selectGame from './selectGame'
 
 
 const selectGameCurrentTime = createSelector(
   selectGame,
   game => {
-    const currentSegment = findLast(
+    const currentSegment = A.findLast(
       game.segments,
       segment => segment.currentAbsoluteTime !== undefined,
     )

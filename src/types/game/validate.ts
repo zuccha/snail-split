@@ -1,4 +1,4 @@
-import { validateArray } from '../array'
+import * as A from '../array'
 import * as GameStatus from '../game-status'
 import * as Segment from '../segment'
 import * as S from '../string'
@@ -20,7 +20,7 @@ const validate = (
   return {
     title: S.validate(inputGame.title),
     category: S.validate(inputGame.category),
-    segments: validateArray(inputGame.segments)
+    segments: A.validate(inputGame.segments)
       .map(maybeSegment => Segment.validate(maybeSegment)),
     timerStart: undefined,
     status: GameStatus.validate(inputGame.status),

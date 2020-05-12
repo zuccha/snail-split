@@ -1,5 +1,5 @@
 import immer from 'immer'
-import findLastIndex from '../../utils/findLastIndex'
+import * as A from '../array'
 import Game from './Game'
 
 
@@ -17,7 +17,7 @@ const tick = (game: Game): Game => {
       return game
     }
 
-    const currentSegmentIndex = findLastIndex(
+    const currentSegmentIndex = A.findLastIndex(
       game.segments,
       segment => segment.currentAbsoluteTime !== undefined,
     )
