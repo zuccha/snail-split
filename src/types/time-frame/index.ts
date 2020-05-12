@@ -1,2 +1,2 @@
-export { default as ITimeFrame } from './ITimeFrame'
-export { default as validateTimeFrame } from './validateTimeFrame'
+export { default as TimeFrame } from './TimeFrame'
+export { default as validate } from './validate'

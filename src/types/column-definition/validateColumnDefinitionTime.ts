@@ -1,6 +1,6 @@
 import { validateString } from '../string'
-import { validateTimeCategory } from '../time-category'
-import { validateTimeFrame } from '../time-frame'
+import * as TimeCategory from '../time-category'
+import * as TimeFrame from '../time-frame'
 import { IColumnDefinitionTime } from './IColumnDefinition'
 import defaultColumnDefinitionTime from './defaultColumnDefinitionTime'
 
@@ -21,11 +21,11 @@ const validateColumnDefinitionTime = (
       maybeColumnDefinitionRecord.title,
       defaultValue.title,
     ),
-    timeCategory: validateTimeCategory(
+    timeCategory: TimeCategory.validate(
       maybeColumnDefinitionRecord.timeCategory,
       defaultValue.timeCategory,
     ),
-    timeFrame: validateTimeFrame(
+    timeFrame: TimeFrame.validate(
       maybeColumnDefinitionRecord.timeFrame,
       defaultValue.timeFrame,
     ),

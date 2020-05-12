@@ -1,15 +1,15 @@
 import when from '../../utils/when'
 import { ISegment } from '../segment'
 import * as Time from '../time'
-import { ITimeCategory } from '../time-category'
-import { ITimeFrame } from '../time-frame'
+import * as TimeCategory from '../time-category'
+import * as TimeFrame from '../time-frame'
 import IGame from './IGame'
 
 
 const makeComputeSegmentTime = (
   segmentIndex: number,
-  timeCategory: ITimeCategory,
-  timeFrame: ITimeFrame,
+  timeCategory: TimeCategory.TimeCategory,
+  timeFrame: TimeFrame.TimeFrame,
 ): ((game: IGame) => Time.Time) => {
   const absoluteTimeKey: (keyof ISegment) | undefined = when([
     [timeCategory === 'current', () => 'currentAbsoluteTime'],

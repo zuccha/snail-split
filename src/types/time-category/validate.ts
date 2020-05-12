@@ -1,10 +1,10 @@
-import ITimeCategory from './ITimeCategory'
+import TimeCategory from './TimeCategory'
 
 
-const validateTimeCategory = (
+const validate = (
   maybeTimeCategory: unknown,
-  defaultValue: ITimeCategory,
-): ITimeCategory => {
+  defaultValue: TimeCategory,
+): TimeCategory => {
   if (
     maybeTimeCategory === 'current'
     || maybeTimeCategory === 'pb'
@@ -17,4 +17,4 @@ const validateTimeCategory = (
 }
 
 
-export default validateTimeCategory
+export default validate

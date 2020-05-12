@@ -1,6 +1,6 @@
 import { validateString } from '../string'
-import { validateTimeCategory } from '../time-category'
-import { validateTimeFrame } from '../time-frame'
+import * as TimeCategory from '../time-category'
+import * as TimeFrame from '../time-frame'
 import { IColumnDefinitionDelta } from './IColumnDefinition'
 import defaultColumnDefinitionDelta from './defaultColumnDefinitionDelta'
 
@@ -21,15 +21,15 @@ const validateColumnDefinitionDelta = (
       maybeColumnDefinitionRecord.title,
       defaultValue.title,
     ),
-    leftTimeCategory: validateTimeCategory(
+    leftTimeCategory: TimeCategory.validate(
       maybeColumnDefinitionRecord.leftTimeCategory,
       defaultValue.leftTimeCategory,
     ),
-    rightTimeCategory: validateTimeCategory(
+    rightTimeCategory: TimeCategory.validate(
       maybeColumnDefinitionRecord.rightTimeCategory,
       defaultValue.rightTimeCategory,
     ),
-    timeFrame: validateTimeFrame(
+    timeFrame: TimeFrame.validate(
       maybeColumnDefinitionRecord.timeFrame,
       defaultValue.timeFrame,
     ),

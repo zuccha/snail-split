@@ -1,20 +1,20 @@
-import { ITimeCategory } from '../time-category'
-import { ITimeFrame } from '../time-frame'
+import * as TimeCategory from '../time-category'
+import * as TimeFrame from '../time-frame'
 
 
 interface IColumnDefinitionDelta {
   type: 'delta'
   title: string
-  leftTimeCategory: ITimeCategory
-  rightTimeCategory: ITimeCategory
-  timeFrame: ITimeFrame
+  leftTimeCategory: TimeCategory.TimeCategory
+  rightTimeCategory: TimeCategory.TimeCategory
+  timeFrame: TimeFrame.TimeFrame
 }
 
 interface IColumnDefinitionTime {
   type: 'time'
   title: string
-  timeCategory: ITimeCategory
-  timeFrame: ITimeFrame
+  timeCategory: TimeCategory.TimeCategory
+  timeFrame: TimeFrame.TimeFrame
 }
 
 type IColumnDefinition = IColumnDefinitionDelta | IColumnDefinitionTime
