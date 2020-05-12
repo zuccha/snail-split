@@ -1,7 +1,7 @@
-import ISnackbar from './ISnackbar'
+import Snackbar from './Snackbar'
 
 
-const defaultSnackbar: ISnackbar = {
+const defaultSnackbar: Snackbar = {
   message: '',
   variant: 'neutral',
 }

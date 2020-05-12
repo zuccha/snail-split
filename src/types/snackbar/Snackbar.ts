@@ -1,10 +1,10 @@
 import * as SnackbarVariant from '../snackbar-variant'
 
 
-interface ISnackbar {
+interface Snackbar {
   message: string
   variant: SnackbarVariant.SnackbarVariant
 }
 
 
-export default ISnackbar
+export default Snackbar

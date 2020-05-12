@@ -1,8 +1,8 @@
-import { ISnackbar } from '../../../types/snackbar'
+import * as Snackbar from '../../../types/snackbar'
 import { IStateRoot } from '../../types'
 
 
-const selectSnackbar = (state: IStateRoot): ISnackbar => {
+const selectSnackbar = (state: IStateRoot): Snackbar.Snackbar => {
   return state.snackbar
 }
 

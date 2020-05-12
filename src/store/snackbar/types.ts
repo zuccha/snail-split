@@ -1,4 +1,4 @@
-import { ISnackbar } from '../../types/snackbar'
+import * as Snackbar from '../../types/snackbar'
 
 
 const SNACKBAR_CLEAR = 'snackbar/clear'
@@ -10,7 +10,7 @@ interface IActionSnackbarClear {
 
 interface IActionSnackbarWrite {
   type: typeof SNACKBAR_WRITE
-  payload: ISnackbar
+  payload: Snackbar.Snackbar
 }
 
 type IActionSnackbar = IActionSnackbarClear | IActionSnackbarWrite
