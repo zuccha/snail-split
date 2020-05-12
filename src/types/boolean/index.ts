@@ -1,1 +1,1 @@
-export { default as validateBoolean } from './validateBoolean'
+export { default as validate } from './validate'

@@ -3,7 +3,7 @@ import * as Integer from '../integer'
 import * as S from '../string'
 import Config from './Config'
 import defaultConfig from './defaultConfig'
-import { validateBoolean } from '../boolean'
+import * as B from '../boolean'
 import * as ColumnDefinition from '../column-definition'
 
 
@@ -54,9 +54,9 @@ const validate = (
   return {
     fps: Integer.validate(inputConfig.fps, defaultConfig.fps),
 
-    autosave: validateBoolean(inputConfig.autosave, defaultConfig.autosave),
+    autosave: B.validate(inputConfig.autosave, defaultConfig.autosave),
     autosaveInterval: Integer.validate(inputConfig.autosaveInterval, defaultConfig.autosaveInterval),
-    autosaveShowMessage: validateBoolean(inputConfig.autosaveShowMessage, defaultConfig.autosaveShowMessage),
+    autosaveShowMessage: B.validate(inputConfig.autosaveShowMessage, defaultConfig.autosaveShowMessage),
 
     timeFont: validateTimeFont(inputConfig.timeFont, defaultConfig.timeFont),
     timeFormatDefault: S.validate(inputConfig.timeFormatDefault, defaultConfig.timeFormatDefault),
@@ -84,8 +84,8 @@ const validate = (
 
     snackbarDuration: Integer.validate(inputConfig.snackbarDuration, defaultConfig.snackbarDuration),
 
-    showBestPossibleTime: validateBoolean(inputConfig.showBestPossibleTime, defaultConfig.showBestPossibleTime),
-    showSumOfBests: validateBoolean(inputConfig.showSumOfBests, defaultConfig.showSumOfBests),
+    showBestPossibleTime: B.validate(inputConfig.showBestPossibleTime, defaultConfig.showBestPossibleTime),
+    showSumOfBests: B.validate(inputConfig.showSumOfBests, defaultConfig.showSumOfBests),
   }
 }
 

@@ -1,4 +1,4 @@
-const validateBoolean = (
+const validate = (
   maybeBoolean: unknown,
   defaultValue = false,
 ): boolean => {
@@ -8,4 +8,4 @@ const validateBoolean = (
 }
 
 
-export default validateBoolean
+export default validate
