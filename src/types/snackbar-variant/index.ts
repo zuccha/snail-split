@@ -1,1 +1,1 @@
-export { default as ISnackbarVariant } from './ISnackbarVariant'
+export { default as SnackbarVariant } from './SnackbarVariant'

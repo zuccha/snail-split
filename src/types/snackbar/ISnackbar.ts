@@ -1,9 +1,9 @@
-import { ISnackbarVariant } from '../snackbar-variant'
+import * as SnackbarVariant from '../snackbar-variant'
 
 
 interface ISnackbar {
   message: string
-  variant: ISnackbarVariant
+  variant: SnackbarVariant.SnackbarVariant
 }
 
 

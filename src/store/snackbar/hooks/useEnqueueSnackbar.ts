@@ -1,12 +1,12 @@
 import { useCallback } from 'react'
-import { ISnackbarVariant } from '../../../types/snackbar-variant'
+import * as SnackbarVariant from '../../../types/snackbar-variant'
 import useDispatch from '../../useDispatch'
 import createActionSnackbarWrite from '../actions/createActionSnackbarWrite'
 import createActionSnackbarClear from '../actions/createActionSnackbarClear'
 import useConfig from '../../config/hooks/useConfig'
 
 
-type IEnqueueSnackbar = (message: string, variant: ISnackbarVariant) => void
+type IEnqueueSnackbar = (message: string, variant: SnackbarVariant.SnackbarVariant) => void
 
 
 let timeoutId: NodeJS.Timeout
@@ -15,7 +15,10 @@ const useEnqueueSnackbar = (): IEnqueueSnackbar => {
   const config = useConfig()
   const dispatch = useDispatch()
 
-  const enqueueSnackbar = useCallback((message: string, variant: ISnackbarVariant) => {
+  const enqueueSnackbar = useCallback((
+    message: string,
+    variant: SnackbarVariant.SnackbarVariant,
+  ) => {
     // Enqueue message
     dispatch(createActionSnackbarWrite({ message, variant }))
 
