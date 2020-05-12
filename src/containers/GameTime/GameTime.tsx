@@ -8,14 +8,14 @@ import selectGameCurrentTime from '../../store/game/selectors/selectGameCurrentT
 import selectGameStatus from '../../store/game/selectors/selectGameStatus'
 import useSelector from '../../store/useSelector'
 import theme from '../../theme'
-import ISpace from '../../types/space'
+import * as Space from '../../types/space'
 import * as Time from '../../types/time'
 import when from '../../utils/when'
 import useConfig from '../../store/config/hooks/useConfig'
 
 
 interface IGameTimeProps {
-  space?: ISpace
+  space?: Space.Space
 }
 
 

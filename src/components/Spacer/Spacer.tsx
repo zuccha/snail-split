@@ -1,11 +1,11 @@
 import React from 'react'
-import ISpace from '../../types/space'
+import * as Space from '../../types/space'
 import BlessedText from '../BlessedText'
 
 
 interface ISpacerProps {
   separator?: string
-  space?: ISpace
+  space?: Space.Space
   colorBg?: string
   colorFg?: string
 }

@@ -4,11 +4,11 @@ import selectGameCategory from '../../store/game/selectors/selectGameCategory'
 import selectGameTitle from '../../store/game/selectors/selectGameTitle'
 import useSelector from '../../store/useSelector'
 import theme from '../../theme'
-import ISpace from '../../types/space'
+import * as Space from '../../types/space'
 
 
 interface IGameHeaderProps {
-  space?: ISpace
+  space?: Space.Space
 }
 
 

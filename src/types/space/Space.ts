@@ -1,4 +1,4 @@
-interface ISpace {
+interface Space {
   width?: number
   height?: number
   left?: number
@@ -8,4 +8,4 @@ interface ISpace {
 }
 
 
-export default ISpace
+export default Space

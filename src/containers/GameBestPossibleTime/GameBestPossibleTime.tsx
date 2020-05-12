@@ -3,11 +3,11 @@ import LabelledTime, { LABELLED_TIME_HEIGHT } from '../../components/LabelledTim
 import selectGameBestPossibleTime from '../../store/game/selectors/selectGameBestPossibleTime'
 import useSelector from '../../store/useSelector'
 import theme from '../../theme'
-import ISpace from '../../types/space'
+import * as Space from '../../types/space'
 
 
 interface IGameBestPossibleTimeProps {
-  space?: ISpace
+  space?: Space.Space
 }
 
 const GAME_BEST_POSSIBLE_TIME_HEIGHT = LABELLED_TIME_HEIGHT

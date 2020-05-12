@@ -1,1 +1,1 @@
-export { default } from './ISpace'
+export { default as Space } from './Space'

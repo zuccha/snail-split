@@ -3,7 +3,7 @@ import BlessedBox from '../../components/BlessedBox'
 import BlessedText from '../../components/BlessedText'
 import theme from '../../theme'
 import useConfig from '../../store/config/hooks/useConfig'
-import ISpace from '../../types/space'
+import * as Space from '../../types/space'
 import range from '../../utils/range'
 import makeGameSegmentDeltaTime from './makeGameSegmentDeltaTime'
 import makeGameSegmentName from './makeGameSegmentName'
@@ -12,7 +12,7 @@ import useWindowOffset from './useWindowOffset'
 
 
 interface IGameSegmentsProps {
-  space?: ISpace
+  space?: Space.Space
 }
 
 

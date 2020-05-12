@@ -6,12 +6,12 @@ import makeSelectGameSegmentTime from '../../store/game/selectors/makeSelectGame
 import useSelector from '../../store/useSelector'
 import theme from '../../theme'
 import { IColumnDefinitionTime } from '../../types/column-definition'
-import ISpace from '../../types/space'
+import * as Space from '../../types/space'
 import * as Time from '../../types/time'
 
 
 interface IGameSegmentTimeProps {
-  space?: ISpace
+  space?: Space.Space
 }
 
 

@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react'
 import IFont, { IFontGlyph } from '../../types/font'
-import ISpace from '../../types/space'
+import * as Space from '../../types/space'
 import BlessedBox from '../BlessedBox'
 import BlessedText from '../BlessedText'
 
@@ -10,7 +10,7 @@ interface IBigTextProps {
   font: IFont
   colorBg?: string
   colorFg?: string
-  space?: ISpace
+  space?: Space.Space
 }
 
 const PIXEL_WIDTH = 1

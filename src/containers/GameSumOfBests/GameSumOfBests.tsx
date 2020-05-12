@@ -3,11 +3,11 @@ import LabelledTime, { LABELLED_TIME_HEIGHT } from '../../components/LabelledTim
 import selectGameSumOfBests from '../../store/game/selectors/selectGameSumOfBests'
 import useSelector from '../../store/useSelector'
 import theme from '../../theme'
-import ISpace from '../../types/space'
+import * as Space from '../../types/space'
 
 
 interface IGameSumOfBestsProps {
-  space?: ISpace
+  space?: Space.Space
 }
 
 const GAME_SUM_OF_BESTS = LABELLED_TIME_HEIGHT

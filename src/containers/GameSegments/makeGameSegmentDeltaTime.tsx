@@ -6,13 +6,13 @@ import selectGameCurrentSegmentIndex from '../../store/game/selectors/selectGame
 import useSelector from '../../store/useSelector'
 import theme from '../../theme'
 import { IColumnDefinitionDelta } from '../../types/column-definition'
-import ISpace from '../../types/space'
+import * as Space from '../../types/space'
 import * as Time from '../../types/time'
 import when from '../../utils/when'
 
 
 interface IGameSegmentDeltaTimeProps {
-  space?: ISpace
+  space?: Space.Space
 }
 
 

@@ -1,12 +1,12 @@
 import React from 'react'
-import ISpace from '../../types/space'
+import * as Space from '../../types/space'
 import BlessedBox from '../BlessedBox'
 import BlessedText from '../BlessedText'
 
 
 interface IHeaderProps {
   title: string
-  space?: ISpace
+  space?: Space.Space
   titleColorBg?: string
   titleColorFg?: string
   borderColorBg?: string

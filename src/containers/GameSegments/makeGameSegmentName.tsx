@@ -4,11 +4,11 @@ import selectGameCurrentSegmentIndex from '../../store/game/selectors/selectGame
 import makeSelectGameSegmentName from '../../store/game/selectors/makeSelectGameSegmentName'
 import useSelector from '../../store/useSelector'
 import theme from '../../theme'
-import ISpace from '../../types/space'
+import * as Space from '../../types/space'
 
 
 interface IGameSegmentNameProps {
-  space?: ISpace
+  space?: Space.Space
 }
 
 

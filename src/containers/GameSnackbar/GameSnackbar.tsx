@@ -3,7 +3,7 @@ import BlessedText from '../../components/BlessedText'
 import useSnackbar from '../../store/snackbar/hooks/useSnackbar'
 import theme from '../../theme'
 import when from '../../utils/when'
-import ISpace from '../../types/space'
+import * as Space from '../../types/space'
 
 
 interface IStyle {
@@ -12,7 +12,7 @@ interface IStyle {
 }
 
 interface IGameSnackbarProps {
-  space?: ISpace
+  space?: Space.Space
 }
 
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import ISpace from '../../types/space'
+import * as Space from '../../types/space'
 import * as Time from '../../types/time'
 import BlessedBox from '../BlessedBox'
 import BlessedText from '../BlessedText'
@@ -10,7 +10,7 @@ interface ILabelledTimeProps {
   time: Time.Time
   colorFg?: string
   colorBg?: string
-  space?: ISpace
+  space?: Space.Space
 }
 
 
