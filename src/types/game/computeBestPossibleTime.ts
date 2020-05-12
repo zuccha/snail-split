@@ -1,9 +1,9 @@
-import ITime from '../time/ITime'
+import * as Time from '../time'
 import IGame from './IGame'
 import findLastIndex from '../../utils/findLastIndex'
 
 
-const computeBestPossibleTime = (game: IGame): ITime => {
+const computeBestPossibleTime = (game: IGame): Time.Time => {
   const currentSegmentIndex = findLastIndex(
     game.segments,
     segment => segment.currentAbsoluteTime !== undefined,

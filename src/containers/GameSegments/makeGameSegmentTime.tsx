@@ -7,7 +7,7 @@ import useSelector from '../../store/useSelector'
 import theme from '../../theme'
 import { IColumnDefinitionTime } from '../../types/column-definition'
 import ISpace from '../../types/space'
-import { formatTime } from '../../types/time'
+import * as Time from '../../types/time'
 
 
 interface IGameSegmentTimeProps {
@@ -40,7 +40,7 @@ const makeGameSegmentTime = (
     const time = useSelector(selectGameSegmentTime)
     const currentSegmentIndex = useSelector(selectGameCurrentSegmentIndex)
 
-    const formattedTime = formatTime(time, {
+    const formattedTime = Time.format(time, {
       formatDefault: config.segmentTimeFormatDefault,
       formatBelowHour: config.segmentTimeFormatBelowHour,
       formatBelowMinute: config.segmentTimeFormatBelowMinute,

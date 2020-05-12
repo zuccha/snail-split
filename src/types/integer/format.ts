@@ -1,4 +1,4 @@
-interface IFormatNumberOptions {
+interface IFormatOptions {
   digitsMin?: number
 }
 
@@ -7,9 +7,9 @@ const defaultOptions = {
   digitsMin: 0,
 }
 
-const formatNumber = (
+const format = (
   number: number,
-  options: IFormatNumberOptions = defaultOptions,
+  options: IFormatOptions = defaultOptions,
 ): string => {
   const {
     digitsMin,
@@ -26,4 +26,4 @@ const formatNumber = (
 }
 
 
-export default formatNumber
+export default format

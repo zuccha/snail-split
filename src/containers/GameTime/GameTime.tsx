@@ -9,7 +9,7 @@ import selectGameStatus from '../../store/game/selectors/selectGameStatus'
 import useSelector from '../../store/useSelector'
 import theme from '../../theme'
 import ISpace from '../../types/space'
-import { formatTime } from '../../types/time'
+import * as Time from '../../types/time'
 import when from '../../utils/when'
 import useConfig from '../../store/config/hooks/useConfig'
 
@@ -30,7 +30,7 @@ const GameTime: React.FC<IGameTimeProps> = ({
   const currentTime = useSelector(selectGameCurrentTime)
   const status = useSelector(selectGameStatus)
 
-  const formattedTime = formatTime(currentTime, {
+  const formattedTime = Time.format(currentTime, {
     formatDefault: config.timeFormatDefault,
     formatBelowHour: config.timeFormatBelowHour,
     formatBelowMinute: config.timeFormatBelowMinute,

@@ -1,13 +1,13 @@
 import React from 'react'
 import ISpace from '../../types/space'
-import { ITime, formatTime } from '../../types/time'
+import * as Time from '../../types/time'
 import BlessedBox from '../BlessedBox'
 import BlessedText from '../BlessedText'
 
 
 interface ILabelledTimeProps {
   label: string
-  time: ITime
+  time: Time.Time
   colorFg?: string
   colorBg?: string
   space?: ISpace
@@ -30,7 +30,7 @@ const LabelledTime: React.FC<ILabelledTimeProps> = ({
   colorBg = undefined,
   space = {},
 }) => {
-  const formattedTime = formatTime(time, {
+  const formattedTime = Time.format(time, {
     formatDefault: 'H:MM:SS',
     formatBelowHour: 'M:SS',
     formatBelowMinute: 'S',

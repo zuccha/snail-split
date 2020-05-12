@@ -1,12 +1,12 @@
-import { ITime } from '../time'
+import * as Time from '../time'
 
 
 interface ISegment {
   name: string
-  currentAbsoluteTime: ITime
-  pbAbsoluteTime: ITime
-  wrAbsoluteTime: ITime
-  goldRelativeTime: ITime
+  currentAbsoluteTime: Time.Time
+  pbAbsoluteTime: Time.Time
+  wrAbsoluteTime: Time.Time
+  goldRelativeTime: Time.Time
 }
 
 

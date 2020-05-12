@@ -1,10 +1,10 @@
-import ITime from './ITime'
+import Time from './Time'
 
 
-const validateTime = (
+const validate = (
   maybeTime: unknown,
-  defaultValue: ITime = undefined,
-): ITime => {
+  defaultValue: Time = undefined,
+): Time => {
   if (maybeTime === undefined) {
     return maybeTime
   }
@@ -17,4 +17,4 @@ const validateTime = (
 }
 
 
-export default validateTime
+export default validate

@@ -1,5 +1,5 @@
 import { validateArray } from '../array'
-import { validateNumber } from '../number'
+import * as Integer from '../integer'
 import { validateString } from '../string'
 import IConfig from './IConfig'
 import defaultConfig from './defaultConfig'
@@ -52,10 +52,10 @@ const validateConfig = (
   const inputConfig = maybeConfig as { [key: string]: unknown }
 
   return {
-    fps: validateNumber(inputConfig.fps, defaultConfig.fps),
+    fps: Integer.validate(inputConfig.fps, defaultConfig.fps),
 
     autosave: validateBoolean(inputConfig.autosave, defaultConfig.autosave),
-    autosaveInterval: validateNumber(inputConfig.autosaveInterval, defaultConfig.autosaveInterval),
+    autosaveInterval: Integer.validate(inputConfig.autosaveInterval, defaultConfig.autosaveInterval),
     autosaveShowMessage: validateBoolean(inputConfig.autosaveShowMessage, defaultConfig.autosaveShowMessage),
 
     timeFont: validateTimeFont(inputConfig.timeFont, defaultConfig.timeFont),
@@ -82,7 +82,7 @@ const validateConfig = (
     segmentDeltaFormatZero: validateString(inputConfig.segmentDeltaFormatZero, defaultConfig.segmentDeltaFormatZero),
     segmentDeltaFormatEmpty: validateString(inputConfig.segmentDeltaFormatEmpty, defaultConfig.segmentDeltaFormatEmpty),
 
-    snackbarDuration: validateNumber(inputConfig.snackbarDuration, defaultConfig.snackbarDuration),
+    snackbarDuration: Integer.validate(inputConfig.snackbarDuration, defaultConfig.snackbarDuration),
 
     showBestPossibleTime: validateBoolean(inputConfig.showBestPossibleTime, defaultConfig.showBestPossibleTime),
     showSumOfBests: validateBoolean(inputConfig.showSumOfBests, defaultConfig.showSumOfBests),

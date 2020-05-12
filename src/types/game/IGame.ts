@@ -1,5 +1,5 @@
 import { ISegment } from '../segment'
-import { ITime } from '../time'
+import * as Time from '../time'
 import { IGameStatus } from '../game-status'
 
 
@@ -7,10 +7,10 @@ interface IGame {
   title: string
   category: string
   segments: ISegment[]
-  timerStart: ITime
+  timerStart: Time.Time
   status: IGameStatus
-  bestPossibleTime: ITime
-  sumOfBests: ITime
+  bestPossibleTime: Time.Time
+  sumOfBests: Time.Time
 }
 
 

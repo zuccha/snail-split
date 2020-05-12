@@ -1,13 +1,13 @@
 import { createSelector } from 'reselect'
 import { makeComputeSegmentDeltaTime } from '../../../types/game'
-import { ITime } from '../../../types/time'
+import * as Time from '../../../types/time'
 import { ITimeCategory } from '../../../types/time-category'
 import { ITimeFrame } from '../../../types/time-frame'
 import { IStateRoot } from '../../types'
 import selectGame from './selectGame'
 
 
-type ISelectGameSegmentDeltaTime = (state: IStateRoot) => ITime
+type ISelectGameSegmentDeltaTime = (state: IStateRoot) => Time.Time
 
 
 const makeSelectGameSegmentDeltaTime = (

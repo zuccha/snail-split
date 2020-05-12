@@ -7,7 +7,7 @@ import useSelector from '../../store/useSelector'
 import theme from '../../theme'
 import { IColumnDefinitionDelta } from '../../types/column-definition'
 import ISpace from '../../types/space'
-import { formatTime } from '../../types/time'
+import * as Time from '../../types/time'
 import when from '../../utils/when'
 
 
@@ -45,7 +45,7 @@ const makeGameSegmentDeltaTime = (
     ], theme.segments.deltaTimeColorFgNeutral)
 
     const formattedTime = segmentIndex <= currentSegmentIndex
-      ? formatTime(time, {
+      ? Time.format(time, {
         formatDefault: config.segmentDeltaFormatDefault,
         formatBelowHour: config.segmentDeltaFormatBelowHour,
         formatBelowMinute: config.segmentDeltaFormatBelowMinute,

@@ -1,9 +1,9 @@
 import when from '../../utils/when'
-import { formatNumber } from '../number'
-import ITime from './ITime'
+import * as Integer from '../integer'
+import Time from './Time'
 
 
-interface IFormatTimeOptions {
+interface FormatOptions {
   formatEmpty?: string
   formatZero?: string
   formatBelowSecond?: string
@@ -31,13 +31,13 @@ const findReplaceAndFormat = (
 ): string => {
   const patternMatch = str.match(new RegExp(`${pattern}+`))
   return patternMatch !== null
-    ? str.replace(patternMatch[0], formatNumber(value, { digitsMin: patternMatch[0].length }))
+    ? str.replace(patternMatch[0], Integer.format(value, { digitsMin: patternMatch[0].length }))
     : str
 }
 
-const formatTime = (
-  time: ITime,
-  options: IFormatTimeOptions = defaultOptions,
+const format = (
+  time: Time,
+  options: FormatOptions = defaultOptions,
 ): string => {
   const {
     formatEmpty,
@@ -92,4 +92,4 @@ const formatTime = (
 }
 
 
-export default formatTime
+export default format
