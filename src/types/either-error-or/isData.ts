@@ -1,8 +1,8 @@
-import IEitherErrorOr, { IData } from './IEitherErrorOr'
+import EitherErrorOr, { Data } from './EitherErrorOr'
 
 
-const isData = <T>(eitherErrorOr: IEitherErrorOr<T>): eitherErrorOr is IData<T> => {
-  return (eitherErrorOr as IData<T>).data !== undefined
+const isData = <T>(eitherErrorOr: EitherErrorOr<T>): eitherErrorOr is Data<T> => {
+  return (eitherErrorOr as Data<T>).data !== undefined
 }
 
 

@@ -4,7 +4,7 @@ import useConfig from '../../store/config/hooks/useConfig'
 import createActionGameTick from '../../store/game/actions/createActionGameTick'
 import useDispatch from '../../store/useDispatch'
 import useEnqueueSnackbar from '../../store/snackbar/hooks/useEnqueueSnackbar'
-import { isError } from '../../types/either-error-or'
+import * as EitherErrorOr from '../../types/either-error-or'
 import * as Game from '../../types/game'
 
 
@@ -25,7 +25,7 @@ const useLoop = (filename: string): void => {
       autosaveIntervalId = setInterval(() => {
         const game = store.getState().game
         const eitherErrorOrUndefined = Game.save(game, filename)
-        if (isError(eitherErrorOrUndefined)) {
+        if (EitherErrorOr.isError(eitherErrorOrUndefined)) {
           enqueueSnackbar(`Failed to autosave game: ${eitherErrorOrUndefined.error}`, 'failure')
         } else if (config.autosaveShowMessage) {
           enqueueSnackbar('Autosave', 'success')

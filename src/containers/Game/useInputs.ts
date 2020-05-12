@@ -7,7 +7,7 @@ import createActionGameToggle from '../../store/game/actions/createActionGameTog
 import store from '../../store'
 import useDispatch from '../../store/useDispatch'
 import useEnqueueSnackbar from '../../store/snackbar/hooks/useEnqueueSnackbar'
-import { isError } from '../../types/either-error-or'
+import * as EitherErrorOr from '../../types/either-error-or'
 import * as Game from '../../types/game'
 
 
@@ -31,7 +31,7 @@ const useInputs = (filename: string): void => {
     const handleSaveGame = (): void => {
       const game = store.getState().game
       const eitherErrorOrUndefined = Game.save(game, filename)
-      isError(eitherErrorOrUndefined)
+      EitherErrorOr.isError(eitherErrorOrUndefined)
         ? enqueueSnackbar(`Failed to save game: ${eitherErrorOrUndefined.error}`, 'failure')
         : enqueueSnackbar(`Game successfully saved to file ${filename}`, 'success')
     }

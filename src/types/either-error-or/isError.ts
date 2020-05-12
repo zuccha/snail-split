@@ -1,8 +1,8 @@
-import IEitherErrorOr, { IError } from './IEitherErrorOr'
+import EitherErrorOr, { Error } from './EitherErrorOr'
 
 
-const isError = <T>(eitherErrorOr: IEitherErrorOr<T>): eitherErrorOr is IError => {
-  return (eitherErrorOr as IError).error !== undefined
+const isError = <T>(eitherErrorOr: EitherErrorOr<T>): eitherErrorOr is Error => {
+  return (eitherErrorOr as Error).error !== undefined
 }
 
 

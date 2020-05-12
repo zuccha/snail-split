@@ -1,12 +1,12 @@
 import fs from 'fs'
-import { IEitherErrorOr } from '../either-error-or'
+import * as EitherErrorOr from '../either-error-or'
 import Game from './Game'
 
 
 const save = (
   game: Game,
   filename: string,
-): IEitherErrorOr<undefined> => {
+): EitherErrorOr.EitherErrorOr<undefined> => {
   try {
     const gameOutput = {
       title: game.title,
