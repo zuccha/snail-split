@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react'
-import IFont, { IFontGlyph } from '../../types/font'
+import * as Font from '../../types/font'
 import * as Space from '../../types/space'
 import BlessedBox from '../BlessedBox'
 import BlessedText from '../BlessedText'
@@ -7,7 +7,7 @@ import BlessedText from '../BlessedText'
 
 interface IBigTextProps {
   text: string
-  font: IFont
+  font: Font.Font
   colorBg?: string
   colorFg?: string
   space?: Space.Space
@@ -34,7 +34,7 @@ const BigText: React.FC<IBigTextProps> = ({
       .flatMap(glyph => [glyph, font.separator])
       .slice(0, -1)
 
-    const glyphsAndOffsets: [IFontGlyph, number][] = [[glyphs[0], 0]]
+    const glyphsAndOffsets: [Font.FontGlyph, number][] = [[glyphs[0], 0]]
     for (let i = 1; i < glyphs.length; ++i) {
       const previousGlyph = glyphsAndOffsets[i - 1][0]
       const previousGlyphWidth = previousGlyph[0].length * PIXEL_WIDTH

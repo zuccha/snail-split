@@ -1,1 +1,5 @@
-export { default, IFontGlyph, IFontGlyphPixel } from './IFont'
+export {
+  default as Font,
+  FontGlyph,
+  FontGlyphPixel,
+} from './Font'

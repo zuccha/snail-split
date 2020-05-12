@@ -1,7 +1,7 @@
-import IFont, { IFontGlyph } from '../../../types/font'
+import * as Font from '../../../types/font'
 
 
-const separator: IFontGlyph = [
+const separator: Font.FontGlyph = [
   [ 0 ],
   [ 0 ],
   [ 0 ],
@@ -9,7 +9,7 @@ const separator: IFontGlyph = [
   [ 0 ],
 ]
 
-const missing: IFontGlyph = [
+const missing: Font.FontGlyph = [
   [ 1 ,  1 ,  1 ],
   [ 1 ,  1 ,  1 ],
   [ 1 ,  1 ,  1 ],
@@ -17,7 +17,7 @@ const missing: IFontGlyph = [
   [ 1 ,  1 ,  1 ],
 ]
 
-const digit0: IFontGlyph = [
+const digit0: Font.FontGlyph = [
   [ 1 ,  1 ,  1 ],
   [ 1 ,  0 ,  1 ],
   [ 1 ,  0 ,  1 ],
@@ -25,7 +25,7 @@ const digit0: IFontGlyph = [
   [ 1 ,  1 ,  1 ],
 ]
 
-const digit1: IFontGlyph = [
+const digit1: Font.FontGlyph = [
   [ 0 ,  1 ,  0 ],
   [ 1 ,  1 ,  0 ],
   [ 0 ,  1 ,  0 ],
@@ -33,7 +33,7 @@ const digit1: IFontGlyph = [
   [ 1 ,  1 ,  1 ],
 ]
 
-const digit2: IFontGlyph = [
+const digit2: Font.FontGlyph = [
   [ 1 ,  1 ,  1 ],
   [ 0 ,  0 ,  1 ],
   [ 1 ,  1 ,  1 ],
@@ -41,7 +41,7 @@ const digit2: IFontGlyph = [
   [ 1 ,  1 ,  1 ],
 ]
 
-const digit3: IFontGlyph = [
+const digit3: Font.FontGlyph = [
   [ 1 ,  1 ,  1 ],
   [ 0 ,  0 ,  1 ],
   [ 0 ,  1 ,  1 ],
@@ -49,7 +49,7 @@ const digit3: IFontGlyph = [
   [ 1 ,  1 ,  1 ],
 ]
 
-const digit4: IFontGlyph = [
+const digit4: Font.FontGlyph = [
   [ 1 ,  0 ,  1 ],
   [ 1 ,  0 ,  1 ],
   [ 1 ,  1 ,  1 ],
@@ -57,7 +57,7 @@ const digit4: IFontGlyph = [
   [ 0 ,  0 ,  1 ],
 ]
 
-const digit5: IFontGlyph = [
+const digit5: Font.FontGlyph = [
   [ 1 ,  1 ,  1 ],
   [ 1 ,  0 ,  0 ],
   [ 1 ,  1 ,  1 ],
@@ -65,7 +65,7 @@ const digit5: IFontGlyph = [
   [ 1 ,  1 ,  1 ],
 ]
 
-const digit6: IFontGlyph = [
+const digit6: Font.FontGlyph = [
   [ 1 ,  1 ,  1 ],
   [ 1 ,  0 ,  0 ],
   [ 1 ,  1 ,  1 ],
@@ -73,7 +73,7 @@ const digit6: IFontGlyph = [
   [ 1 ,  1 ,  1 ],
 ]
 
-const digit7: IFontGlyph = [
+const digit7: Font.FontGlyph = [
   [ 1 ,  1 ,  1 ],
   [ 0 ,  0 ,  1 ],
   [ 0 ,  0 ,  1 ],
@@ -81,7 +81,7 @@ const digit7: IFontGlyph = [
   [ 0 ,  0 ,  1 ],
 ]
 
-const digit8: IFontGlyph = [
+const digit8: Font.FontGlyph = [
   [ 1 ,  1 ,  1 ],
   [ 1 ,  0 ,  1 ],
   [ 1 ,  1 ,  1 ],
@@ -89,7 +89,7 @@ const digit8: IFontGlyph = [
   [ 1 ,  1 ,  1 ],
 ]
 
-const digit9: IFontGlyph = [
+const digit9: Font.FontGlyph = [
   [ 1 ,  1 ,  1 ],
   [ 1 ,  0 ,  1 ],
   [ 1 ,  1 ,  1 ],
@@ -97,7 +97,7 @@ const digit9: IFontGlyph = [
   [ 1 ,  1 ,  1 ],
 ]
 
-const dot: IFontGlyph = [
+const dot: Font.FontGlyph = [
   [ 0 ],
   [ 0 ],
   [ 0 ],
@@ -105,7 +105,7 @@ const dot: IFontGlyph = [
   [ 1 ],
 ]
 
-const column: IFontGlyph = [
+const column: Font.FontGlyph = [
   [ 0 ],
   [ 1 ],
   [ 0 ],
@@ -113,7 +113,7 @@ const column: IFontGlyph = [
   [ 0 ],
 ]
 
-const dash: IFontGlyph = [
+const dash: Font.FontGlyph = [
   [ 0 ,  0 ,  0 ],
   [ 0 ,  0 ,  0 ],
   [ 1 ,  1 ,  1 ],
@@ -122,7 +122,7 @@ const dash: IFontGlyph = [
 ]
 
 
-const fontSlim: IFont = {
+const fontSlim: Font.Font = {
   height: 5,
   missing,
   separator,
