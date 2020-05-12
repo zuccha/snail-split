@@ -1,13 +1,13 @@
 import { validateString } from '../string'
 import * as Time from '../time'
-import ISegment from './ISegment'
+import Segment from './Segment'
 import defaultSegment from './defaultSegment'
 
 
-const validateSegment = (
+const validate = (
   maybeSegment: unknown,
   defaultValue = defaultSegment,
-): ISegment => {
+): Segment => {
   if (typeof maybeSegment !== 'object' || maybeSegment === null) {
     return defaultValue
   }
@@ -23,4 +23,4 @@ const validateSegment = (
 }
 
 
-export default validateSegment
+export default validate

@@ -1,7 +1,7 @@
 import * as Time from '../time'
 
 
-interface ISegment {
+interface Segment {
   name: string
   currentAbsoluteTime: Time.Time
   pbAbsoluteTime: Time.Time
@@ -10,4 +10,4 @@ interface ISegment {
 }
 
 
-export default ISegment
+export default Segment

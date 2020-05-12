@@ -1,3 +1,3 @@
-export { default as ISegment } from './ISegment'
+export { default as Segment } from './Segment'
 export { default as defaultSegment } from './defaultSegment'
-export { default as validateSegment } from './validateSegment'
+export { default as validate } from './validate'

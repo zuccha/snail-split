@@ -1,7 +1,7 @@
-import ISegment from './ISegment'
+import Segment from './Segment'
 
 
-const segmentDefault: ISegment = {
+const defaultSegment: Segment = {
   name: '',
   currentAbsoluteTime: undefined,
   pbAbsoluteTime: undefined,
@@ -10,4 +10,4 @@ const segmentDefault: ISegment = {
 }
 
 
-export default segmentDefault
+export default defaultSegment

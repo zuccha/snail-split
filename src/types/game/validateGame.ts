@@ -1,6 +1,6 @@
 import { validateArray } from '../array'
 import { validateGameStatus } from '../game-status'
-import { validateSegment } from '../segment'
+import * as Segment from '../segment'
 import { validateString } from '../string'
 import * as Time from '../time'
 import IGame from './IGame'
@@ -21,7 +21,7 @@ const validateGame = (
     title: validateString(inputGame.title),
     category: validateString(inputGame.category),
     segments: validateArray(inputGame.segments)
-      .map(maybeSegment => validateSegment(maybeSegment)),
+      .map(maybeSegment => Segment.validate(maybeSegment)),
     timerStart: undefined,
     status: validateGameStatus(inputGame.status),
     bestPossibleTime: Time.validate(inputGame.bestPossibleTime),
