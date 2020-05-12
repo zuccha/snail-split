@@ -12,7 +12,7 @@ import useInputs from './useInputs'
 import useLoop from './useLoop'
 
 
-interface IGameProps {
+interface ViewTimerProps {
   filename: string
 }
 
@@ -28,7 +28,7 @@ const GAME_SUM_OF_BESTS_TOP = GAME_BEST_POSSIBLE_TIME_TOP + GAME_BEST_POSSIBLE_T
 const SNACKBAR_BOTTOM = PADDING_V
 
 
-const Game: React.FC<IGameProps> = ({ filename }) => {
+const ViewTimer: React.FC<ViewTimerProps> = ({ filename }) => {
   const config = useConfig()
   const [screenSize, setScreenSize] = useState({
     width: process.stdout.columns,
@@ -104,4 +104,4 @@ const Game: React.FC<IGameProps> = ({ filename }) => {
 }
 
 
-export default Game
+export default ViewTimer

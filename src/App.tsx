@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import GameComponent from './containers/Game'
+import ViewTimer from './containers/ViewTimer'
 import createActionConfigLoad from './store/config/actions/createActionConfigLoad'
 import createActionGameLoad from './store/game/actions/createActionGameLoad'
 import useDispatch from './store/useDispatch'
@@ -40,7 +40,7 @@ const App: React.FC = () => {
     return null
   }
 
-  return <GameComponent filename={gameFilenameOutput} />
+  return <ViewTimer filename={gameFilenameOutput} />
 }
 
 

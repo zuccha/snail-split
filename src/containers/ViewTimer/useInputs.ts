@@ -44,6 +44,8 @@ const useInputs = (filename: string): void => {
       dispatch(createActionGameToggle())
     }
 
+    // screen.on('keypress', (a, b) => console.log(a, b))
+
     screen.key('escape', exit)
     screen.key('q', exit)
     screen.key('C-c', exit)
