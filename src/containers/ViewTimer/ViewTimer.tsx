@@ -2,6 +2,7 @@ import React, { useCallback, useState } from 'react'
 import BlessedBox from '../../components/BlessedBox'
 import useConfig from '../../store/config/hooks/useConfig'
 import theme from '../../theme'
+import * as Space from '../../types/space'
 import GameBestPossibleTime, { GAME_BEST_POSSIBLE_TIME_HEIGHT } from '../GameBestPossibleTime'
 import GameCurrentTime, { GAME_CURRENT_TIME_HEIGHT } from '../GameCurrentTime'
 import GameHeader, { GAME_HEADER_HEIGHT } from '../GameHeader'
@@ -13,7 +14,7 @@ import useLoop from './useLoop'
 
 
 interface ViewTimerProps {
-  filename: string
+  space?: Space.Space
 }
 
 
@@ -27,57 +28,48 @@ const GAME_BEST_POSSIBLE_TIME_TOP = GAME_CURRENT_TIME_TOP + GAME_CURRENT_TIME_HE
 const GAME_SUM_OF_BESTS_TOP = GAME_BEST_POSSIBLE_TIME_TOP + GAME_BEST_POSSIBLE_TIME_HEIGHT
 const SNACKBAR_BOTTOM = PADDING_V
 
+// TODO: Move to store.
+const gameFilenameOutput = './examples/games/dark-souls-save.json'
 
-const ViewTimer: React.FC<ViewTimerProps> = ({ filename }) => {
+
+const ViewTimer: React.FC<ViewTimerProps> = ({
+  space = {},
+}) => {
   const config = useConfig()
-  const [screenSize, setScreenSize] = useState({
-    width: process.stdout.columns,
-    height: process.stdout.rows,
-  })
 
-  useInputs(filename)
-  useLoop(filename)
+  useInputs(gameFilenameOutput)
+  useLoop(gameFilenameOutput)
 
-  const handleResize = useCallback(() => {
-    setScreenSize({
-      width: process.stdout.columns,
-      height: process.stdout.rows,
-    })
-  }, [process])
-
-  const width = screenSize.width - PADDING_H * 2
+  const contentWidth = space.width !== undefined && space.width >= PADDING_H * 2
+    ? space.width - PADDING_H * 2
+    : 0
 
   return (
-    <BlessedBox
-      height={screenSize.height}
-      width={screenSize.width}
-      style={{ bg: theme.app.colorBg }}
-      onResize={handleResize}
-    >
+    <BlessedBox {...space} style={{ bg: theme.app.colorBg }}>
       <GameHeader
         space={{
-          width,
+          width: contentWidth,
           left: PADDING_H,
           top: GAME_HEADER_TOP,
         }}
       />
       <GameSegments
         space={{
-          width,
+          width: contentWidth,
           left: PADDING_H,
           top: GAME_SEGMENTS_TOP,
         }}
       />
       <GameCurrentTime
         space={{
-          width,
+          width: contentWidth,
           left: PADDING_H,
           top: GAME_CURRENT_TIME_TOP,
         }} />
       {config.showBestPossibleTime && (
         <GameBestPossibleTime
           space={{
-            width,
+            width: contentWidth,
             left: PADDING_H,
             top: GAME_BEST_POSSIBLE_TIME_TOP,
           }}
@@ -86,7 +78,7 @@ const ViewTimer: React.FC<ViewTimerProps> = ({ filename }) => {
       {config.showSumOfBests && (
         <GameSumOfBests
           space={{
-            width,
+            width: contentWidth,
             left: PADDING_H,
             top: GAME_SUM_OF_BESTS_TOP,
           }}
@@ -94,7 +86,7 @@ const ViewTimer: React.FC<ViewTimerProps> = ({ filename }) => {
       )}
       <Snackbar
         space={{
-          width,
+          width: contentWidth,
           left: PADDING_H,
           bottom: SNACKBAR_BOTTOM,
         }}

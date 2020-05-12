@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import ViewTimer from './containers/ViewTimer'
+import Viewer from './containers/Viewer'
 import createActionConfigLoad from './store/config/actions/createActionConfigLoad'
 import createActionGameLoad from './store/game/actions/createActionGameLoad'
 import useDispatch from './store/useDispatch'
@@ -10,7 +10,6 @@ import * as Game from './types/game'
 
 const configFilename = './examples/configs/base.json'
 const gameFilenameInput = './examples/games/dark-souls.json'
-const gameFilenameOutput = './examples/games/dark-souls-save.json'
 
 
 const App: React.FC = () => {
@@ -40,7 +39,7 @@ const App: React.FC = () => {
     return null
   }
 
-  return <ViewTimer filename={gameFilenameOutput} />
+  return <Viewer />
 }
 
 
