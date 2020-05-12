@@ -1,1 +1,1 @@
-export { default as validateString } from './validateString'
+export { default as validate } from './validate'

@@ -1,4 +1,4 @@
-import { validateString } from '../string'
+import * as S from '../string'
 import * as TimeCategory from '../time-category'
 import * as TimeFrame from '../time-frame'
 import { ColumnDefinitionTime } from './ColumnDefinition'
@@ -17,7 +17,7 @@ const validateTime = (
 
   return {
     type: 'time',
-    title: validateString(
+    title: S.validate(
       maybeColumnDefinitionRecord.title,
       defaultValue.title,
     ),

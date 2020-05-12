@@ -1,6 +1,6 @@
 import { validateArray } from '../array'
 import * as Integer from '../integer'
-import { validateString } from '../string'
+import * as S from '../string'
 import Config from './Config'
 import defaultConfig from './defaultConfig'
 import { validateBoolean } from '../boolean'
@@ -59,28 +59,28 @@ const validate = (
     autosaveShowMessage: validateBoolean(inputConfig.autosaveShowMessage, defaultConfig.autosaveShowMessage),
 
     timeFont: validateTimeFont(inputConfig.timeFont, defaultConfig.timeFont),
-    timeFormatDefault: validateString(inputConfig.timeFormatDefault, defaultConfig.timeFormatDefault),
-    timeFormatBelowHour: validateString(inputConfig.timeFormatBelowHour, defaultConfig.timeFormatBelowHour),
-    timeFormatBelowMinute: validateString(inputConfig.timeFormatBelowMinute, defaultConfig.timeFormatBelowMinute),
-    timeFormatBelowSecond: validateString(inputConfig.timeFormatBelowSecond, defaultConfig.timeFormatBelowSecond),
-    timeFormatZero: validateString(inputConfig.timeFormatZero, defaultConfig.timeFormatZero),
-    timeFormatEmpty: validateString(inputConfig.timeFormatEmpty, defaultConfig.timeFormatEmpty),
+    timeFormatDefault: S.validate(inputConfig.timeFormatDefault, defaultConfig.timeFormatDefault),
+    timeFormatBelowHour: S.validate(inputConfig.timeFormatBelowHour, defaultConfig.timeFormatBelowHour),
+    timeFormatBelowMinute: S.validate(inputConfig.timeFormatBelowMinute, defaultConfig.timeFormatBelowMinute),
+    timeFormatBelowSecond: S.validate(inputConfig.timeFormatBelowSecond, defaultConfig.timeFormatBelowSecond),
+    timeFormatZero: S.validate(inputConfig.timeFormatZero, defaultConfig.timeFormatZero),
+    timeFormatEmpty: S.validate(inputConfig.timeFormatEmpty, defaultConfig.timeFormatEmpty),
 
     segmentColumnDefinitions: validateColumnDefinitions(inputConfig.segmentColumnDefinitions),
 
-    segmentTimeFormatDefault: validateString(inputConfig.segmentTimeFormatDefault, defaultConfig.segmentTimeFormatDefault),
-    segmentTimeFormatBelowHour: validateString(inputConfig.segmentTimeFormatBelowHour, defaultConfig.segmentTimeFormatBelowHour),
-    segmentTimeFormatBelowMinute: validateString(inputConfig.segmentTimeFormatBelowMinute, defaultConfig.segmentTimeFormatBelowMinute),
-    segmentTimeFormatBelowSecond: validateString(inputConfig.segmentTimeFormatBelowSecond, defaultConfig.segmentTimeFormatBelowSecond),
-    segmentTimeFormatZero: validateString(inputConfig.segmentTimeFormatZero, defaultConfig.segmentTimeFormatZero),
-    segmentTimeFormatEmpty: validateString(inputConfig.segmentTimeFormatEmpty, defaultConfig.segmentTimeFormatEmpty),
+    segmentTimeFormatDefault: S.validate(inputConfig.segmentTimeFormatDefault, defaultConfig.segmentTimeFormatDefault),
+    segmentTimeFormatBelowHour: S.validate(inputConfig.segmentTimeFormatBelowHour, defaultConfig.segmentTimeFormatBelowHour),
+    segmentTimeFormatBelowMinute: S.validate(inputConfig.segmentTimeFormatBelowMinute, defaultConfig.segmentTimeFormatBelowMinute),
+    segmentTimeFormatBelowSecond: S.validate(inputConfig.segmentTimeFormatBelowSecond, defaultConfig.segmentTimeFormatBelowSecond),
+    segmentTimeFormatZero: S.validate(inputConfig.segmentTimeFormatZero, defaultConfig.segmentTimeFormatZero),
+    segmentTimeFormatEmpty: S.validate(inputConfig.segmentTimeFormatEmpty, defaultConfig.segmentTimeFormatEmpty),
 
-    segmentDeltaFormatDefault: validateString(inputConfig.segmentDeltaFormatDefault, defaultConfig.segmentDeltaFormatDefault),
-    segmentDeltaFormatBelowHour: validateString(inputConfig.segmentDeltaFormatBelowHour, defaultConfig.segmentDeltaFormatBelowHour),
-    segmentDeltaFormatBelowMinute: validateString(inputConfig.segmentDeltaFormatBelowMinute, defaultConfig.segmentDeltaFormatBelowMinute),
-    segmentDeltaFormatBelowSecond: validateString(inputConfig.segmentDeltaFormatBelowSecond, defaultConfig.segmentDeltaFormatBelowSecond),
-    segmentDeltaFormatZero: validateString(inputConfig.segmentDeltaFormatZero, defaultConfig.segmentDeltaFormatZero),
-    segmentDeltaFormatEmpty: validateString(inputConfig.segmentDeltaFormatEmpty, defaultConfig.segmentDeltaFormatEmpty),
+    segmentDeltaFormatDefault: S.validate(inputConfig.segmentDeltaFormatDefault, defaultConfig.segmentDeltaFormatDefault),
+    segmentDeltaFormatBelowHour: S.validate(inputConfig.segmentDeltaFormatBelowHour, defaultConfig.segmentDeltaFormatBelowHour),
+    segmentDeltaFormatBelowMinute: S.validate(inputConfig.segmentDeltaFormatBelowMinute, defaultConfig.segmentDeltaFormatBelowMinute),
+    segmentDeltaFormatBelowSecond: S.validate(inputConfig.segmentDeltaFormatBelowSecond, defaultConfig.segmentDeltaFormatBelowSecond),
+    segmentDeltaFormatZero: S.validate(inputConfig.segmentDeltaFormatZero, defaultConfig.segmentDeltaFormatZero),
+    segmentDeltaFormatEmpty: S.validate(inputConfig.segmentDeltaFormatEmpty, defaultConfig.segmentDeltaFormatEmpty),
 
     snackbarDuration: Integer.validate(inputConfig.snackbarDuration, defaultConfig.snackbarDuration),
 

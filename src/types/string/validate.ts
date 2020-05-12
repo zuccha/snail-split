@@ -1,4 +1,4 @@
-const validateString = (
+const validate = (
   maybeString: unknown,
   defaultValue = '',
 ): string => {
@@ -8,4 +8,4 @@ const validateString = (
 }
 
 
-export default validateString
+export default validate

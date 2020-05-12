@@ -1,4 +1,4 @@
-import { validateString } from '../string'
+import * as S from '../string'
 import * as Time from '../time'
 import Segment from './Segment'
 import defaultSegment from './defaultSegment'
@@ -14,7 +14,7 @@ const validate = (
 
   const inputSegment = maybeSegment as { [key: string]: unknown }
   return {
-    name: validateString(inputSegment.name, defaultValue.name),
+    name: S.validate(inputSegment.name, defaultValue.name),
     currentAbsoluteTime: Time.validate(inputSegment.currentAbsoluteTime, defaultValue.currentAbsoluteTime),
     pbAbsoluteTime: Time.validate(inputSegment.pbAbsoluteTime, defaultValue.pbAbsoluteTime),
     wrAbsoluteTime: Time.validate(inputSegment.wrAbsoluteTime, defaultValue.wrAbsoluteTime),
