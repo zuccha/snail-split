@@ -1,8 +1,8 @@
 import immer from 'immer'
-import IGame from './IGame'
+import Game from './Game'
 
 
-const resetGame = (game: IGame): IGame => {
+const reset = (game: Game): Game => {
   return immer(game, draftGame => {
     draftGame.status = 'initial'
     draftGame.timerStart = undefined
@@ -13,4 +13,4 @@ const resetGame = (game: IGame): IGame => {
 }
 
 
-export default resetGame
+export default reset

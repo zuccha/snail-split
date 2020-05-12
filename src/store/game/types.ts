@@ -1,4 +1,4 @@
-import { IGame } from '../../types/game'
+import * as Game from '../../types/game'
 
 
 const GAME_INVALIDATE_PREVIOUS_SEGMENT  = 'game/invalidate-previous-segment'
@@ -16,7 +16,7 @@ interface IActionGameInvalidatePreviousSegment {
 
 interface IActionGameLoad {
   type: typeof GAME_LOAD
-  payload: IGame
+  payload: Game.Game
 }
 
 interface IActionGameReset {

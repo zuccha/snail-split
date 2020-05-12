@@ -1,8 +1,8 @@
 import * as Time from '../time'
-import IGame from './IGame'
+import Game from './Game'
 
 
-const computeSumOfBests = (game: IGame): Time.Time => {
+const computeSumOfBests = (game: Game): Time.Time => {
   let sumOfBests = 0
   for (const segment of game.segments) {
     if (segment.goldRelativeTime === undefined) {

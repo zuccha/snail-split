@@ -3,14 +3,14 @@ import * as Segment from '../segment'
 import * as Time from '../time'
 import * as TimeCategory from '../time-category'
 import * as TimeFrame from '../time-frame'
-import IGame from './IGame'
+import Game from './Game'
 
 
 const makeComputeSegmentTime = (
   segmentIndex: number,
   timeCategory: TimeCategory.TimeCategory,
   timeFrame: TimeFrame.TimeFrame,
-): ((game: IGame) => Time.Time) => {
+): ((game: Game) => Time.Time) => {
   const absoluteTimeKey: (keyof Segment.Segment) | undefined = when([
     [timeCategory === 'current', () => 'currentAbsoluteTime'],
     [timeCategory === 'pb',      () => 'pbAbsoluteTime'],

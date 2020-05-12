@@ -1,8 +1,8 @@
 import immer from 'immer'
-import IGame from './IGame'
+import Game from './Game'
 
 
-const startGame = (game: IGame): IGame => {
+const start = (game: Game): Game => {
   if (game.status === 'initial') {
     return immer(game, draftGame => {
       draftGame.timerStart = Date.now()
@@ -37,4 +37,4 @@ const startGame = (game: IGame): IGame => {
 }
 
 
-export default startGame
+export default start

@@ -1,14 +1,4 @@
-import {
-  IGame,
-  defaultGame,
-  invalidatePreviousSegment,
-  resetGame,
-  splitGame,
-  startGame,
-  stopGame,
-  tickGame,
-  toggleGame,
-} from '../../../types/game'
+import * as Game from '../../../types/game'
 import {
   GAME_INVALIDATE_PREVIOUS_SEGMENT,
   GAME_LOAD,
@@ -23,26 +13,26 @@ import {
 
 
 const reduceGame = (
-  game: IGame = defaultGame,
+  game: Game.Game = Game.defaultGame,
   action: IActionGame,
-): IGame => {
+): Game.Game => {
   switch (action.type) {
   case GAME_INVALIDATE_PREVIOUS_SEGMENT:
-    return invalidatePreviousSegment(game)
+    return Game.invalidatePreviousSegment(game)
   case GAME_LOAD:
     return action.payload
   case GAME_RESET:
-    return resetGame(game)
+    return Game.reset(game)
   case GAME_SPLIT:
-    return splitGame(game)
+    return Game.split(game)
   case GAME_START:
-    return startGame(game)
+    return Game.start(game)
   case GAME_STOP:
-    return stopGame(game)
+    return Game.stop(game)
   case GAME_TICK:
-    return tickGame(game)
+    return Game.tick(game)
   case GAME_TOGGLE:
-    return toggleGame(game)
+    return Game.toggle(game)
   default:
     return game
   }

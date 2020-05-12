@@ -1,9 +1,9 @@
 import immer from 'immer'
 import findLastIndex from '../../utils/findLastIndex'
-import IGame from './IGame'
+import Game from './Game'
 
 
-const tickGame = (game: IGame): IGame => {
+const stop = (game: Game): Game => {
   if (game.status === 'initial') {
     return game
   }
@@ -30,7 +30,8 @@ const tickGame = (game: IGame): IGame => {
       const now = Date.now()
       const elapsedTime = now - game.timerStart!
       gameDraft.segments[currentSegmentIndex].currentAbsoluteTime! += elapsedTime
-      gameDraft.timerStart = now
+      gameDraft.timerStart = undefined
+      gameDraft.status = 'pending'
     })
   }
 
@@ -42,4 +43,4 @@ const tickGame = (game: IGame): IGame => {
 }
 
 
-export default tickGame
+export default stop

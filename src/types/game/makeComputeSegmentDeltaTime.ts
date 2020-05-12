@@ -1,7 +1,7 @@
 import * as Time from '../time'
 import * as TimeCategory from '../time-category'
 import * as TimeFrame from '../time-frame'
-import IGame from './IGame'
+import Game from './Game'
 import makeComputeSegmentTime from './makeComputeSegmentTime'
 
 
@@ -10,7 +10,7 @@ const makeComputeSegmentDeltaTime = (
   leftTimeCategory: TimeCategory.TimeCategory,
   rightTimeCategory: TimeCategory.TimeCategory,
   timeFrame: TimeFrame.TimeFrame,
-): ((game: IGame) => Time.Time) => {
+): ((game: Game) => Time.Time) => {
   const computeSegmentLeftTime = makeComputeSegmentTime(segmentIndex, leftTimeCategory, timeFrame)
   const computeSegmentRightTime = makeComputeSegmentTime(segmentIndex, rightTimeCategory, timeFrame)
 

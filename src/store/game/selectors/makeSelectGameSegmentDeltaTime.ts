@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect'
-import { makeComputeSegmentDeltaTime } from '../../../types/game'
+import * as Game from '../../../types/game'
 import * as Time from '../../../types/time'
 import * as TimeCategory from '../../../types/time-category'
 import * as TimeFrame from '../../../types/time-frame'
@@ -16,7 +16,7 @@ const makeSelectGameSegmentDeltaTime = (
   rightTimeCategory: TimeCategory.TimeCategory,
   timeFrame: TimeFrame.TimeFrame,
 ): ISelectGameSegmentDeltaTime => {
-  const selectComputeDeltaTime = makeComputeSegmentDeltaTime(
+  const selectComputeDeltaTime = Game.makeComputeSegmentDeltaTime(
     segmentIndex,
     leftTimeCategory,
     rightTimeCategory,

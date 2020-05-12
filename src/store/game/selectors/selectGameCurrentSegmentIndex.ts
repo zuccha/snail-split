@@ -1,12 +1,12 @@
 import { createSelector } from 'reselect'
-import { getCurrentSegmentIndex } from '../../../types/game'
+import * as Game from '../../../types/game'
 import selectGame from './selectGame'
 
 
 const selectGameCurrentSegmentIndex = createSelector(
   selectGame,
   game => {
-    return getCurrentSegmentIndex(game)
+    return Game.getCurrentSegmentIndex(game)
   },
 )
 

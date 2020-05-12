@@ -1,7 +1,7 @@
-import IGame from './IGame'
+import Game from './Game'
 
 
-const defaultGame: IGame = {
+const defaultGame: Game = {
   title: '',
   category: '',
   segments: [],

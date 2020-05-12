@@ -1,12 +1,12 @@
 import immer from 'immer'
 import findLastIndex from '../../utils/findLastIndex'
-import IGame from './IGame'
+import Game from './Game'
 import computeBestPossibleTime from './computeBestPossibleTime'
 import computeSumOfBests from './computeSumOfBests'
 import makeComputeSegmentTime from './makeComputeSegmentTime'
 
 
-const splitGame = (game: IGame): IGame => {
+const split = (game: Game): Game => {
   if (game.status === 'ongoing') {
     if (game.timerStart === undefined) {
       return game
@@ -73,4 +73,4 @@ const splitGame = (game: IGame): IGame => {
 }
 
 
-export default splitGame
+export default split

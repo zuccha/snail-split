@@ -1,9 +1,9 @@
 import immer from 'immer'
-import IGame from './IGame'
+import Game from './Game'
 import findLastIndex from '../../utils/findLastIndex'
 
 
-const invalidatePreviousSegment = (game: IGame): IGame => {
+const invalidatePreviousSegment = (game: Game): Game => {
   if (game.status === 'pending' || game.status === 'ongoing') {
     const currentSegmentIndex = findLastIndex(
       game.segments,

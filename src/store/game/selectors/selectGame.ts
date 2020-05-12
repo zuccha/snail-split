@@ -1,8 +1,8 @@
-import { IGame } from '../../../types/game'
+import * as Game from '../../../types/game'
 import { IStateRoot } from '../../types'
 
 
-const selectGame = (state: IStateRoot): IGame => {
+const selectGame = (state: IStateRoot): Game.Game => {
   return state.game
 }
 

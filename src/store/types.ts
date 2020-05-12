@@ -1,11 +1,11 @@
 import { IConfig } from '../types/config'
-import { IGame } from '../types/game'
+import * as Game from '../types/game'
 import * as Snackbar from '../types/snackbar'
 
 
 interface IStateRoot {
   config: IConfig
-  game: IGame
+  game: Game.Game
   snackbar: Snackbar.Snackbar
 }
 

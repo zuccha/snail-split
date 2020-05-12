@@ -3,14 +3,14 @@ import * as GameStatus from '../game-status'
 import * as Segment from '../segment'
 import { validateString } from '../string'
 import * as Time from '../time'
-import IGame from './IGame'
+import Game from './Game'
 import defaultGame from './defaultGame'
 
 
-const validateGame = (
+const validate = (
   maybeGame: unknown,
   defaultValue = defaultGame,
-): IGame => {
+): Game => {
   if (typeof maybeGame !== 'object' || maybeGame === null) {
     return defaultValue
   }
@@ -30,4 +30,4 @@ const validateGame = (
 }
 
 
-export default validateGame
+export default validate

@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect'
-import { makeComputeSegmentTime } from '../../../types/game'
+import * as Game from '../../../types/game'
 import * as Time from '../../../types/time'
 import * as TimeCategory from '../../../types/time-category'
 import * as TimeFrame from '../../../types/time-frame'
@@ -15,7 +15,7 @@ const makeSelectGameSegmentTime = (
   timeCategory: TimeCategory.TimeCategory,
   timeFrame: TimeFrame.TimeFrame,
 ): ISelectGameSegmentTime => {
-  const selectComputeTime = makeComputeSegmentTime(segmentIndex, timeCategory, timeFrame)
+  const selectComputeTime = Game.makeComputeSegmentTime(segmentIndex, timeCategory, timeFrame)
 
   return createSelector(
     selectGame,

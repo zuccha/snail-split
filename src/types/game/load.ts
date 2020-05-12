@@ -1,21 +1,21 @@
 import readJson from '../../utils/readJson'
 import { IEitherErrorOr } from '../either-error-or'
-import IGame from './IGame'
+import Game from './Game'
 import computeBestPossibleTime from './computeBestPossibleTime'
 import computeSumOfBests from './computeSumOfBests'
-import validateGame from './validateGame'
+import validate from './validate'
 
 
-const loadGame = (
+const load = (
   filename: string,
-): IEitherErrorOr<IGame> => {
+): IEitherErrorOr<Game> => {
   const json = readJson(filename)
 
   if (json.errorMessage !== undefined) {
     return { error: json.errorMessage }
   }
 
-  const game = validateGame(json.data)
+  const game = validate(json.data)
   game.status = game.status === 'ongoing' ? 'pending' : game.status
   game.bestPossibleTime = computeBestPossibleTime(game)
   game.sumOfBests = computeSumOfBests(game)
@@ -24,4 +24,4 @@ const loadGame = (
 }
 
 
-export default loadGame
+export default load

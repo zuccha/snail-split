@@ -3,7 +3,7 @@ import * as Time from '../time'
 import * as GameStatus from '../game-status'
 
 
-interface IGame {
+interface Game {
   title: string
   category: string
   segments: Segment.Segment[]
@@ -14,4 +14,4 @@ interface IGame {
 }
 
 
-export default IGame
+export default Game

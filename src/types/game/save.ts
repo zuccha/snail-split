@@ -1,10 +1,10 @@
 import fs from 'fs'
 import { IEitherErrorOr } from '../either-error-or'
-import IGame from './IGame'
+import Game from './Game'
 
 
-const saveGame = (
-  game: IGame,
+const save = (
+  game: Game,
   filename: string,
 ): IEitherErrorOr<undefined> => {
   try {
@@ -23,4 +23,4 @@ const saveGame = (
 }
 
 
-export default saveGame
+export default save
