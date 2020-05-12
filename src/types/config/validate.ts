@@ -4,7 +4,7 @@ import { validateString } from '../string'
 import Config from './Config'
 import defaultConfig from './defaultConfig'
 import { validateBoolean } from '../boolean'
-import { validateColumnDefinitionDelta, validateColumnDefinitionTime, IColumnDefinition } from '../column-definition'
+import * as ColumnDefinition from '../column-definition'
 
 
 type ITimeFont = 'slim' | 'fat'
@@ -12,7 +12,7 @@ type ITimeFont = 'slim' | 'fat'
 
 const validateColumnDefinitions = (
   maybeColumnDefinitions: unknown,
-): IColumnDefinition[] => {
+): ColumnDefinition.ColumnDefinition[] => {
   const columnDefinitions = validateArray(maybeColumnDefinitions, defaultConfig.segmentColumnDefinitions)
     .map(maybeColumnDefinition => {
       if (!maybeColumnDefinition || typeof maybeColumnDefinition !== 'object') {
@@ -20,16 +20,16 @@ const validateColumnDefinitions = (
       }
       const maybeColumnDefinitionRecord = maybeColumnDefinition as { [key: string]: unknown }
       if (maybeColumnDefinitionRecord.type === 'delta') {
-        return validateColumnDefinitionDelta(maybeColumnDefinition)
+        return ColumnDefinition.validateDelta(maybeColumnDefinition)
       }
       if (maybeColumnDefinitionRecord.type === 'time') {
-        return validateColumnDefinitionTime(maybeColumnDefinition)
+        return ColumnDefinition.validateTime(maybeColumnDefinition)
       }
       return undefined
     })
     .filter(columnDefinition => columnDefinition !== undefined)
 
-  return columnDefinitions as IColumnDefinition[]
+  return columnDefinitions as ColumnDefinition.ColumnDefinition[]
 }
 
 const validateTimeFont = (

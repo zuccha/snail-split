@@ -1,7 +1,7 @@
-import { IColumnDefinitionDelta } from './IColumnDefinition'
+import { ColumnDefinitionDelta } from './ColumnDefinition'
 
 
-const defaultColumnDefinitionDelta: IColumnDefinitionDelta = {
+const defaultColumnDefinitionDelta: ColumnDefinitionDelta = {
   type: 'delta',
   title: '',
   leftTimeCategory: 'current',

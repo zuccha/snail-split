@@ -1,4 +1,4 @@
-import { IColumnDefinition } from '../column-definition'
+import * as ColumnDefinition from '../column-definition'
 
 
 interface Config {
@@ -16,7 +16,7 @@ interface Config {
   timeFormatZero: string
   timeFormatEmpty: string
 
-  segmentColumnDefinitions: IColumnDefinition[]
+  segmentColumnDefinitions: ColumnDefinition.ColumnDefinition[]
 
   segmentTimeFormatDefault: string
   segmentTimeFormatBelowHour: string

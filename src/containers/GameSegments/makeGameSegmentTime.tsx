@@ -5,7 +5,7 @@ import selectGameCurrentSegmentIndex from '../../store/game/selectors/selectGame
 import makeSelectGameSegmentTime from '../../store/game/selectors/makeSelectGameSegmentTime'
 import useSelector from '../../store/useSelector'
 import theme from '../../theme'
-import { IColumnDefinitionTime } from '../../types/column-definition'
+import * as ColumnDefinition from '../../types/column-definition'
 import * as Space from '../../types/space'
 import * as Time from '../../types/time'
 
@@ -17,7 +17,7 @@ interface IGameSegmentTimeProps {
 
 const makeGameSegmentTime = (
   segmentIndex: number,
-  columnDefinition: IColumnDefinitionTime,
+  columnDefinition: ColumnDefinition.ColumnDefinitionTime,
 ): React.FC<IGameSegmentTimeProps> => {
   const selectGameSegmentTime = makeSelectGameSegmentTime(
     segmentIndex,

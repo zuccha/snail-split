@@ -2,7 +2,7 @@ import * as TimeCategory from '../time-category'
 import * as TimeFrame from '../time-frame'
 
 
-interface IColumnDefinitionDelta {
+interface ColumnDefinitionDelta {
   type: 'delta'
   title: string
   leftTimeCategory: TimeCategory.TimeCategory
@@ -10,19 +10,19 @@ interface IColumnDefinitionDelta {
   timeFrame: TimeFrame.TimeFrame
 }
 
-interface IColumnDefinitionTime {
+interface ColumnDefinitionTime {
   type: 'time'
   title: string
   timeCategory: TimeCategory.TimeCategory
   timeFrame: TimeFrame.TimeFrame
 }
 
-type IColumnDefinition = IColumnDefinitionDelta | IColumnDefinitionTime
+type ColumnDefinition = ColumnDefinitionDelta | ColumnDefinitionTime
 
 
-export default IColumnDefinition
+export default ColumnDefinition
 
 export {
-  IColumnDefinitionDelta,
-  IColumnDefinitionTime,
+  ColumnDefinitionDelta,
+  ColumnDefinitionTime,
 }

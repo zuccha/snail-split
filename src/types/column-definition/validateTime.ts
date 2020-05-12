@@ -1,14 +1,14 @@
 import { validateString } from '../string'
 import * as TimeCategory from '../time-category'
 import * as TimeFrame from '../time-frame'
-import { IColumnDefinitionTime } from './IColumnDefinition'
+import { ColumnDefinitionTime } from './ColumnDefinition'
 import defaultColumnDefinitionTime from './defaultColumnDefinitionTime'
 
 
-const validateColumnDefinitionTime = (
+const validateTime = (
   maybeColumnDefinition: unknown,
   defaultValue = defaultColumnDefinitionTime,
-): IColumnDefinitionTime => {
+): ColumnDefinitionTime => {
   if (!maybeColumnDefinition || typeof maybeColumnDefinition !== 'object') {
     return defaultValue
   }
@@ -33,4 +33,4 @@ const validateColumnDefinitionTime = (
 }
 
 
-export default validateColumnDefinitionTime
+export default validateTime

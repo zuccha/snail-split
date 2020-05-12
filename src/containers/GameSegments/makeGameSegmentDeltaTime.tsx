@@ -5,7 +5,7 @@ import makeSelectGameSegmentDeltaTime from '../../store/game/selectors/makeSelec
 import selectGameCurrentSegmentIndex from '../../store/game/selectors/selectGameCurrentSegmentIndex'
 import useSelector from '../../store/useSelector'
 import theme from '../../theme'
-import { IColumnDefinitionDelta } from '../../types/column-definition'
+import * as ColumnDefinition from '../../types/column-definition'
 import * as Space from '../../types/space'
 import * as Time from '../../types/time'
 import when from '../../utils/when'
@@ -18,7 +18,7 @@ interface IGameSegmentDeltaTimeProps {
 
 const makeGameSegmentDeltaTime = (
   segmentIndex: number,
-  columnDefinition: IColumnDefinitionDelta,
+  columnDefinition: ColumnDefinition.ColumnDefinitionDelta,
 ): React.FC<IGameSegmentDeltaTimeProps> => {
   const selectGameSegmentDeltaTime = makeSelectGameSegmentDeltaTime(
     segmentIndex,

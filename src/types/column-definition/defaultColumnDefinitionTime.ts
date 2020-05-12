@@ -1,7 +1,7 @@
-import { IColumnDefinitionTime } from './IColumnDefinition'
+import { ColumnDefinitionTime } from './ColumnDefinition'
 
 
-const defaultColumnDefinitionTime: IColumnDefinitionTime = {
+const defaultColumnDefinitionTime: ColumnDefinitionTime = {
   type: 'time',
   title: '',
   timeCategory: 'current',
