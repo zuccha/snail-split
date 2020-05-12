@@ -10,8 +10,8 @@ import GameHeader, { GAME_HEADER_HEIGHT } from '../GameHeader'
 import GameSegments, { GAME_SEGMENTS_HEIGHT } from '../GameSegments'
 import GameSumOfBests from '../GameSumOfBests'
 import Snackbar from '../Snackbar'
-import useInputs from './useInputs'
-import useLoop from './useLoop'
+import useGameInputs from './useGameInputs'
+import useGameLoop from './useGameLoop'
 
 
 interface ViewTimerProps {
@@ -43,8 +43,8 @@ const ViewTimer: React.FC<ViewTimerProps> = ({
   useKeybinding('escape', onClose)
   useKeybinding('q', onClose)
 
-  useInputs(gameFilenameOutput)
-  useLoop(gameFilenameOutput)
+  useGameInputs(gameFilenameOutput)
+  useGameLoop(gameFilenameOutput)
 
   const contentWidth = space.width !== undefined && space.width >= PADDING_H * 2
     ? space.width - PADDING_H * 2

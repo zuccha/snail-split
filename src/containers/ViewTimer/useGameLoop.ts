@@ -10,7 +10,7 @@ import * as Game from '../../types/game'
 
 const SECOND = 1000
 
-const useLoop = (filename: string): void => {
+const useGameLoop = (filename: string): void => {
   const config = useConfig()
   const dispatch = useDispatch()
   const enqueueSnackbar = useEnqueueSnackbar()
@@ -41,4 +41,4 @@ const useLoop = (filename: string): void => {
 }
 
 
-export default useLoop
+export default useGameLoop

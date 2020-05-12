@@ -1,8 +1,9 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import screen from '../../screen'
 import useSelector from '../../store/useSelector'
 import selectGameCurrentSegmentIndex from '../../store/game/selectors/selectGameCurrentSegmentIndex'
 import selectGameSegmentsCount from '../../store/game/selectors/selectGameSegmentsCount'
+import useKeybinding from '../../hooks/useKeybinding'
 
 
 const focusCurrentSegment = (
@@ -17,31 +18,24 @@ const useWindowOffset = (windowSize: number): number => {
   const currentSegmentIndex = useSelector(selectGameCurrentSegmentIndex)
   const [windowOffset, setWindowOffset] = useState(focusCurrentSegment(currentSegmentIndex, windowSize))
 
+  const moveWindowUp = useCallback(() => {
+    setWindowOffset(prevWindowOffset => (
+      Math.max(0, prevWindowOffset - 1)
+    ))
+  }, [])
+
+  const moveWindowDown = useCallback(() => {
+    setWindowOffset(prevWindowOffset => (
+      Math.min(Math.max(0, segmentsCount - windowSize), prevWindowOffset + 1)
+    ))
+  }, [segmentsCount, windowSize])
+
+  useKeybinding('up', moveWindowUp)
+  useKeybinding('down', moveWindowDown)
+
   useEffect(() => {
     setWindowOffset(focusCurrentSegment(currentSegmentIndex, windowSize))
   }, [currentSegmentIndex, windowSize])
-
-  useEffect(() => {
-    const moveWindowUp = (): void => {
-      setWindowOffset(prevWindowOffset => (
-        Math.max(0, prevWindowOffset - 1)
-      ))
-    }
-
-    const moveWindowDown = (): void => {
-      setWindowOffset(prevWindowOffset => (
-        Math.min(Math.max(0, segmentsCount - windowSize), prevWindowOffset + 1)
-      ))
-    }
-
-    screen.key('up', moveWindowUp)
-    screen.key('down', moveWindowDown)
-
-    return () => {
-      screen.unkey('up', moveWindowUp)
-      screen.unkey('down', moveWindowDown)
-    }
-  }, [segmentsCount, windowSize])
 
   return windowOffset
 }
