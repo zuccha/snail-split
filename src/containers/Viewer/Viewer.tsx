@@ -1,5 +1,4 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react'
-import screen from '../../screen'
 import createActionGameStop from '../../store/game/actions/createActionGameStop'
 import useDispatch from '../../store/useDispatch'
 import * as Space from '../../types/space'
@@ -7,12 +6,14 @@ import when from '../../utils/when'
 import ViewHelp from '../ViewHelp'
 import ViewTimer from '../ViewTimer'
 import BlessedBox from '../../components/BlessedBox'
+import useKeybinding from '../../hooks/useKeybinding'
 
 
 type ViewName = 'timer' | 'help' | undefined
 
 interface ViewProps {
   space?: Space.Space
+  onClose?: () => void
 }
 
 
@@ -27,30 +28,34 @@ const Viewer: React.FC = () => {
     height: process.stdout.rows,
   })
 
+  const handleToggle = useCallback(() => {
+    if (mountedRef.current) {
+      dispatch(createActionGameStop())
+
+      setSelectedView(prevSelectedView => {
+        return when([
+          [prevSelectedView === 'help', () => 'timer'],
+          [prevSelectedView === 'timer', () => 'help'],
+        ], undefined)
+      })
+    }
+  }, [dispatch])
+
+  const handleExit = useCallback(() => {
+    process.exit()
+  }, [])
+
+  const handleSelectTimer = useCallback(() => {
+    setSelectedView('timer')
+  }, [])
+
+  useKeybinding('h', handleToggle)
+  useKeybinding('C-c', handleExit)
+
   useEffect(() => {
     mountedRef.current = true
     return () => { mountedRef.current = false }
   }, [])
-
-  useEffect(() => {
-    const toggleView = (): void => {
-      if (mountedRef.current) {
-        dispatch(createActionGameStop())
-
-        setSelectedView(prevSelectedView => {
-          return when([
-            [prevSelectedView === 'help', () => 'timer'],
-            [prevSelectedView === 'timer', () => 'help'],
-          ], undefined)
-        })
-      }
-    }
-
-    screen.key('h', toggleView)
-    return () => {
-      screen.unkey('h', toggleView)
-    }
-  }, [dispatch])
 
   const handleResize = useCallback(() => {
     setScreenSize({
@@ -64,9 +69,14 @@ const Viewer: React.FC = () => {
     [selectedView === 'timer', () => ViewTimer],
   ], () => null)
 
+  const onClose = when([
+    [selectedView === 'help', () => handleSelectTimer],
+    [selectedView === 'timer', () => handleExit],
+  ], () => { /* do nothing */ })
+
   return (
     <BlessedBox onResize={handleResize}>
-      <View space={screenSize} />
+      <View space={screenSize} onClose={onClose} />
     </BlessedBox>
   )
 }

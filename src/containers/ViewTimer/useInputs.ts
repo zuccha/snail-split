@@ -16,10 +16,6 @@ const useInputs = (filename: string): void => {
   const enqueueSnackbar = useEnqueueSnackbar()
 
   useEffect(() => {
-    const exit = (): void => {
-      process.exit(0)
-    }
-
     const handleInvalidatePreviousSegment = (): void => {
       dispatch(createActionGameInvalidatePreviousSegment())
     }
@@ -44,11 +40,6 @@ const useInputs = (filename: string): void => {
       dispatch(createActionGameToggle())
     }
 
-    // screen.on('keypress', (a, b) => console.log(a, b))
-
-    screen.key('escape', exit)
-    screen.key('q', exit)
-    screen.key('C-c', exit)
     screen.key('backspace', handleInvalidatePreviousSegment)
     screen.key('r', handleResetGame)
     screen.key('s', handleSaveGame)
@@ -56,9 +47,6 @@ const useInputs = (filename: string): void => {
     screen.key('space', hanldeToggleGame)
 
     return () => {
-      screen.unkey('escape', exit)
-      screen.unkey('q', exit)
-      screen.unkey('C-c', exit)
       screen.unkey('backspace', handleInvalidatePreviousSegment)
       screen.unkey('r', handleResetGame)
       screen.unkey('s', handleSaveGame)

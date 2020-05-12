@@ -1,5 +1,6 @@
-import React, { useCallback, useState } from 'react'
+import React from 'react'
 import BlessedBox from '../../components/BlessedBox'
+import useKeybinding from '../../hooks/useKeybinding'
 import useConfig from '../../store/config/hooks/useConfig'
 import theme from '../../theme'
 import * as Space from '../../types/space'
@@ -15,6 +16,7 @@ import useLoop from './useLoop'
 
 interface ViewTimerProps {
   space?: Space.Space
+  onClose?: () => void
 }
 
 
@@ -34,8 +36,12 @@ const gameFilenameOutput = './examples/games/dark-souls-save.json'
 
 const ViewTimer: React.FC<ViewTimerProps> = ({
   space = {},
+  onClose = () => { /* do nothing */ },
 }) => {
   const config = useConfig()
+
+  useKeybinding('escape', onClose)
+  useKeybinding('q', onClose)
 
   useInputs(gameFilenameOutput)
   useLoop(gameFilenameOutput)
