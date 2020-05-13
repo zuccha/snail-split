@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import useMountedRef from '../hooks/useMountedRef'
 import store from './store'
 import { IStateRoot } from './types'
 
@@ -11,16 +12,9 @@ const useSelector = <T>(
   select: (state: IStateRoot) => T,
   equal: (left: T, right: T) => boolean = equalIdentity,
 ): T => {
-  const mountedRef = useRef(true)
+  const mountedRef = useMountedRef()
   const stateRef = useRef(select(store.getState()))
   const [, forceUpdate] = useState(0)
-
-  useEffect(() => {
-    mountedRef.current = true
-    return () => {
-      mountedRef.current = false
-    }
-  }, [])
 
   useEffect(() => {
     const update = (): void => {
