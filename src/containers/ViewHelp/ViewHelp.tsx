@@ -1,6 +1,7 @@
 import React from 'react'
 import BlessedBox from '../../components/BlessedBox'
 import useKeybinding from '../../hooks/useKeybinding'
+import useConfig from '../../store/config/hooks/useConfig'
 import * as Space from '../../types/space'
 
 
@@ -14,8 +15,8 @@ const ViewHelp: React.FC<ViewHelpProps> = ({
   space = {},
   onClose = () => { /* do nothing */ },
 }) => {
-  useKeybinding('escape', onClose)
-  useKeybinding('q', onClose)
+  const config = useConfig()
+  useKeybinding(config.keybindings.quit, onClose)
 
   return (
     <BlessedBox {...space} style={{ bg: 'yellow' }}>

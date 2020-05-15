@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useRef, useState } from 'react'
 import BlessedBox from '../../components/BlessedBox'
 import useKeybinding from '../../hooks/useKeybinding'
 import useMountedRef from '../../hooks/useMountedRef'
+import useConfig from '../../store/config/hooks/useConfig'
 import createActionGameStop from '../../store/game/actions/createActionGameStop'
 import useDispatch from '../../store/useDispatch'
 import * as Space from '../../types/space'
@@ -21,6 +22,7 @@ interface ViewProps {
 const Viewer: React.FC = () => {
   const mountedRef = useMountedRef()
   const dispatch = useDispatch()
+  const config = useConfig()
 
   const [selectedView, setSelectedView] = useState<ViewName>('timer')
 
@@ -50,8 +52,8 @@ const Viewer: React.FC = () => {
     setSelectedView('timer')
   }, [])
 
-  useKeybinding('h', handleToggle)
-  useKeybinding('C-c', handleExit)
+  useKeybinding(config.keybindings.help, handleToggle)
+  useKeybinding(config.keybindings.forceQuit, handleExit)
 
   const handleResize = useCallback(() => {
     setScreenSize({

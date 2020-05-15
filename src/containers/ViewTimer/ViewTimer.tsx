@@ -40,8 +40,7 @@ const ViewTimer: React.FC<ViewTimerProps> = ({
 }) => {
   const config = useConfig()
 
-  useKeybinding('escape', onClose)
-  useKeybinding('q', onClose)
+  useKeybinding(config.keybindings.quit, onClose)
 
   useGameInputs(gameFilenameOutput)
   useGameLoop(gameFilenameOutput)

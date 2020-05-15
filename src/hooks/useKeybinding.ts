@@ -1,15 +1,23 @@
 import { useEffect } from 'react'
 import screen from '../screen'
+import { Keybinding } from '../types/keybinding'
 
 
 const useKeybinding = (
-  keybinding: string,
+  keybinding: Keybinding,
   onKeyPressed: () => void,
 ): void => {
   useEffect(() => {
-    screen.key(keybinding, onKeyPressed)
-    return () => { screen.unkey(keybinding, onKeyPressed) }
-  }, [onKeyPressed])
+    if (keybinding !== undefined) {
+      screen.key(keybinding, onKeyPressed)
+    }
+
+    return () => {
+      if (keybinding !== undefined) {
+        screen.unkey(keybinding, onKeyPressed)
+      }
+    }
+  }, [keybinding, onKeyPressed])
 }
 
 

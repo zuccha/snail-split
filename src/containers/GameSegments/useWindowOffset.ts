@@ -4,6 +4,7 @@ import useSelector from '../../store/useSelector'
 import selectGameCurrentSegmentIndex from '../../store/game/selectors/selectGameCurrentSegmentIndex'
 import selectGameSegmentsCount from '../../store/game/selectors/selectGameSegmentsCount'
 import useKeybinding from '../../hooks/useKeybinding'
+import useConfig from '../../store/config/hooks/useConfig'
 
 
 const focusCurrentSegment = (
@@ -14,6 +15,7 @@ const focusCurrentSegment = (
 }
 
 const useWindowOffset = (windowSize: number): number => {
+  const config = useConfig()
   const segmentsCount = useSelector(selectGameSegmentsCount)
   const currentSegmentIndex = useSelector(selectGameCurrentSegmentIndex)
   const [windowOffset, setWindowOffset] = useState(focusCurrentSegment(currentSegmentIndex, windowSize))
@@ -30,8 +32,8 @@ const useWindowOffset = (windowSize: number): number => {
     ))
   }, [segmentsCount, windowSize])
 
-  useKeybinding('up', moveWindowUp)
-  useKeybinding('down', moveWindowDown)
+  useKeybinding(config.keybindings.scrollSegmentsUp, moveWindowUp)
+  useKeybinding(config.keybindings.scrollSegmentsDown, moveWindowDown)
 
   useEffect(() => {
     setWindowOffset(focusCurrentSegment(currentSegmentIndex, windowSize))

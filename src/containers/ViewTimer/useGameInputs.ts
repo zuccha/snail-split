@@ -5,8 +5,9 @@ import createActionGameReset from '../../store/game/actions/createActionGameRese
 import createActionGameSplit from '../../store/game/actions/createActionGameSplit'
 import createActionGameToggle from '../../store/game/actions/createActionGameToggle'
 import store from '../../store'
-import useDispatch from '../../store/useDispatch'
+import useConfig from '../../store/config/hooks/useConfig'
 import useEnqueueSnackbar from '../../store/snackbar/hooks/useEnqueueSnackbar'
+import useDispatch from '../../store/useDispatch'
 import * as EitherErrorOr from '../../types/either-error-or'
 import * as Game from '../../types/game'
 
@@ -14,6 +15,7 @@ import * as Game from '../../types/game'
 const useGameInputs = (filename: string): void => {
   const dispatch = useDispatch()
   const enqueueSnackbar = useEnqueueSnackbar()
+  const config = useConfig()
 
   const handleInvalidatePreviousSegment = useCallback(() => {
     dispatch(createActionGameInvalidatePreviousSegment())
@@ -39,11 +41,11 @@ const useGameInputs = (filename: string): void => {
     dispatch(createActionGameToggle())
   }, [dispatch])
 
-  useKeybinding('backspace', handleInvalidatePreviousSegment)
-  useKeybinding('r', handleResetGame)
-  useKeybinding('s', handleSaveGame)
-  useKeybinding('return', handleSplitGame)
-  useKeybinding('space', hanldeToggleGame)
+  useKeybinding(config.keybindings.invalidatePreviousSegment, handleInvalidatePreviousSegment)
+  useKeybinding(config.keybindings.resetTimer, handleResetGame)
+  useKeybinding(config.keybindings.save, handleSaveGame)
+  useKeybinding(config.keybindings.splitCurrentSegment, handleSplitGame)
+  useKeybinding(config.keybindings.toggleTimer, hanldeToggleGame)
 }
 
 
