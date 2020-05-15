@@ -8,9 +8,9 @@ const load = (
   filename: string,
 ): EitherErrorOr.EitherErrorOr<Config> => {
   const json = readJson(filename)
-  return json.errorMessage === undefined
-    ? { data: validate(json.data) }
-    : { error: json.errorMessage }
+  return EitherErrorOr.isError(json)
+    ? json
+    : { data: validate(json.data) }
 }
 
 

@@ -11,8 +11,8 @@ const load = (
 ): EitherErrorOr.EitherErrorOr<Game> => {
   const json = readJson(filename)
 
-  if (json.errorMessage !== undefined) {
-    return { error: json.errorMessage }
+  if (EitherErrorOr.isError(json)) {
+    return json
   }
 
   const game = validate(json.data)

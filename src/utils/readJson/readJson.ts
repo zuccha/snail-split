@@ -1,51 +1,29 @@
 import fs from 'fs'
+import { EitherErrorOr } from '../../types/either-error-or'
+import when from '../when'
 
 
-interface IErrorOrData {
-  errorMessage: string | undefined
-  data: unknown | undefined
-}
-
-
-const readJson = (filename: string): IErrorOrData => {
+const readJson = (filename: string): EitherErrorOr<unknown> => {
   if (filename === '') {
-    return {
-      data: undefined,
-      errorMessage: 'no filename provided',
-    }
+    return { error: 'no filename provided' }
   }
 
   if (!fs.existsSync(filename)) {
-    return {
-      data: undefined,
-      errorMessage: `file "${filename}" does not exists`,
-    }
+    return { error: `file "${filename}" does not exists` }
   }
 
   if (!fs.lstatSync(filename).isFile()) {
-    return {
-      data: undefined,
-      errorMessage: `"${filename}" is not a file`,
-    }
+    return { error: `"${filename}" is not a file` }
   }
 
   try {
     const file = fs.readFileSync(filename, 'utf8')
-    return {
-      data: JSON.parse(file),
-      errorMessage: undefined,
-    }
+    return { data: JSON.parse(file) }
   } catch(e) {
-    if (e instanceof SyntaxError) {
-      return {
-        data: undefined,
-        errorMessage: `file "${filename}" is not formatted correctly.`,
-      }
-    }
-
     return {
-      data: undefined,
-      errorMessage: `failed to read file "${filename}"`,
+      error: when([
+        [e instanceof SyntaxError, () => `file "${filename}" is not formatted correctly.`],
+      ], `failed to read file "${filename}"`),
     }
   }
 }
