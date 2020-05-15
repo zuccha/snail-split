@@ -1,19 +1,28 @@
+import fatal from '../../utils/fatal'
 import Time from './Time'
 
 
 const validate = (
   maybeTime: unknown,
   defaultValue: Time = undefined,
+  property = 'time',
 ): Time => {
   if (maybeTime === undefined) {
-    return maybeTime
+    return defaultValue
   }
 
-  if (typeof maybeTime === 'number') {
-    return maybeTime
+  if (maybeTime === null) {
+    return undefined
   }
 
-  return defaultValue
+  if (typeof maybeTime !== 'number' || !Number.isInteger(maybeTime)) {
+    fatal(
+      `Failed to validate ${property}, `
+      + `a time was expected but "${maybeTime}" was found instead`,
+    )
+  }
+
+  return maybeTime as Time
 }
 
 

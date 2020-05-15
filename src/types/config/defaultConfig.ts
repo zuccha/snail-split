@@ -1,3 +1,4 @@
+import * as ConfigKeybindingMap from '../config-keybinding-map'
 import Config from './Config'
 
 
@@ -46,10 +47,12 @@ const defaultConfig: Config = {
   segmentDeltaFormatZero: '0.000',
   segmentDeltaFormatEmpty: '-',
 
-  snackbarDuration: 3000,
-
   showBestPossibleTime: true,
   showSumOfBests: true,
+
+  snackbarDuration: 3000,
+
+  keybindings: ConfigKeybindingMap.defaultConfigKeybindingMap,
 }
 
 

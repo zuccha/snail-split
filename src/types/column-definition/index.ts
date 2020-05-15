@@ -3,5 +3,6 @@ export {
   ColumnDefinitionDelta,
   ColumnDefinitionTime,
 } from './ColumnDefinition'
-export { default as validateDelta } from './validateDelta'
-export { default as validateTime } from './validateTime'
+export { default as defaultColumnDefinitionDelta } from './defaultColumnDefinitionDelta'
+export { default as defaultColumnDefinitionTime } from './defaultColumnDefinitionTime'
+export { default as validate } from './validate'

@@ -1,4 +1,6 @@
+import * as BigTextFont from '../big-text-font'
 import * as ColumnDefinition from '../column-definition'
+import * as ConfigKeybindingMap from '../config-keybinding-map'
 
 
 interface Config {
@@ -8,7 +10,7 @@ interface Config {
   autosaveInterval: number
   autosaveShowMessage: boolean
 
-  timeFont: 'slim' | 'fat'
+  timeFont: BigTextFont.BigTextFont
   timeFormatDefault: string
   timeFormatBelowHour: string
   timeFormatBelowMinute: string
@@ -32,10 +34,12 @@ interface Config {
   segmentDeltaFormatZero: string
   segmentDeltaFormatEmpty: string
 
-  snackbarDuration: number
-
   showBestPossibleTime: boolean
   showSumOfBests: boolean
+
+  snackbarDuration: number
+
+  keybindings: ConfigKeybindingMap.ConfigKeybindingMap
 }
 
 
