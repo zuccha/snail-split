@@ -1,19 +1,22 @@
 {
-  "name": "rigel",
+  "name": "snail-split",
   "version": "1.0.0",
   "main": "src/index.tsx",
   "author": "Amedeo Zucchetti",
   "license": "MIT",
   "scripts": {
+    "build": "webpack",
     "lint:check": "eslint --ext .js,.ts,.tsx ./src/",
-    "start": "ts-node src/index.tsx",
-    "start:watch": "nodemon --watch 'src/**/*.tsx?' --exec 'ts-node' src/index.tsx"
+    "start": "ts-node src/index.tsx"
   },
   "devDependencies": {
     "nodemon": "^2.0.3",
     "ts-loader": "^7.0.2",
     "ts-node": "^8.9.1",
-    "typescript": "^3.8.3"
+    "typescript": "^3.9.2",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-node-externals": "^1.7.2"
   },
   "dependencies": {
     "@types/blessed": "^0.1.17",
@@ -33,9 +36,9 @@
     "minimist": "^1.2.5",
     "react": "^16.13.1",
     "react-blessed": "^0.6.2",
-    "react-devtools-core": "^4.6.0",
+    "react-devtools-core": "^3.0.0",
     "redux": "^4.0.5",
     "reselect": "^4.0.0",
-    "ws": "^7.2.5"
+    "ws": "^6.0.0"
   }
 }
