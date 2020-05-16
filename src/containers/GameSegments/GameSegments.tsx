@@ -1,8 +1,8 @@
 import React from 'react'
 import BlessedBox from '../../components/BlessedBox'
 import BlessedText from '../../components/BlessedText'
-import theme from '../../theme'
 import useConfig from '../../store/config/hooks/useConfig'
+import useTheme from '../../store/theme/hooks/useTheme'
 import * as Space from '../../types/space'
 import range from '../../utils/range'
 import makeGameSegmentDeltaTime from './makeGameSegmentDeltaTime'
@@ -32,6 +32,7 @@ const GameSegments: React.FC<IGameSegmentsProps> = ({
   space = {},
 }) => {
   const config = useConfig()
+  const theme = useTheme()
   const windowOffset = useWindowOffset(WINDOW_SIZE)
 
   const columnDefinitions = config.segmentColumnDefinitions

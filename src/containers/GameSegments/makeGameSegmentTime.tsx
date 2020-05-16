@@ -3,8 +3,8 @@ import BlessedText from '../../components/BlessedText'
 import useConfig from '../../store/config/hooks/useConfig'
 import selectGameCurrentSegmentIndex from '../../store/game/selectors/selectGameCurrentSegmentIndex'
 import makeSelectGameSegmentTime from '../../store/game/selectors/makeSelectGameSegmentTime'
+import useTheme from '../../store/theme/hooks/useTheme'
 import useSelector from '../../store/useSelector'
-import theme from '../../theme'
 import * as ColumnDefinition from '../../types/column-definition'
 import * as Space from '../../types/space'
 import * as Time from '../../types/time'
@@ -19,6 +19,7 @@ const makeGameSegmentTime = (
   segmentIndex: number,
   columnDefinition: ColumnDefinition.ColumnDefinitionTime,
 ): React.FC<IGameSegmentTimeProps> => {
+  const theme = useTheme()
   const selectGameSegmentTime = makeSelectGameSegmentTime(
     segmentIndex,
     columnDefinition.timeCategory,

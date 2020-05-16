@@ -23,9 +23,9 @@ const defaultTheme: Theme = {
     itemOddColorFg: 'white',
     itemCurrentColorBg: 'black',
     itemCurrentColorFg: 'white',
-    deltaTimeColorFgNegative: 'red',
+    deltaTimeColorFgNegative: 'green',
     deltaTimeColorFgNeutral: 'white',
-    deltaTimeColorFgPositive: 'green',
+    deltaTimeColorFgPositive: 'red',
   },
   time: {
     colorBg: 'black',

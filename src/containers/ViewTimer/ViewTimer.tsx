@@ -2,7 +2,7 @@ import React from 'react'
 import BlessedBox from '../../components/BlessedBox'
 import useKeybinding from '../../hooks/useKeybinding'
 import useConfig from '../../store/config/hooks/useConfig'
-import theme from '../../theme'
+import useTheme from '../../store/theme/hooks/useTheme'
 import * as Space from '../../types/space'
 import GameBestPossibleTime, { GAME_BEST_POSSIBLE_TIME_HEIGHT } from '../GameBestPossibleTime'
 import GameCurrentTime, { GAME_CURRENT_TIME_HEIGHT } from '../GameCurrentTime'
@@ -39,6 +39,7 @@ const ViewTimer: React.FC<ViewTimerProps> = ({
   onClose = () => { /* do nothing */ },
 }) => {
   const config = useConfig()
+  const theme = useTheme()
 
   useKeybinding(config.keybindings.quit, onClose)
 

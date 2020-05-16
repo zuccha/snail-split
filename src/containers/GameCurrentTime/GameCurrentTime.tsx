@@ -6,8 +6,8 @@ import BlessedBox from '../../components/BlessedBox'
 import selectGameBestTime from '../../store/game/selectors/selectGameBestTime'
 import selectGameCurrentTime from '../../store/game/selectors/selectGameCurrentTime'
 import selectGameStatus from '../../store/game/selectors/selectGameStatus'
+import useTheme from '../../store/theme/hooks/useTheme'
 import useSelector from '../../store/useSelector'
-import theme from '../../theme'
 import * as Space from '../../types/space'
 import * as Time from '../../types/time'
 import when from '../../utils/when'
@@ -26,6 +26,7 @@ const GameCurrentTime: React.FC<IGameCurrentTimeProps> = ({
   space = {},
 }) => {
   const config = useConfig()
+  const theme = useTheme()
   const bestTime = useSelector(selectGameBestTime)
   const currentTime = useSelector(selectGameCurrentTime)
   const status = useSelector(selectGameStatus)

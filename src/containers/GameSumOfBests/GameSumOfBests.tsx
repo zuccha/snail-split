@@ -1,8 +1,8 @@
 import React from 'react'
 import LabelledTime, { LABELLED_TIME_HEIGHT } from '../../components/LabelledTime'
 import selectGameSumOfBests from '../../store/game/selectors/selectGameSumOfBests'
+import useTheme from '../../store/theme/hooks/useTheme'
 import useSelector from '../../store/useSelector'
-import theme from '../../theme'
 import * as Space from '../../types/space'
 
 
@@ -16,6 +16,7 @@ const GAME_SUM_OF_BESTS = LABELLED_TIME_HEIGHT
 const GameSumOfBests: React.FC<IGameSumOfBestsProps> = ({
   space = {},
 }) => {
+  const theme = useTheme()
   const sumOfBests = useSelector(selectGameSumOfBests)
 
   return (

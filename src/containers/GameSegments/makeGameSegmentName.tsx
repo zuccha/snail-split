@@ -2,8 +2,8 @@ import React from 'react'
 import BlessedText from '../../components/BlessedText'
 import selectGameCurrentSegmentIndex from '../../store/game/selectors/selectGameCurrentSegmentIndex'
 import makeSelectGameSegmentName from '../../store/game/selectors/makeSelectGameSegmentName'
+import useTheme from '../../store/theme/hooks/useTheme'
 import useSelector from '../../store/useSelector'
-import theme from '../../theme'
 import * as Space from '../../types/space'
 
 
@@ -15,6 +15,7 @@ interface IGameSegmentNameProps {
 const makeGameSegmentName = (
   segmentIndex: number,
 ): React.FC<IGameSegmentNameProps> => {
+  const theme = useTheme()
   const selectGameSegmentName = makeSelectGameSegmentName(segmentIndex)
 
   const colorBg = segmentIndex % 2 === 0

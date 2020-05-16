@@ -1,7 +1,7 @@
 import React from 'react'
 import BlessedText from '../../components/BlessedText'
 import useSnackbar from '../../store/snackbar/hooks/useSnackbar'
-import theme from '../../theme'
+import useTheme from '../../store/theme/hooks/useTheme'
 import when from '../../utils/when'
 import * as Space from '../../types/space'
 
@@ -23,6 +23,7 @@ const Snackbar: React.FC<ISnackbarProps> = ({
   space = {},
 }) => {
   const snackbar = useSnackbar()
+  const theme = useTheme()
 
   const style = when<IStyle>([
     [snackbar.variant === 'neutral', () => ({

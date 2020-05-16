@@ -3,8 +3,8 @@ import BlessedText from '../../components/BlessedText'
 import useConfig from '../../store/config/hooks/useConfig'
 import makeSelectGameSegmentDeltaTime from '../../store/game/selectors/makeSelectGameSegmentDeltaTime'
 import selectGameCurrentSegmentIndex from '../../store/game/selectors/selectGameCurrentSegmentIndex'
+import useTheme from '../../store/theme/hooks/useTheme'
 import useSelector from '../../store/useSelector'
-import theme from '../../theme'
 import * as ColumnDefinition from '../../types/column-definition'
 import * as Space from '../../types/space'
 import * as Time from '../../types/time'
@@ -20,6 +20,7 @@ const makeGameSegmentDeltaTime = (
   segmentIndex: number,
   columnDefinition: ColumnDefinition.ColumnDefinitionDelta,
 ): React.FC<IGameSegmentDeltaTimeProps> => {
+  const theme = useTheme()
   const selectGameSegmentDeltaTime = makeSelectGameSegmentDeltaTime(
     segmentIndex,
     columnDefinition.leftTimeCategory,
