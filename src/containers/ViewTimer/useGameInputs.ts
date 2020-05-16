@@ -1,21 +1,23 @@
 import { useCallback } from 'react'
 import useKeybinding from '../../hooks/useKeybinding'
+import store from '../../store'
+import useConfig from '../../store/config/hooks/useConfig'
 import createActionGameInvalidatePreviousSegment from '../../store/game/actions/createActionGameInvalidatePreviousSegment'
 import createActionGameReset from '../../store/game/actions/createActionGameReset'
 import createActionGameSplit from '../../store/game/actions/createActionGameSplit'
 import createActionGameToggle from '../../store/game/actions/createActionGameToggle'
-import store from '../../store'
-import useConfig from '../../store/config/hooks/useConfig'
+import useSavefile from '../../store/savefile/hooks/useSavefile'
 import useEnqueueSnackbar from '../../store/snackbar/hooks/useEnqueueSnackbar'
 import useDispatch from '../../store/useDispatch'
 import * as EitherErrorOr from '../../types/either-error-or'
 import * as Game from '../../types/game'
 
 
-const useGameInputs = (filename: string): void => {
+const useGameInputs = (): void => {
   const dispatch = useDispatch()
   const enqueueSnackbar = useEnqueueSnackbar()
   const config = useConfig()
+  const savefile = useSavefile()
 
   const handleInvalidatePreviousSegment = useCallback(() => {
     dispatch(createActionGameInvalidatePreviousSegment())
@@ -27,10 +29,10 @@ const useGameInputs = (filename: string): void => {
 
   const handleSaveGame = useCallback(() => {
     const game = store.getState().game
-    const eitherErrorOrUndefined = Game.save(game, filename)
+    const eitherErrorOrUndefined = Game.save(game, savefile)
     EitherErrorOr.isError(eitherErrorOrUndefined)
       ? enqueueSnackbar(`Failed to save game: ${eitherErrorOrUndefined.error}`, 'failure')
-      : enqueueSnackbar(`Game successfully saved to file ${filename}`, 'success')
+      : enqueueSnackbar(`Game successfully saved to file ${savefile}`, 'success')
   }, [dispatch])
 
   const handleSplitGame = useCallback(() => {

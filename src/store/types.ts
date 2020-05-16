@@ -7,6 +7,7 @@ import * as Theme from '../types/theme'
 interface IStateRoot {
   config: Config.Config
   game: Game.Game
+  savefile: string
   snackbar: Snackbar.Snackbar
   theme: Theme.Theme
 }

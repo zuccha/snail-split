@@ -30,9 +30,6 @@ const GAME_BEST_POSSIBLE_TIME_TOP = GAME_CURRENT_TIME_TOP + GAME_CURRENT_TIME_HE
 const GAME_SUM_OF_BESTS_TOP = GAME_BEST_POSSIBLE_TIME_TOP + GAME_BEST_POSSIBLE_TIME_HEIGHT
 const SNACKBAR_BOTTOM = PADDING_V
 
-// TODO: Move to store.
-const gameFilenameOutput = './examples/games/dark-souls-save.json'
-
 
 const ViewTimer: React.FC<ViewTimerProps> = ({
   space = {},
@@ -43,8 +40,8 @@ const ViewTimer: React.FC<ViewTimerProps> = ({
 
   useKeybinding(config.keybindings.quit, onClose)
 
-  useGameInputs(gameFilenameOutput)
-  useGameLoop(gameFilenameOutput)
+  useGameInputs()
+  useGameLoop()
 
   const contentWidth = space.width !== undefined && space.width >= PADDING_H * 2
     ? space.width - PADDING_H * 2

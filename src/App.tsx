@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Viewer from './containers/Viewer'
 import createActionConfigLoad from './store/config/actions/createActionConfigLoad'
 import createActionGameLoad from './store/game/actions/createActionGameLoad'
+import createActionSavefileLoad from './store/savefile/actions/createActionSavefileLoad'
 import createActionThemeLoad from './store/theme/actions/createActionThemeLoad'
 import useDispatch from './store/useDispatch'
 import * as EitherErrorOr from './types/either-error-or'
@@ -50,6 +51,7 @@ const App: React.FC<AppProps> = ({
       process.exit(1)
     }
     dispatch(createActionGameLoad(eitherErrorOrGame.data))
+    dispatch(createActionSavefileLoad(savefile))
 
     setLoading(false)
   }, [])
