@@ -2,14 +2,17 @@ import React, { useState, useEffect } from 'react'
 import Viewer from './containers/Viewer'
 import createActionConfigLoad from './store/config/actions/createActionConfigLoad'
 import createActionGameLoad from './store/game/actions/createActionGameLoad'
+import createActionThemeLoad from './store/theme/actions/createActionThemeLoad'
 import useDispatch from './store/useDispatch'
 import * as EitherErrorOr from './types/either-error-or'
 import * as Config from './types/config'
 import * as Game from './types/game'
+import * as Theme from './types/theme'
 
 
 const configFilename = './examples/configs/base.json'
 const gameFilenameInput = './examples/games/dark-souls.json'
+const themeFilenameInput = './examples/themes/dark.json'
 
 
 const App: React.FC = () => {
@@ -29,8 +32,15 @@ const App: React.FC = () => {
       process.exit(1)
     }
 
+    const eitherErrorOrTheme = Theme.load(themeFilenameInput)
+    if (EitherErrorOr.isError(eitherErrorOrTheme)) {
+      console.error(`Failed to load theme: ${eitherErrorOrTheme.error}.`)
+      process.exit(1)
+    }
+
     dispatch(createActionConfigLoad(eitherErrorOrConfig.data))
     dispatch(createActionGameLoad(eitherErrorOrGame.data))
+    dispatch(createActionThemeLoad(eitherErrorOrTheme.data))
 
     setLoading(false)
   }, [])

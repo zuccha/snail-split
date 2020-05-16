@@ -1,5 +1,4 @@
 import { useEffect, useState, useCallback } from 'react'
-import screen from '../../screen'
 import useSelector from '../../store/useSelector'
 import selectGameCurrentSegmentIndex from '../../store/game/selectors/selectGameCurrentSegmentIndex'
 import selectGameSegmentsCount from '../../store/game/selectors/selectGameSegmentsCount'
