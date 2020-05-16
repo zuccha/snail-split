@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@types/blessed": "^0.1.17",
+    "@types/minimist": "^1.2.0",
     "@types/node": "^13.13.4",
     "@types/react": "^16.9.34",
     "@types/react-blessed": "^0.3.2",
@@ -29,6 +30,7 @@
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-react": "^7.19.0",
     "immer": "^6.0.3",
+    "minimist": "^1.2.5",
     "react": "^16.13.1",
     "react-blessed": "^0.6.2",
     "react-devtools-core": "^4.6.0",

@@ -10,37 +10,46 @@ import * as Game from './types/game'
 import * as Theme from './types/theme'
 
 
-const configFilename = './examples/configs/base.json'
-const gameFilenameInput = './examples/games/dark-souls.json'
-const themeFilenameInput = './examples/themes/dark.json'
+interface AppProps {
+  savefile: string
+  configfile: string | undefined
+  themefile: string | undefined
+}
 
 
-const App: React.FC = () => {
+const App: React.FC<AppProps> = ({
+  savefile,
+  configfile,
+  themefile,
+}) => {
   const dispatch = useDispatch()
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    const eitherErrorOrConfig = Config.load(configFilename)
-    if (EitherErrorOr.isError(eitherErrorOrConfig)) {
-      console.error(`Failed to load config: ${eitherErrorOrConfig.error}.`)
-      process.exit(1)
+    if (configfile !== undefined) {
+      const eitherErrorOrConfig = Config.load(configfile)
+      if (EitherErrorOr.isError(eitherErrorOrConfig)) {
+        console.error(`Failed to load config: ${eitherErrorOrConfig.error}.`)
+        process.exit(1)
+      }
+      dispatch(createActionConfigLoad(eitherErrorOrConfig.data))
     }
 
-    const eitherErrorOrGame = Game.load(gameFilenameInput)
+    if (themefile !== undefined) {
+      const eitherErrorOrTheme = Theme.load(themefile)
+      if (EitherErrorOr.isError(eitherErrorOrTheme)) {
+        console.error(`Failed to load theme: ${eitherErrorOrTheme.error}.`)
+        process.exit(1)
+      }
+      dispatch(createActionThemeLoad(eitherErrorOrTheme.data))
+    }
+
+    const eitherErrorOrGame = Game.load(savefile)
     if (EitherErrorOr.isError(eitherErrorOrGame)) {
       console.error(`Failed to load game: ${eitherErrorOrGame.error}.`)
       process.exit(1)
     }
-
-    const eitherErrorOrTheme = Theme.load(themeFilenameInput)
-    if (EitherErrorOr.isError(eitherErrorOrTheme)) {
-      console.error(`Failed to load theme: ${eitherErrorOrTheme.error}.`)
-      process.exit(1)
-    }
-
-    dispatch(createActionConfigLoad(eitherErrorOrConfig.data))
     dispatch(createActionGameLoad(eitherErrorOrGame.data))
-    dispatch(createActionThemeLoad(eitherErrorOrTheme.data))
 
     setLoading(false)
   }, [])
