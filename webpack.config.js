@@ -1,14 +1,14 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
+/* eslint-disable @typescript-eslint/no-var-requires */
 const webpackNodeExternals = require('webpack-node-externals')
+const packageJson = require('./package.json')
 
 
 module.exports = {
   mode: 'production',
   target: 'node',
-  devtool: 'inline-source-map',
   entry: './src/index.tsx',
   output: {
-    filename: 'bundle.js',
+    filename: `${packageJson.name}-${packageJson.version}.js`,
     path: `${__dirname}/dist/`,
   },
   resolve: {
