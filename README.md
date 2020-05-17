@@ -13,8 +13,15 @@ doctor ordered. Otherwise, you are probably better off just using
 or whatever other speedrun timer being widely used and extensively tested by
 actual speedrunners.
 
-Snail Split has been built using TypeScript, with React, Blessed and, well,
-React Blessed.
+Some, but not all, of Snail Split features are
+* Multi-platform (Windows, macOS, Linux)
+* Modular columns composition
+* Autosave
+* Theme customization
+
+Snail Split has been built using [TypeScript](https://www.typescriptlang.org/),
+with [React](https://reactjs.org/), [Blessed](https://github.com/chjj/blessed)
+and, well, [React Blessed](https://github.com/Yomguithereal/react-blessed).
 
 
 ## Install
@@ -114,7 +121,7 @@ Keybindings can be customized, for more information read the
 ## Save file
 The save file contains all information about a speedrun. The savefile is in
 JSON format and has the following structure
-```json
+```typescript
 {
   // Title of the game.
   "title": string,
@@ -166,7 +173,7 @@ A user can specify a custom configuration via a configuration file, provided
 with the `c` or `config` options (see [run](#run)).
 
 The configuration file is a JSON file with the following structure
-```json
+```typescript
 {
   // Number of updates to the timer per second (default: 30).
   "fps": number,
@@ -286,7 +293,7 @@ or absolute terms (_i.e._, the duration of the split, or time elapsed since
 the run started to the end of the segment).
 
 To define a column featuring a time
-```json
+```typescript
 {
   // Tells the column to display a time.
   "type": "time",
@@ -304,7 +311,7 @@ To define a column featuring a time
 ```
 
 To define a column featuring the delta time between two different categories
-```json
+```typescript
 {
   // Tells the column to display the delta time between two categories.
   "type": "delta",
@@ -326,7 +333,7 @@ The default column definitions have
 * a column with `current - pb` delta time (time save/loss on segment compared
 to best time).
 * a column with segment time since the beginning of the run.
-```json
+```typescript
 {
   ...
   "columnDefinitions": [
@@ -356,7 +363,7 @@ Currently, the theme only allows colors customization. In general, `bg`
 refers to background color and `fg` refers to text color.
 
 The theme file is a JSON file with the following structure
-```json
+```typescript
 {
   // General colors for the application.
   "app": {
