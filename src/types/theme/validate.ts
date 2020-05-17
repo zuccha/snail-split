@@ -67,15 +67,15 @@ const validate = (
     },
 
     segments: {
-      dividerColorBg: Color.validate(
-        segmentsObject.dividerColorBg,
-        defaultValue.segments.dividerColorBg,
-        `${property}.dividerColorBg`,
+      borderColorBg: Color.validate(
+        segmentsObject.borderColorBg,
+        defaultValue.segments.borderColorBg,
+        `${property}.borderColorBg`,
       ),
-      dividerColorFg: Color.validate(
-        segmentsObject.dividerColorFg,
-        defaultValue.segments.dividerColorFg,
-        `${property}.dividerColorFg`,
+      borderColorFg: Color.validate(
+        segmentsObject.borderColorFg,
+        defaultValue.segments.borderColorFg,
+        `${property}.borderColorFg`,
       ),
       headerColorBg: Color.validate(
         segmentsObject.headerColorBg,

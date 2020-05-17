@@ -10,8 +10,8 @@
     "borderColorFg": "#B7791F"
   },
   "segments": {
-    "dividerColorBg": "#1A202C",
-    "dividerColorFg": "#CBD5E0",
+    "borderColorBg": "#1A202C",
+    "borderColorFg": "#CBD5E0",
     "headerColorBg": "#1A202C",
     "headerColorFg": "#CBD5E0",
     "itemEvenColorBg": "#2D3748",

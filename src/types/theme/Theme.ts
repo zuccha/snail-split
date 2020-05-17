@@ -13,8 +13,8 @@ interface Theme {
     borderColorFg: Color.Color
   }
   segments: {
-    dividerColorBg: Color.Color
-    dividerColorFg: Color.Color
+    borderColorBg: Color.Color
+    borderColorFg: Color.Color
     headerColorBg: Color.Color
     headerColorFg: Color.Color
     itemEvenColorBg: Color.Color

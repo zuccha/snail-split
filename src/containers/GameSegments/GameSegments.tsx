@@ -49,8 +49,8 @@ const GameSegments: React.FC<IGameSegmentsProps> = ({
         border='line'
         style={{
           border: {
-            bg: theme.segments.dividerColorBg,
-            fg: theme.segments.dividerColorFg,
+            bg: theme.segments.borderColorBg,
+            fg: theme.segments.borderColorFg,
           },
         }}
       >

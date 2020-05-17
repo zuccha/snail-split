@@ -13,8 +13,8 @@ const defaultTheme: Theme = {
     borderColorFg: 'white',
   },
   segments: {
-    dividerColorBg: 'black',
-    dividerColorFg: 'white',
+    borderColorBg: 'black',
+    borderColorFg: 'white',
     headerColorBg: 'black',
     headerColorFg: 'white',
     itemEvenColorBg: 'black',
