@@ -367,64 +367,66 @@ The theme file is a JSON file with the following structure
 {
   // General colors for the application.
   "app": {
-    "colorBg": color, // (default: "black")
-    "colorFg": color  // (default: "white")
+    "colorBg": color, // (default: "#1A202C")
+    "colorFg": color  // (default: "#CBD5E0")
   },
   // Colors for header (title and category).
   "header": {
-    "titleColorBg": color,  // (default: "black")
-    "titleColorFg": color,  // (default: "white")
-    "borderColorBg": color, // (default: "black")
-    "borderColorFg": color  // (default: "white")
+    "titleColorBg": color,  // (default: "#1A202C")
+    "titleColorFg": color,  // (default: "#B7791F")
+    "borderColorBg": color, // (default: "#1A202C")
+    "borderColorFg": color  // (default: "#B7791F")
   },
   // Colors for the segments table.
   "segments": {
     // Border that surrounds table and separates header from other rows.
-    "borderColorBg": color,           // (default: "black")
-    "borderColorFg": color,           // (default: "white")
+    "borderColorBg": color,           // (default: "#1A202C")
+    "borderColorFg": color,           // (default: "#CBD5E0")
     // Header cells.
-    "headerColorBg": color,            // (default: "black")
-    "headerColorFg": color,            // (default: "white")
+    "headerColorBg": color,            // (default: "#1A202C")
+    "headerColorFg": color,            // (default: "#CBD5E0")
     // Even rows (not header).
-    "itemEvenColorBg": color,          // (default: "black")
-    "itemEvenColorFg": color,          // (default: "white")
+    "itemEvenColorBg": color,          // (default: "#2D3748")
+    "itemEvenColorFg": color,          // (default: "#CBD5E0")
     // Odd rows (not header).
-    "itemOddColorBg": color,           // (default: "black")
-    "itemOddColorFg": color,           // (default: "white")
+    "itemOddColorBg": color,           // (default: "#4A5568")
+    "itemOddColorFg": color,           // (default: "#CBD5E0")
     // Current segment.
-    "itemCurrentColorBg": color,       // (default: "black")
-    "itemCurrentColorFg": color,       // (default: "white")
+    "itemCurrentColorBg": color,       // (default: "#2B6CB0")
+    "itemCurrentColorFg": color,       // (default: "#CBD5E0")
     // Columns with delta times.
-    "deltaTimeColorFgNegative": color, // (default: "green")
-    "deltaTimeColorFgNeutral": color,  // (default: "white")
-    "deltaTimeColorFgPositive": color  // (default: "red")
+    "deltaTimeColorFgNegative": color, // (default: "#38A169")
+    "deltaTimeColorFgNeutral": color,  // (default: "#CBD5E0")
+    "deltaTimeColorFgPositive": color  // (default: "#C53030")
   },
   // Total time of the run.
   "time": {
-    "colorBg": color,         // (default: "black")
-    // When the current time is worse (greater) than the PB.
-    "colorFgNegative": color, // (default: "red")
-    // When the current time equals the PB.
-    "colorFgNeutral": color,  // (default: "white")
-    // When the current time is better (smaller) than the PB.
-    "colorFgPositive": color, // (default: "green")
-    // When the timer is paused.
-    "colorFgPaused": color    // (default: "white")
+    // Background color (default: "#1A202C").
+    "colorBg": color,
+    // When current time is worse (greater) than PB (default: "#E53E3E").
+    "colorFgNegative": color,
+    // When the current time equals the PB (default: "#CBD5E0").
+    "colorFgNeutral": color,
+    // When current time is better (smaller) than PB (default: "#2F855A").
+    "colorFgPositive": color,
+    // When the timer is paused // (default: "#A0AEC0").
+    "colorFgPaused": color
   },
   // Message bar at the bottom of the application.
   "snackbar": {
-    "neutralColorBg": color, // (default: "black")
-    "neutralColorFg": color, // (default: "white")
-    "successColorBg": color, // (default: "black")
-    "successColorFg": color, // (default: "green")
-    "failureColorBg": color, // (default: "black")
-    "failureColorFg": color, // (default: "red")
-    "warningColorBg": color, // (default: "black")
-    "warningColorFg": color  // (default: "orange")
+    "neutralColorBg": color, // (default: "#1A202C")
+    "neutralColorFg": color, // (default: "#CBD5E0")
+    "successColorBg": color, // (default: "#1A202C")
+    "successColorFg": color, // (default: "#38A169")
+    "failureColorBg": color, // (default: "#1A202C")
+    "failureColorFg": color, // (default: "#E53E3E")
+    "warningColorBg": color, // (default: "#1A202C")
+    "warningColorFg": color  // (default: "#DD6B20")
   }
 }
 ```
 
+You can check the default and other themes in `./examples/themes/` folder.
 
 ## Roadmap
 Snail Split is still incomplete and lacks several features that make a
