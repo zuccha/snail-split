@@ -1,0 +1,72 @@
+{
+  "title": "Dark Souls",
+  "category": "Any%",
+  "segments": [
+    {
+      "name": "Asylum Demon",
+      "pbAbsoluteTime": 123000,
+      "wrAbsoluteTime": 107000,
+      "goldRelativeTime": 116000
+    },
+    {
+      "name": "Taurus Demon",
+      "pbAbsoluteTime": 332000,
+      "wrAbsoluteTime": 252000,
+      "goldRelativeTime": 205000
+    },
+    {
+      "name": "Iron Golem",
+      "pbAbsoluteTime": 721000,
+      "wrAbsoluteTime": 609000,
+      "goldRelativeTime": 378000
+    },
+    {
+      "name": "O&S",
+      "pbAbsoluteTime": 1110000,
+      "wrAbsoluteTime": 886000,
+      "goldRelativeTime": 389000
+    },
+    {
+      "name": "Gargoyles",
+      "pbAbsoluteTime": 1273000,
+      "wrAbsoluteTime": 1011000,
+      "goldRelativeTime": 163000
+    },
+    {
+      "name": "Queelag",
+      "pbAbsoluteTime": 1516000,
+      "wrAbsoluteTime": 1183000,
+      "goldRelativeTime": 226000
+    },
+    {
+      "name": "Princess Dusk",
+      "pbAbsoluteTime": 1734000,
+      "wrAbsoluteTime": 1400000,
+      "goldRelativeTime": 215000
+    },
+    {
+      "name": "Pendant",
+      "pbAbsoluteTime": 1964000,
+      "wrAbsoluteTime": 1496000,
+      "goldRelativeTime": 230000
+    },
+    {
+      "name": "Guardian",
+      "pbAbsoluteTime": 2191000,
+      "wrAbsoluteTime": 1628000,
+      "goldRelativeTime": 211000
+    },
+    {
+      "name": "Artorias",
+      "pbAbsoluteTime": 2344000,
+      "wrAbsoluteTime": 1772000,
+      "goldRelativeTime": 153000
+    },
+    {
+      "name": "Gwyn",
+      "pbAbsoluteTime": 2629000,
+      "wrAbsoluteTime": 1919000,
+      "goldRelativeTime": 260000
+    }
+  ]
+}

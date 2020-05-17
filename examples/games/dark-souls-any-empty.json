@@ -1,0 +1,39 @@
+{
+  "title": "Dark Souls",
+  "category": "Any%",
+  "segments": [
+    {
+      "name": "Asylum Demon"
+    },
+    {
+      "name": "Taurus Demon"
+    },
+    {
+      "name": "Iron Golem"
+    },
+    {
+      "name": "O&S"
+    },
+    {
+      "name": "Gargoyles"
+    },
+    {
+      "name": "Queelag"
+    },
+    {
+      "name": "Princess Dusk"
+    },
+    {
+      "name": "Pendant"
+    },
+    {
+      "name": "Guardian"
+    },
+    {
+      "name": "Artorias"
+    },
+    {
+      "name": "Gwyn"
+    }
+  ]
+}

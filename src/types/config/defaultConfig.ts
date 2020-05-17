@@ -6,19 +6,19 @@ const defaultConfig: Config = {
   fps: 30,
 
   autosave: true,
-  autosaveInterval: 5000,
+  autosaveInterval: 10000,
   autosaveShowMessage: false,
 
   segmentColumnDefinitions: [
     {
-      title: 'Delta (abs.)',
+      title: 'Delta',
       type: 'delta',
       leftTimeCategory: 'current',
       rightTimeCategory: 'pb',
       timeFrame: 'absolute',
     },
     {
-      title: 'PB (abs.)',
+      title: 'PB',
       type: 'time',
       timeCategory: 'pb',
       timeFrame: 'absolute',

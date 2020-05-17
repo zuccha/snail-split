@@ -1,0 +1,43 @@
+{
+  "title": "Dark Souls",
+  "category": "Any%",
+  "segments": [
+    {
+      "name": "Asylum Demon",
+      "currentAbsoluteTime": 114000
+    },
+    {
+      "name": "Taurus Demon",
+      "currentAbsoluteTime": 329000
+    },
+    {
+      "name": "Iron Golem",
+      "currentAbsoluteTime": 752000
+    },
+    {
+      "name": "O&S"
+    },
+    {
+      "name": "Gargoyles"
+    },
+    {
+      "name": "Queelag"
+    },
+    {
+      "name": "Princess Dusk"
+    },
+    {
+      "name": "Pendant"
+    },
+    {
+      "name": "Guardian"
+    },
+    {
+      "name": "Artorias"
+    },
+    {
+      "name": "Gwyn"
+    }
+  ],
+  "status": "pending"
+}

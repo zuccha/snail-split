@@ -1,0 +1,63 @@
+{
+  "fps": 30,
+
+  "autosave": true,
+  "autosaveInterval": 5000,
+  "autosaveShowMessage": false,
+
+  "segmentColumnDefinitions": [
+    {
+      "title": "Delta (abs.)",
+      "type": "delta",
+      "leftTimeCategory": "current",
+      "rightTimeCategory": "pb",
+      "timeFrame": "absolute"
+    },
+    {
+      "title": "PB (abs.)",
+      "type": "time",
+      "timeCategory": "pb",
+      "timeFrame": "absolute"
+    }
+  ],
+
+  "timeFont": "slim",
+  "timeFormatDefault": "H:MM:SS.mmm",
+  "timeFormatBelowHour": "M:SS.mmm",
+  "timeFormatBelowMinute": "S.mmm",
+  "timeFormatBelowSecond": "0.mmm",
+  "timeFormatZero": "0.000",
+  "timeFormatEmpty": "0.000",
+
+  "segmentTimeFormatDefault": "H:MM:SS.mmm",
+  "segmentTimeFormatBelowHour": "M:SS.mmm",
+  "segmentTimeFormatBelowMinute": "S.mmm",
+  "segmentTimeFormatBelowSecond": "0.mmm",
+  "segmentTimeFormatZero": "0.000",
+  "segmentTimeFormatEmpty": "-",
+
+  "segmentDeltaFormatDefault": "H:MM:SS.mmm",
+  "segmentDeltaFormatBelowHour": "M:SS.mmm",
+  "segmentDeltaFormatBelowMinute": "S.mmm",
+  "segmentDeltaFormatBelowSecond": "0.mmm",
+  "segmentDeltaFormatZero": "0.000",
+  "segmentDeltaFormatEmpty": "-",
+
+  "showBestPossibleTime": true,
+  "showSumOfBests": true,
+
+  "snackbarDuration": 3000,
+
+  "keybindings": {
+    "toggleTimer": "space",
+    "resetTimer": "r",
+    "splitCurrentSegment": "return",
+    "invalidatePreviousSegment": "backspace",
+    "scrollSegmentsUp": "up",
+    "scrollSegmentsDown": "down",
+    "save": "s",
+    "quit": "q",
+    "forceQuit": "C-c",
+    "help": "h"
+  }
+}

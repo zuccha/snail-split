@@ -1,0 +1,37 @@
+{
+  "autosave": false,
+  "autosaveShowMessage": true,
+
+  "segmentColumnDefinitions": [
+    {
+      "title": "Current",
+      "type": "time",
+      "timeCategory": "current",
+      "timeFrame": "absolute"
+    }
+  ],
+
+  "timeFormatDefault": "H:MM:SS",
+  "timeFormatBelowHour": "M:SS",
+  "timeFormatBelowMinute": "S",
+  "timeFormatBelowSecond": "0",
+  "timeFormatZero": "0",
+  "timeFormatEmpty": "0",
+
+  "segmentTimeFormatDefault": "H:MM:SS",
+  "segmentTimeFormatBelowHour": "M:SS",
+  "segmentTimeFormatBelowMinute": "S",
+  "segmentTimeFormatBelowSecond": "0",
+  "segmentTimeFormatZero": "0",
+  "segmentTimeFormatEmpty": "-",
+
+  "segmentDeltaFormatDefault": "H:MM:SS",
+  "segmentDeltaFormatBelowHour": "M:SS",
+  "segmentDeltaFormatBelowMinute": "S",
+  "segmentDeltaFormatBelowSecond": "0",
+  "segmentDeltaFormatZero": "0",
+  "segmentDeltaFormatEmpty": "-",
+
+  "showBestPossibleTime": false,
+  "showSumOfBests": false
+}
