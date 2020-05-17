@@ -26,9 +26,9 @@ and, well, [React Blessed](https://github.com/Yomguithereal/react-blessed).
 
 ## Install
 You can download Snail Split for different platforms at the following links
-* Windows
-* macOS
-* Linux
+* [Windows](https://github.com/zuccha/snail-split/releases/download/v1.0.0/snail-split-1.0.0-win.exe)
+* [macOS](https://github.com/zuccha/snail-split/releases/download/v1.0.0/snail-split-1.0.0-macos)
+* [Linux](https://github.com/zuccha/snail-split/releases/download/v1.0.0/snail-split-1.0.0-linux)
 
 Once you downloaded the executable, you can run it from the command line
 ```
